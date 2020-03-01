@@ -20,10 +20,10 @@
 
 ### Association
 - has_many :items
-- has_many :self-addresses
 - has_many :likes
 - has_many :comments
-- belongs_to :delivery-address
+- has_many :delivery-addresses
+- belongs_to :self-address
 
 
 ## self-addressesテーブル
@@ -70,7 +70,7 @@
 |price|integer|null: false|
 |sizedate|string|null: false|
 |feeWhich|string|null: false|
-|fromWhere|string||
+|fromWhere|string|null: false|
 |getDate|integer|null: false|
 |status|string|null: false|
 
@@ -148,7 +148,7 @@
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
-|comment|text||
+|comment|text|null: false|
 
 ### Association
 - belongs_to :user
