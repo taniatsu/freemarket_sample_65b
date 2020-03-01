@@ -63,6 +63,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |user_id|integer|null: false, foreign_key: true|
+|brand_id|integer|null: false, foreign_key: true|
 |itemName|string|null: false|
 |exp|text|null: false|
 |condition|string||
@@ -105,6 +106,7 @@
 ## categoryMsテーブル
 |Column|Type|Options|
 |------|----|-------|
+|categoryL_id|integer|null: false, foreign_key: true|
 |catName|string|null: false|
 
 ### Association
@@ -115,6 +117,7 @@
 ## categorySsテーブル
 |Column|Type|Options|
 |------|----|-------|
+|categoryM_id|integer|null: false, foreign_key: true|
 |catName|string|null: false|
 
 ### Association
