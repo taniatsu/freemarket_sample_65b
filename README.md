@@ -77,8 +77,8 @@
 ### Association
 - has_many :images
 - has_many :categoriesL
-- has_many :likes
 - has_many :comments
+- has_many :likes
 - belongs_to :brand
 
 
