@@ -1,24 +1,27 @@
 %header
-  .head
-    .headerHead
-      .headerHead__title
+  .headInner
+    .headInner__Head
+      .headInner__Head__title
         =link_to root_path do
-          = image_tag "logo.png", size: "214x62"
-      .headerHead__searchBox
-        %input{type: "text",placeholder: "キーワードから探す",class:"searchBox__input"}
-        .seachBox__icon
-    .headerFoot
-      .listLeft
-        .listLeft__category
+          = image_tag "logo.png", size: "140x40"
+      .headInner__Head__searchBox
+        %input{type: "text",placeholder: "キーワードから探す",size:"100",class:"searchBox__input"}
+        %button{type: "submit"}
+          = icon('fa','search',class:"searchBox__icon")
+          
+    .headInner__Foot
+      %ul.headInner__Foot__left
+        .headInner__Foot__left__category
         カテゴリー
-        .listLeft__brand
+        .headInner__Foot__left__brand
         ブランド
-      .listRight
-        .listRight__login
+      %ul.headInner__Foot__right
+        .headInner__Foot__right__login
         ログイン
-        .listRight__signUp
+        .headInner__Foot__right__signUp
         新規会員登録
       
+-# 未実装です
 .main
 .banner
 .footer
