@@ -1,4 +1,24 @@
-%h1 Tops#index
-%p Find me in app/views/tops/index.html.haml
-
-aaaa
+%header
+  .head
+    .headerHead
+      .headerHead__title
+        =link_to root_path do
+          = image_tag "logo.png", size: "214x62"
+      .headerHead__searchBox
+        %input{type: "text",placeholder: "キーワードから探す",class:"searchBox__input"}
+        .seachBox__icon
+    .headerFoot
+      .listLeft
+        .listLeft__category
+        カテゴリー
+        .listLeft__brand
+        ブランド
+      .listRight
+        .listRight__login
+        ログイン
+        .listRight__signUp
+        新規会員登録
+      
+.main
+.banner
+.footer
