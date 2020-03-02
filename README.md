@@ -23,13 +23,13 @@
 - has_many :likes
 - has_many :comments
 - has_many :delivery-addresses
-- belongs_to :self-address
+- has_one :self-address
 
 
 ## self-addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 |zipcode|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
@@ -43,7 +43,7 @@
 ## delivery-addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 |firstName|string|null: false|
 |lastName|string|null: false|
 |firstJpName|string|null: false|
@@ -62,8 +62,8 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|brand_id|integer|null: false, foreign_key: true|
+|use|references|null: false, foreign_key: true|
+|brand|references|null: false, foreign_key: true|
 |itemName|string|null: false|
 |exp|text|null: false|
 |condition|string||
@@ -86,7 +86,7 @@
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :item
@@ -95,7 +95,7 @@
 ## categoryLsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 |catName|string|null: false|
 
 ### Association
@@ -106,7 +106,7 @@
 ## categoryMsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|categoryL_id|integer|null: false, foreign_key: true|
+|categoryL|references|null: false, foreign_key: true|
 |catName|string|null: false|
 
 ### Association
@@ -117,7 +117,7 @@
 ## categorySsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|categoryM_id|integer|null: false, foreign_key: true|
+|categoryM|references|null: false, foreign_key: true|
 |catName|string|null: false|
 
 ### Association
@@ -127,7 +127,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item_id|integer|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 |brandName|string||
 
 ### Association
@@ -138,8 +138,8 @@
 ## likesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
@@ -149,8 +149,8 @@
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
+|item|references|null: false, foreign_key: true|
 |comment|text|null: false|
 
 ### Association
