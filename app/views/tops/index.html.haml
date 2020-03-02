@@ -3,7 +3,7 @@
     .headInner__Head
       .headInner__Head__title
         =link_to root_path do
-          = image_tag "logo.png", size: "140x40"
+          = image_tag "logo.png"
       .headInner__Head__searchBox
         %input{type: "text",placeholder: "キーワードから探す",size:"100",class:"searchBox__input"}
         %button{type: "submit"}
@@ -22,6 +22,6 @@
         新規会員登録
       
 -# 未実装です
-.main
+%main
 .banner
-.footer
+%footer

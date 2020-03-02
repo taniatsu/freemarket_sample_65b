@@ -8,6 +8,11 @@
   .headInner__Head {
     display: flex;
 
+    img {
+      width: 140px;
+      height: 40px;
+    }
+
     .headInner__Head__searchBox {
       display:inline-block;
       margin-left: auto;
