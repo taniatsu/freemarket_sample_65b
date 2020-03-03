@@ -13,7 +13,7 @@
 |year|integer|null: false|
 |month|date|null: false|
 |day|date|null: false|
-|email|string|null: false|
+|email|string|null: false, unique: true|
 |tel|integer||
 |nickname|string|null: false|
 |password|string|null: false|
@@ -77,9 +77,10 @@
 
 ### Association
 - has_many :images
-- has_many :categoriesL
+- has_many :categoryLs
 - has_many :comments
 - has_many :likes
+- belongs_to :user
 - belongs_to :brand
 
 
