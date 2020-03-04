@@ -119,11 +119,11 @@
     }
   }
 
-  ul {
+  ul.recommendPoint__content {
     display: flex;
     justify-content: center;
 
-    li {
+    li.recommendPoint__content__list  {
       position: relative;
       margin: 0 20px ;
       
@@ -145,13 +145,13 @@
         color: #3CCACE;
       }
 
-      h3 {
+      h3.recommendPoint__content__list__text {
         font-size: 24px;
         font-weight: 550;
         padding: 20px 0;
       }
 
-      p {
+      p.recommendPoint__content__list__description {
         font-size: 17px;
         width: 300px;
         text-align: left;
@@ -196,4 +196,60 @@
       }
     }
   }
+}
+
+
+.servicePoint {
+  text-align: center;
+  padding: 40px 20px;
+
+  .servicePoint__info {
+    padding: 30px 0;
+
+    .servicePoint__info__title {
+      font-size: 25px;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1em;
+    }
+
+    h5:before {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      display: inline-block;
+      width: 60px;
+      height: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #3CCACE;
+    }
+  }
+
+  ul.servicePoint__content {
+    display: flex;
+    justify-content: center;
+  }
+
+  li.servicePoint__content__list {
+    margin: 0 20px;
+  }
+
+    img {
+      width: 230px;
+    }
+
+    h6.servicePoint__content__list__text {
+      font-size: 20px;
+      font-weight: bold;
+      padding: 20px 0;
+    }
+
+    p.servicePoint__content__list__description {
+      font-size: 17px;
+      width: 330px;
+      text-align: left;
+    }
+
 }
