@@ -20,11 +20,12 @@
         ログイン
         .headInner__Foot__right__signUp
         新規会員登録
+
       
 %main
   .mainImage
     .mainImage__info
-      %h.mainImage__info__title
+      %h1.mainImage__info__title
         人生を変えるフリマアプリ
       %p.mainImage__info__text
         FURIMAはだれでもかんたんに出品・購入できる
@@ -38,5 +39,44 @@
           = link_to "https://www.microsoft.com" do
             = image_tag "google-play-badge2.png"
 
+
+  .recommendPoint
+    .recommendPoint__info
+      %h2.recommendPoint__info__title
+        FURIMAが選ばれる３つの理由
+        
+    %ul.recommendPoint__content
+      %li.recommendPoint__content__listLeft
+        %span.number 1
+        = image_tag "pict-reason-01.jpg"
+        
+        %h3.recommendPoint__content__listLeft__text
+          %span 3分
+          ですぐに出品
+        %p.recommendPoint__content__listLeft__description
+          スマホで入力するだけで簡単に出品できる！
+
+      %li.recommendPoint__content__listCenter
+        %span.number 2
+        = image_tag "pict-reason-02.jpg"
+        
+        %h3.recommendPoint__content__listCenter__text
+          %span シンプル
+          で使いやすい
+        %p.recommendPoint__content__listCenter__description
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+
+      %li.recommendPoint__content__listRight
+        %span.number 3
+        = image_tag "pict-reason-03.jpg"
+        
+        %h3.recommendPoint__content__listRight__text
+          手数料
+          %span 業界最安値
+        %p.recommendPoint__content__listRight__description
+          最大３％でお得に出品＆購入！
+
+
+  
 .banner
 %footer

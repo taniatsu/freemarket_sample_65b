@@ -44,7 +44,6 @@
     color: #333333;
 
     ul {
-      // margin: 15px 0;
       margin-top: 15px;
       display: flex;
       justify-content: space-between;
@@ -52,6 +51,7 @@
     }
   }
 }
+
 
 .mainImage {
   background-size: cover;
@@ -85,7 +85,77 @@
 
       a {
         text-decoration: none;
-      }      
+      }
+    }
+  }
+}
+
+
+.recommendPoint {
+  text-align: center;
+  padding: 40px 20px;
+
+  .recommendPoint__info {
+    padding: 30px 0;
+
+    .recommendPoint__info__title {
+      font-size: 25px;
+      font-weight: bold;
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1em;
+    }
+
+    h2:before {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      display: inline-block;
+      width: 60px;
+      height: 5px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #3CCACE;
+    }
+  }
+
+  ul {
+    display: flex;
+    justify-content: center;
+
+    li {
+      position: relative;
+      margin: 0 20px ;
+      
+      span.number {
+        position: absolute;
+        font-size: 25px;
+        color: white;
+        background-color: #3CCACE;
+        height: 55px;
+        width: 55px;
+        line-height: 55px;
+      }
+
+      img {
+        width: 300px;
+      }
+
+      span {
+        color: #3CCACE;
+      }
+
+      h3 {
+        font-size: 24px;
+        font-weight: 550;
+        padding: 20px 0;
+      }
+
+      p {
+        font-size: 17px;
+        width: 300px;
+        text-align: left;
+      }
     }
   }
 }
