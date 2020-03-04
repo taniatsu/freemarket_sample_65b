@@ -21,7 +21,22 @@
         .headInner__Foot__right__signUp
         新規会員登録
       
--# 未実装です
 %main
+  .mainImage
+    .mainImage__info
+      %h.mainImage__info__title
+        人生を変えるフリマアプリ
+      %p.mainImage__info__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .mainImage__info__btn
+        %a.mainImage__info__btn__appBtn
+          = link_to "https://itunes.apple.com" do
+            = image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png"
+        %a.mainImage__info__btn__googleBtn
+          = link_to "https://www.microsoft.com" do
+            = image_tag "google-play-badge2.png"
+
 .banner
 %footer
