@@ -355,3 +355,53 @@
     }
   }
 }
+
+.footInner {
+  background-color: #272727;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+
+  ul.footInner__contents {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px ;
+    height: 200px;
+
+    li.footInner__contents__content {
+      margin: 0 30px;
+      width: 200px;
+
+      h.footInner__info {
+        font-weight: bold;
+      }
+
+      ul.box {
+        font-size: 12px;
+        padding: 30px 0;
+
+        li.text {
+          padding-bottom: 15px;
+        }
+
+        a {
+          text-decoration: none;
+          color: white;
+        }
+        a:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  .footInner__logo {
+    img {
+      width: 150px;
+    }
+ 
+    p.text {
+      font-size: 10px;
+    }
+  }
+}
