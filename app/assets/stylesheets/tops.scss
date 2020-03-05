@@ -314,9 +314,44 @@
       p.tax {
         font-size: 10px;
       }
-
     }
-  
-    
+  }
+}
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  background-image: url("bg-appBanner-pict.jpg");
+  padding: 80px;
+
+  .banner__info {
+    text-align: center;
+    color: white;
+    text-shadow: 0 0 5px grey;
+    font-weight: bold;
+    padding-top: 30px;
+
+    h9.banner__info__title {
+      font-size: 25px;
+    }
+
+    p.banner__info__text {
+      font-size: 35px;
+    }
+
+    .banner__info__btn {
+      padding-top: 30px;
+    }
+
+    img {
+      width: 180px; 
+      height: 55px; 
+      padding-left: 5px;
+    }
+
+    a {
+      text-decoration: none;
+    }
   }
 }

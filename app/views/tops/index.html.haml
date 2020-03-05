@@ -176,5 +176,18 @@
             %p.tax
               (税込)
 
-.banner
+  .banner
+    .banner__info
+      %h9.banner__info__title
+        だれでもかんたん、人生を変えるフリマアプリ
+      %p.banner__info__text
+        今すぐ無料ダウンロード！
+      .banner__info__btn
+        %a.banner__info__btn__appBtn
+          = link_to "https://itunes.apple.com" do
+            = image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png"
+        %a.banner__info__btn__googleBtn
+          = link_to "https://www.microsoft.com" do
+            = image_tag "google-play-badge2.png"
+
 %footer
