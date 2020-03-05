@@ -405,3 +405,28 @@
     }
   }
 }
+
+.sellBtn {
+  height: 130px;
+  width: 130px;
+  background-color: #3CCACE;
+  border-radius: 5px;
+  text-align: center;
+  position:fixed;
+  right:50px;
+  bottom:50px;
+
+  .sellBtn__text {
+    font-size: 18px;
+    padding-top: 20px;
+  }
+
+  .sellBtn__icon {
+    font-size: 60px;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
