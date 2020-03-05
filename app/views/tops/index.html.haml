@@ -120,5 +120,61 @@
           お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
 
 
+  .productList
+    .productList__info
+      %h7.productList__info__category
+        カテゴリー
+      %p.productList__info__title
+        商品一覧
+
+    .productList__items
+      %a.productList__items__item
+        = link_to "#" do
+          = image_tag "free_img1.jpg"
+          .productList__items__item__text
+            %h8.name
+              商品名
+            %ul
+              %li.price
+                11000円
+              %li.likes
+                = icon('fa','star',class:"productList__icon")
+                .volume
+                  20
+            %p.tax
+              (税込)
+
+      %a.productList__items__item
+        = link_to "#" do
+          = image_tag "free_img2.jpg"
+          .productList__items__item__text
+            %h8.name
+              商品名
+            %ul
+              %li.price
+                11000円
+              %li.likes
+                = icon('fa','star',class:"productList__icon")
+                .volume
+                  20
+            %p.tax
+              (税込)
+
+      %a.productList__items__item
+        = link_to "#" do
+          = image_tag "free_img3.jpg"
+          .productList__items__item__text
+            %h8.name
+              商品名
+            %ul
+              %li.price
+                11000円
+              %li.likes
+                = icon('fa','star',class:"productList__icon")
+                .volume
+                  20
+            %p.tax
+              (税込)
+
 .banner
 %footer
