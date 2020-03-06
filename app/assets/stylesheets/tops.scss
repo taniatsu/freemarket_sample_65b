@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+:root {
+  --main-color: #3CCACE;
+}
+
 .headInner {
   padding: 15px 150px;
 
@@ -27,7 +31,7 @@
         line-height: 38px;
         width: 36px;
         border: none;
-        background-color: #3CCACE;
+        background-color: var(--main-color);
       }
 
       .searchBox__icon {
@@ -102,7 +106,6 @@
       font-size: 25px;
       font-weight: bold;
       position: relative;
-      display: inline-block;
       margin-bottom: 1em;
     }
 
@@ -115,7 +118,7 @@
       height: 5px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #3CCACE;
+      background-color: var(--main-color);
     }
   }
 
@@ -124,14 +127,13 @@
     justify-content: center;
 
     li.recommendPoint__content__list  {
-      position: relative;
       margin: 0 20px ;
       
       span.number {
         position: absolute;
         font-size: 25px;
         color: white;
-        background-color: #3CCACE;
+        background-color: var(--main-color);
         height: 55px;
         width: 55px;
         line-height: 55px;
@@ -142,7 +144,7 @@
       }
 
       span {
-        color: #3CCACE;
+        color: var(--main-color);
       }
 
       h3.recommendPoint__content__list__text {
@@ -170,7 +172,7 @@
   .secondImage__info {
     color: white;
     text-shadow: 0 0 5px grey;
-    padding: 90px 0 0 200px;
+    padding: 90px 200px;
 
     .secondImage__info__title {
       font-size: 27px;
@@ -218,12 +220,11 @@
       content: '';
       position: absolute;
       bottom: -15px;
-      display: inline-block;
       width: 60px;
       height: 5px;
       left: 50%;
       transform: translateX(-50%);
-      background-color: #3CCACE;
+      background-color: var(--main-color);
     }
   }
 
@@ -270,7 +271,7 @@
     p.productList__info__title {
       font-size: 24px;
       font-weight: bold;
-      color: #3CCACE;
+      color: var(--main-color);
     }
   }
 
@@ -287,8 +288,6 @@
     img {
       width: 220px;
       height: 150px;
-      margin: 0;
-      padding: 0;
       vertical-align: bottom;
     } 
 
@@ -321,7 +320,6 @@
 .banner {
   background-size: cover;
   background-position: center;
-  height: 400px;
   background-image: url("bg-appBanner-pict.jpg");
   padding: 80px;
 
@@ -330,7 +328,6 @@
     color: white;
     text-shadow: 0 0 5px grey;
     font-weight: bold;
-    padding-top: 30px;
 
     h9.banner__info__title {
       font-size: 25px;
@@ -365,7 +362,6 @@
   ul.footInner__contents {
     display: flex;
     justify-content: center;
-    margin-top: 30px ;
     height: 200px;
 
     li.footInner__contents__content {
@@ -409,7 +405,7 @@
 .sellBtn {
   height: 130px;
   width: 130px;
-  background-color: #3CCACE;
+  background-color: var(--main-color);
   border-radius: 5px;
   text-align: center;
   position:fixed;
