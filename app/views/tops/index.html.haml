@@ -20,8 +20,231 @@
         ログイン
         .headInner__Foot__right__signUp
         新規会員登録
+
       
--# 未実装です
 %main
-.banner
+  .mainImage
+    .mainImage__info
+      %h1.mainImage__info__title
+        人生を変えるフリマアプリ
+      %p.mainImage__info__text
+        FURIMAはだれでもかんたんに出品・購入できる
+        %br
+        フリマアプリです
+      .mainImage__info__btn
+        %a.mainImage__info__btn__appBtn
+          = link_to "https://itunes.apple.com" do
+            = image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png"
+        %a.mainImage__info__btn__googleBtn
+          = link_to "https://www.microsoft.com" do
+            = image_tag "google-play-badge2.png"
+
+
+  .recommendPoint
+    .recommendPoint__info
+      %h2.recommendPoint__info__title
+        FURIMAが選ばれる３つの理由
+
+    %ul.recommendPoint__content
+      %li.recommendPoint__content__list 
+        %span.number 1
+        = image_tag "pict-reason-01.jpg"
+        %h3.recommendPoint__content__list__text
+          %span 3分
+          ですぐに出品
+        %p.recommendPoint__content__list__description
+          スマホで入力するだけで簡単に出品できる！
+
+      %li.recommendPoint__content__list
+        %span.number 2
+        = image_tag "pict-reason-02.jpg"
+        %h3.recommendPoint__content__list__text
+          %span シンプル
+          で使いやすい
+        %p.recommendPoint__content__list__description
+          めんどくさい入力は必要なく、検索も購入もスムーズ！
+
+      %li.recommendPoint__content__list
+        %span.number 3
+        = image_tag "pict-reason-03.jpg"
+        %h3.recommendPoint__content__list__text
+          手数料
+          %span 業界最安値
+        %p.recommendPoint__content__list__description
+          最大３％でお得に出品＆購入！
+
+
+  .secondImage
+    .secondImage__info
+      %h4.secondImage__info__title
+        会員数日本一位
+      %p.secondImage__info__text
+        FURIMAは、フリマアプリで最も人気。
+        %br
+        出品・購入回数も業界最多です！
+        %br
+        ほしかったあの商品に出会えるかもしれません。
+      .secondImage__info__btn
+        %a.secondImage__info__btn__appBtn
+          = link_to "https://itunes.apple.com" do
+            = image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png"
+        %a.secondImage__info__btn__googleBtn
+          = link_to "https://www.microsoft.com" do
+            = image_tag "google-play-badge2.png"
+
+
+  .servicePoint
+    .servicePoint__info
+      %h5.servicePoint__info__title
+        FURIMAの特徴
+    %ul.servicePoint__content
+      %li.servicePoint__content__list
+        = image_tag "icon-01.png"
+        %h6.servicePoint__content__list__text
+          簡単に売り買いできる
+        %p.servicePoint__content__list__description
+          スマホひとつで、いつでもどこでも簡単に出品・購入が可能！
+      
+      %li.servicePoint__content__list
+        = image_tag "icon-03.png"
+        %h6.servicePoint__content__list__text
+          売上金は即日振込みに対応
+        %p.servicePoint__content__list__description
+          午前9時までに振込を依頼いただければ、翌日に指定の口座に入金いたします!
+
+      %li.servicePoint__content__list
+        = image_tag "icon-04.png"
+        %h6.servicePoint__content__list__text
+          様々な支払いに対応
+        %p.servicePoint__content__list__description
+          お支払いは、クレジットカードだけでなく、ポイントや売上金など多彩な方法があります。
+
+
+  .productList
+    .productList__info
+      %h7.productList__info__category
+        カテゴリー
+      %p.productList__info__title
+        商品一覧
+
+    .productList__items
+      %a.productList__items__item
+        = link_to "#" do
+          = image_tag "free_img1.jpg"
+          .productList__items__item__text
+            %h8.name
+              商品名
+            %ul
+              %li.price
+                11000円
+              %li.likes
+                = icon('fa','star',class:"productList__icon")
+                .volume
+                  20
+            %p.tax
+              (税込)
+
+      %a.productList__items__item
+        = link_to "#" do
+          = image_tag "free_img2.jpg"
+          .productList__items__item__text
+            %h8.name
+              商品名
+            %ul
+              %li.price
+                11000円
+              %li.likes
+                = icon('fa','star',class:"productList__icon")
+                .volume
+                  20
+            %p.tax
+              (税込)
+
+      %a.productList__items__item
+        = link_to "#" do
+          = image_tag "free_img3.jpg"
+          .productList__items__item__text
+            %h8.name
+              商品名
+            %ul
+              %li.price
+                11000円
+              %li.likes
+                = icon('fa','star',class:"productList__icon")
+                .volume
+                  20
+            %p.tax
+              (税込)
+
+  .banner
+    .banner__info
+      %h9.banner__info__title
+        だれでもかんたん、人生を変えるフリマアプリ
+      %p.banner__info__text
+        今すぐ無料ダウンロード！
+      .banner__info__btn
+        %a.banner__info__btn__appBtn
+          = link_to "https://itunes.apple.com" do
+            = image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png"
+        %a.banner__info__btn__googleBtn
+          = link_to "https://www.microsoft.com" do
+            = image_tag "google-play-badge2.png"
+
 %footer
+  .footInner
+    %ul.footInner__contents
+      %li.footInner__contents__content
+        %h.footInner__info
+          FURIMAについて
+        %ul.box
+          %li.text
+            = link_to "#" do
+              会社概要（運営会社）
+          %li.text
+            = link_to "#" do
+              プライバシーポリシー
+          %li.text
+            = link_to "#" do
+              FURIMA利用規約
+          %li.text
+            = link_to "#" do
+              ポイントに関する特約
+
+      %li.footInner__contents__content
+        %h.footInner__info
+          FURIMAを見る
+        %ul.box
+          %li.text
+            = link_to "#" do
+              カテゴリー一覧
+          %li.text
+            = link_to "#" do
+              ブランド一覧
+          
+      %li.footInner__contents__content
+        %h.footInner__info
+          ヘルプ＆ガイド
+        %ul.box
+          %li.text
+            = link_to "#" do
+              FURIMAガイド
+          %li.text
+            = link_to "#" do
+              FURIMAロゴ利用ガイドライン
+          %li.text
+            = link_to "#" do
+              お知らせ
+  
+    .footInner__logo
+      = link_to root_path do
+        = image_tag "logo-white.png"
+    %p.text
+      ©️ FURIMA
+
+
+.sellBtn
+  =link_to "#" do
+    .sellBtn__text
+      出品する
+    = icon('fa','camera',class:"sellBtn__icon")
+
