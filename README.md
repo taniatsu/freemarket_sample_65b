@@ -6,10 +6,10 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|firstName|string|null: false|
-|lastName|string|null: false|
-|firstJpName|string|null: false|
-|lastJpName|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_jp_name|string|null: false|
+|last_jp_name|string|null: false|
 |year|integer|null: false|
 |month|date|null: false|
 |day|date|null: false|
@@ -44,10 +44,10 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|firstName|string|null: false|
-|lastName|string|null: false|
-|firstJpName|string|null: false|
-|lastJpName|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_jp_name|string|null: false|
+|last_jp_name|string|null: false|
 |zipcode|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
@@ -64,72 +64,51 @@
 |------|----|-------|
 |use|references|null: false, foreign_key: true|
 |brand|references|null: false, foreign_key: true|
-|itemName|string|null: false|
+|item_name|string|null: false|
 |exp|text|null: false|
 |condition|string||
 |brand|string||
 |price|integer|null: false|
 |sizedate|string|null: false|
-|feeWhich|string|null: false|
-|fromWhere|string|null: false|
-|getDate|integer|null: false|
+|fee_which|string|null: false|
+|from_where|string|null: false|
+|get_date|integer|null: false|
 |status|string|null: false|
 
 ### Association
 - has_many :images
-- has_many :categoryLs
 - has_many :comments
 - has_many :likes
 - belongs_to :user
 - belongs_to :brand
+- belongs_to :category
 
 
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item|references|null: false, foreign_key: true|
+|url|string|null: false|
 
 ### Association
 - belongs_to :item
 
 
-## categoryLsテーブル
+## categorysテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item|references|null: false, foreign_key: true|
-|catName|string|null: false|
+|cat_name|string|null: false|
 
 ### Association
-- has_many :categoryMs
-- belongs_to :item
-
-
-## categoryMsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|categoryL|references|null: false, foreign_key: true|
-|catName|string|null: false|
-
-### Association
-- has_many :categorySs
-- belongs_to :categoryL
-
-
-## categorySsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|categoryM|references|null: false, foreign_key: true|
-|catName|string|null: false|
-
-### Association
-- belongs_to :categoryM
+- has_many :items
+- has_ancestry
 
 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item|references|null: false, foreign_key: true|
-|brandName|string||
+|brand_name|string||
 
 ### Association
 - has_many :items
