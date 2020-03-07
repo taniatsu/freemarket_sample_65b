@@ -1,25 +1,4 @@
-%header
-  .headInner
-    .headInner__Head
-      .headInner__Head__title
-        =link_to root_path do
-          = image_tag "logo.png"
-      .headInner__Head__searchBox
-        %input{type: "text",placeholder: "キーワードから探す",size:"100",class:"searchBox__input"}
-        %button{type: "submit"}
-          = icon('fa','search',class:"searchBox__icon")
-          
-    .headInner__Foot
-      %ul.headInner__Foot__left
-        .headInner__Foot__left__category
-        カテゴリー
-        .headInner__Foot__left__brand
-        ブランド
-      %ul.headInner__Foot__right
-        .headInner__Foot__right__login
-        ログイン
-        .headInner__Foot__right__signUp
-        新規会員登録
+= render "header"
 
       
 %main
@@ -176,75 +155,6 @@
             %p.tax
               (税込)
 
-  .banner
-    .banner__info
-      %h9.banner__info__title
-        だれでもかんたん、人生を変えるフリマアプリ
-      %p.banner__info__text
-        今すぐ無料ダウンロード！
-      .banner__info__btn
-        %a.banner__info__btn__appBtn
-          = link_to "https://itunes.apple.com" do
-            = image_tag "Download_on_the_App_Store_Badge_US-UK_blk_092917.png"
-        %a.banner__info__btn__googleBtn
-          = link_to "https://www.microsoft.com" do
-            = image_tag "google-play-badge2.png"
+= render "banner"
 
-%footer
-  .footInner
-    %ul.footInner__contents
-      %li.footInner__contents__content
-        %h.footInner__info
-          FURIMAについて
-        %ul.box
-          %li.text
-            = link_to "#" do
-              会社概要（運営会社）
-          %li.text
-            = link_to "#" do
-              プライバシーポリシー
-          %li.text
-            = link_to "#" do
-              FURIMA利用規約
-          %li.text
-            = link_to "#" do
-              ポイントに関する特約
-
-      %li.footInner__contents__content
-        %h.footInner__info
-          FURIMAを見る
-        %ul.box
-          %li.text
-            = link_to "#" do
-              カテゴリー一覧
-          %li.text
-            = link_to "#" do
-              ブランド一覧
-          
-      %li.footInner__contents__content
-        %h.footInner__info
-          ヘルプ＆ガイド
-        %ul.box
-          %li.text
-            = link_to "#" do
-              FURIMAガイド
-          %li.text
-            = link_to "#" do
-              FURIMAロゴ利用ガイドライン
-          %li.text
-            = link_to "#" do
-              お知らせ
-  
-    .footInner__logo
-      = link_to root_path do
-        = image_tag "logo-white.png"
-    %p.text
-      ©️ FURIMA
-
-
-.sellBtn
-  =link_to "#" do
-    .sellBtn__text
-      出品する
-    = icon('fa','camera',class:"sellBtn__icon")
-
+= render "footer"
