@@ -22,8 +22,8 @@
 - has_many :items
 - has_many :likes
 - has_many :comments
-- has_many :delivery-addresses
-- has_one :self-address
+- has_many :delivery_addresses
+- has_one :self_address
 
 
 ## self_addressesテーブル
