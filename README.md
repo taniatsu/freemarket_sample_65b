@@ -26,7 +26,7 @@
 - has_one :self-address
 
 
-## self-addressesテーブル
+## self_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
@@ -40,7 +40,7 @@
 - belongs_to :user
 
 
-## delivery-addressesテーブル
+## delivery_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
@@ -62,17 +62,17 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|use|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 |brand|references|null: false, foreign_key: true|
-|item_name|string|null: false|
+|name|string|null: false|
 |exp|text|null: false|
 |condition|string||
 |brand|string||
 |price|integer|null: false|
-|sizedate|string|null: false|
+|size|string|null: false|
 |fee_which|string|null: false|
 |from_where|string|null: false|
-|get_date|integer|null: false|
+|delivery_date|string|null: false|
 |status|string|null: false|
 
 ### Association
@@ -98,7 +98,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |item|references|null: false, foreign_key: true|
-|cat_name|string|null: false|
+|name|string|null: false|
 
 ### Association
 - has_many :items
@@ -108,7 +108,7 @@
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|brand_name|string||
+|name|string||
 
 ### Association
 - has_many :items
