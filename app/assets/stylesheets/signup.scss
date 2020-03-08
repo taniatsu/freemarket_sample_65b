@@ -57,7 +57,7 @@
   }
   &__btn-mail {
     color: #fff;
-    background-color: #ea352d;
+    background-color: #3CCACE;
     position: relative;
     .fa-envelope{
       color: #fff;
@@ -138,6 +138,9 @@
     width: 80px;
     height: 65px;
     margin: 40px auto 0;
+    img {
+      width: 150px;
+    }
   }
   p {
     margin: 8px 0 0;
