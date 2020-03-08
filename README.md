@@ -64,10 +64,10 @@
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
 |brand|references|null: false, foreign_key: true|
+|category|references|null: false, foreign_key: true|
 |name|string|null: false|
-|exp|text|null: false|
+|explanation|text|null: false|
 |condition|string||
-|brand|string||
 |price|integer|null: false|
 |size|string|null: false|
 |fee_which|string|null: false|
@@ -94,11 +94,11 @@
 - belongs_to :item
 
 
-## categorysテーブル
+## categoryiesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item|references|null: false, foreign_key: true|
 |name|string|null: false|
+|ancestry|string|null: false|
 
 ### Association
 - has_many :items
