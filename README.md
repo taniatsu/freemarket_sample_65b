@@ -23,7 +23,11 @@
 - has_many :likes
 - has_many :comments
 - has_many :delivery_addresses
+- has_many :bought_items
+- has_many :selling_items
+- has_many :sold_items
 - has_one :self_address
+- has_one :card
 
 
 ## self_addressesテーブル
@@ -74,6 +78,8 @@
 |from_where|string|null: false|
 |delivery_date|string|null: false|
 |status|string|null: false|
+|buyer_id|integer|null: false, class_name: "User", foreign_key: "buyer_id"|
+|seller_id|integer|null: false, class_name: "User", foreign_key: "seller_id"|
 
 ### Association
 - has_many :images
@@ -82,6 +88,8 @@
 - belongs_to :user
 - belongs_to :brand
 - belongs_to :category
+- belongs_to :buyer
+- belongs_to :seller
 
 
 ## imagesテーブル
@@ -136,4 +144,15 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+
+### Association
+- belongs_to :user
 ## ↑↑↑DB設計↑↑↑
