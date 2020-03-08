@@ -1,0 +1,78 @@
+.navi {
+  padding: 15px 150px;
+  box-shadow: 0 3px 3px 0px #DDDDDD;
+  border-top: 1px solid #DDDDDD;
+
+  ul {
+    display: flex;
+    font-size: small;
+
+    li.navi__itemName {
+      font-weight: bold;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333333;
+    }
+
+    i {
+      padding: 0 10px;
+    }
+  }
+}
+
+.main {
+  background-color: #f8f8f8;
+  padding: 40px;
+
+  .mainBox {
+    width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    text-align: center;
+    padding: 20px;
+
+    .mainBox__itemName {
+      font-size: 20px;
+      font-weight: bold;
+      padding-bottom: 20px ;
+    }
+
+    .mainBox__mainImage {
+      text-align: center;
+
+      img {
+        width: 700px;
+      }
+    }
+
+    ul.mainBox__imageBox{
+      display: flex;
+      justify-content: center;
+      
+      img {
+        width: 227px;
+        margin: 5px;
+      }
+    }
+
+    .mainBox__priceBox{
+      padding: 10px 0;
+
+      h.mainBox__priceBox__itemPrice {
+        font-size: 35px;
+        font-weight: bolder;
+      }
+    }
+
+    .mainBox__text {
+      text-align: left;
+      padding: 0 30px;
+    }
+
+
+  }
+
+
+}
