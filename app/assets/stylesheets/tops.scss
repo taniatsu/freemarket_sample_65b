@@ -7,23 +7,25 @@
 }
 
 .headInner {
-  padding: 15px 150px;
+  padding: 15px 15%;
 
-  .headInner__Head {
+  &__Head {
     display: flex;
 
     img {
       width: 140px;
       height: 40px;
+      margin-right: 20px;
     }
 
-    .headInner__Head__searchBox {
+    &__searchBox {
       display:inline-block;
-      margin-left: auto;
+      width: 100%;
 
       .searchBox__input {
         height: 36px;
-        padding-left: 5px;
+        width: calc(100% - 45px);
+        box-sizing: border-box;
       }
 
       button {
@@ -41,7 +43,7 @@
     }
   }
 
-  .headInner__Foot {
+  &__Foot {
     display: flex;
     justify-content: space-between;
     font-size: 13px;
@@ -51,7 +53,7 @@
       margin-top: 15px;
       display: flex;
       justify-content: space-between;
-      width: 180px;
+      width: 20%;
     }
   }
 }
@@ -59,26 +61,26 @@
 
 .mainImage {
   background-size: cover;
-  height: 560px;
+  height: 540px;
   background-image: url("bg-mainVisual-pict_pc.jpg");
 
-  .mainImage__info { 
+  &__info { 
     color: white;
     text-shadow: 0 0 5px grey;
     letter-spacing: 2px;
     padding: 185px 0 0 90px;
 
 
-    .mainImage__info__title{
+    &__title{
       font-size: 60px;
     }
 
-    .mainImage__info__text {
+    &__text {
       font-size: 18px;
       padding-top: 20px;
     }
 
-    .mainImage__info__btn{
+    &__btn{
       padding-top: 30px;
 
       img {
@@ -99,10 +101,10 @@
   text-align: center;
   padding: 40px 20px;
 
-  .recommendPoint__info {
+  &__info {
     padding: 30px 0;
 
-    .recommendPoint__info__title {
+    &__title {
       font-size: 25px;
       font-weight: bold;
       position: relative;
@@ -125,9 +127,11 @@
   ul.recommendPoint__content {
     display: flex;
     justify-content: center;
+    width: 100%;
 
     li.recommendPoint__content__list  {
-      margin: 0 20px ;
+      margin-left: 30px;
+      width: 22%;
       
       span.number {
         position: absolute;
@@ -140,7 +144,7 @@
       }
 
       img {
-        width: 300px;
+        width: 100%;
       }
 
       span {
@@ -154,8 +158,7 @@
       }
 
       p.recommendPoint__content__list__description {
-        font-size: 17px;
-        width: 300px;
+        font-size: 18px;
         text-align: left;
       }
     }
@@ -169,22 +172,22 @@
   height: 400px;
   background-image: url("bg-topMiddleDl-pict.jpg");
 
-  .secondImage__info {
+  &__info {
     color: white;
     text-shadow: 0 0 5px grey;
-    padding: 90px 200px;
+    padding: 5% 15%;
 
-    .secondImage__info__title {
+    &__title {
       font-size: 27px;
       font-weight: bold;
     }
 
-    .secondImage__info__text {
+    &__text {
       font-size: 18px;
       padding-top: 20px;
     }
 
-    .secondImage__info__btn{
+    &__btn{
       padding-top: 30px;
 
       img {
@@ -205,10 +208,10 @@
   text-align: center;
   padding: 40px 20px;
 
-  .servicePoint__info {
+  &__info {
     padding: 30px 0;
 
-    .servicePoint__info__title {
+    &__title {
       font-size: 25px;
       font-weight: bold;
       position: relative;
@@ -231,14 +234,16 @@
   ul.servicePoint__content {
     display: flex;
     justify-content: center;
+    width: 100%;
   }
 
   li.servicePoint__content__list {
-    margin: 0 20px;
+    margin-left: 40px;
+    width: 23%;
   }
 
     img {
-      width: 230px;
+      width: 75%;
     }
 
     h6.servicePoint__content__list__text {
@@ -249,7 +254,6 @@
 
     p.servicePoint__content__list__description {
       font-size: 17px;
-      width: 330px;
       text-align: left;
     }
 }
@@ -260,7 +264,7 @@
   padding: 60px 20px;
   background-color: #F8F8F8;
 
-  .productList__info {
+  &__info {
     padding: 20px 0;
 
     h7.productList__info__category {
@@ -275,7 +279,7 @@
     }
   }
 
-  .productList__items {
+  &__items {
     display: flex;
     justify-content: center;
 
@@ -291,7 +295,7 @@
       vertical-align: bottom;
     } 
 
-    .productList__items__item__text {
+    &__item__text {
       background-color: white;
       text-align: left;
       padding: 15px;
@@ -323,7 +327,7 @@
   background-image: url("bg-appBanner-pict.jpg");
   padding: 80px;
 
-  .banner__info {
+  &__info {
     text-align: center;
     color: white;
     text-shadow: 0 0 5px grey;
@@ -337,7 +341,7 @@
       font-size: 35px;
     }
 
-    .banner__info__btn {
+    &__btn {
       padding-top: 30px;
     }
 
@@ -365,8 +369,7 @@
     height: 200px;
 
     li.footInner__contents__content {
-      margin: 0 30px;
-      width: 200px;
+      margin: 0 50px;
 
       h.footInner__info {
         font-weight: bold;
@@ -391,7 +394,7 @@
     }
   }
 
-  .footInner__logo {
+  &__logo {
     img {
       width: 150px;
     }
@@ -412,12 +415,12 @@
   right:50px;
   bottom:50px;
 
-  .sellBtn__text {
+  &__text {
     font-size: 18px;
     padding-top: 20px;
   }
 
-  .sellBtn__icon {
+  &__icon {
     font-size: 60px;
   }
 
