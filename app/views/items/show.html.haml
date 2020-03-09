@@ -110,3 +110,13 @@
     %button{type: "submit",value:"コメントする",class:"commentBox__btn"}
       = icon("fa","comment",class:"comment__icon")
       コメントする
+
+  %ul.page
+    %li.page__front
+      = link_to "#" do
+        = icon("fa","chevron-left")
+        前の商品
+    %li.page__back
+      = link_to "#" do
+        後ろの商品
+        = icon("fa","chevron-right",class:"navi__icon")

@@ -32,23 +32,23 @@ main {
   padding: 40px;
 
   .mainBox {
-    width: 90%;
+    width: 65%;
     margin: 0 auto;
     background-color: white;
     text-align: center;
     padding: 30px 40px;
 
-    .mainBox__itemName {
+    &__itemName {
       font-size: 20px;
       font-weight: bold;
       padding-bottom: 20px ;
     }
 
-    .mainBox__mainImage {
+    &__mainImage {
       text-align: center;
 
       img {
-        width:95%;
+        width: 95%;
       }
     }
 
@@ -57,11 +57,12 @@ main {
       justify-content: center;
       
       img {
-        width: 95%;
+        width: 100%;
+        padding: 0 5px;
       }
     }
 
-    .mainBox__priceBox{
+    &__priceBox{
       padding: 10px 0;
 
       h.mainBox__priceBox__itemPrice {
@@ -70,13 +71,13 @@ main {
       }
     }
 
-    .mainBox__text {
+    &__text {
       text-align: left;
-      padding: 30px;
+      padding: 30px 0;
     }
 
     table.mainTable {
-      width: 95%;
+      width: 100%;
       height: 400px;
       border-collapse: collapse;
       font-size: 13px;
@@ -105,7 +106,7 @@ main {
       }
     }
 
-    .mainBox__btns {
+    &__btns {
       display: flex;
       justify-content: space-between;
       padding: 20px;
@@ -137,7 +138,7 @@ main {
   }
 
   .commentBox {
-    width: 90%;
+    width: 65%;
     margin: 0 auto;
     background-color: white;
     text-align: center;
@@ -145,26 +146,26 @@ main {
     border-top: 10px solid #f8f8f8;
 
     .comment__form {
-      width: 95%;
+      width: 100%;
       height: 100px;
       margin-bottom: 10px;
     }
 
-    .commentBox__Info {
-      width: 95%;
+    &__Info {
+      // width: 100%;
       margin: auto;
       background-color: #f8f8f8;
       text-align: left;
       font-size: 13px;
       padding: 8px;
-      border: 10px solid white;
+      border-bottom: 20px solid white;
 
-      .commentBox__Info__text {
+      &__Info__text {
        margin-left: 5px;
       }
     }
 
-    .commentBox__btn {
+    &__btn {
       display: flex;
       justify-content: center;
       background-color:  var(--main-color);
@@ -179,7 +180,24 @@ main {
     }
 
     i {
-      line-height: 50px;
+      padding: 15px 10px;
+    }
+  }
+
+  ul.page {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 10px 0;
+
+    i {
+      color: var(--main-color);
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--main-color);
     }
 
   }
