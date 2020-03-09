@@ -145,7 +145,6 @@
 - belongs_to :user
 - belongs_to :item
 
-
 ## cardsテーブル
 |Column|Type|Options|
 |------|----|-------|
