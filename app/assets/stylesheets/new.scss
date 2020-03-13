@@ -220,20 +220,14 @@
           align-items: center;
         }
 
-        .btnBox1 {
+        &__btnBox {
           display: flex;
-          justify-content: center;
-          margin-bottom: 20px;
+          flex-direction: column;
+          align-items: center;
+          // margin-bottom: 20px;
         }
 
-        .btnBox2 {
-          display: flex;
-          justify-content: center;
-          margin-bottom: 30px;
-
-        }
-
-        .btn {
+        &__sellBtn {
           background-color: var(--main-color);
           width: 60%;
           height: 48px;
@@ -241,11 +235,26 @@
           color: white;
           font-weight: 600;
           font-size: 17px;
-          text-decoration: none;
+          border-style: none;
+          margin-bottom: 20px;
         }
 
-        .modoru {
+        &__sellBtn:hover {
+          cursor: pointer;
+          background-color: darken(#3CCACE, 5%);
+          transition: 0.2s;
+        }
+
+        &__backBtn {
+          color: #333333;
           background-color: #cccccc;
+          margin-bottom: 30px;
+        }
+
+        &__backBtn:hover {
+          cursor: pointer;
+          background-color: darken(#cccccc, 5%);
+          transition: 0.2s;
         }
 
 // フッターSP
