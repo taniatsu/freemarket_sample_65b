@@ -47,14 +47,37 @@
     display: flex;
     justify-content: space-between;
     font-size: 13px;
-    color: #333333;
 
     ul {
       margin-top: 15px;
       display: flex;
       justify-content: space-between;
-      width: 20%;
+      width: 22%;
     }
+
+    a {
+      text-decoration: none;
+      color: #333333;
+    }
+
+      // プルダウンメニュー実装途中
+      #catgotyBtn {
+        cursor: pointer;
+      }
+
+        ul.dropdwnMenu {
+          display: inline;
+          list-style:none;
+          display: none;
+
+          li.categoryMenu__item {
+            width: 130%;
+            height: 45px;
+            line-height: 45px;
+            border-bottom: 1px solid #DDDDDD;
+            padding-left: 5px;
+          }
+        }
   }
 }
 
@@ -62,7 +85,7 @@
 .mainImage {
   background-size: cover;
   height: 540px;
-  background-image: url("bg-mainVisual-pict_pc.jpg");
+  background-image: image-url("bg-mainVisual-pict_pc.jpg");
 
   &__info { 
     color: white;
@@ -170,7 +193,7 @@
   background-size: cover;
   background-position: bottom;
   height: 400px;
-  background-image: url("bg-topMiddleDl-pict.jpg");
+  background-image: image-url("bg-topMiddleDl-pict.jpg");
 
   &__info {
     color: white;
@@ -324,7 +347,7 @@
 .banner {
   background-size: cover;
   background-position: center;
-  background-image: url("bg-appBanner-pict.jpg");
+  background-image: image-url("bg-appBanner-pict.jpg");
   padding: 80px;
 
   &__info {

@@ -1,7 +1,21 @@
 $(function() {
-  $(".headInner__Foot__left__category").on("mouseover", function() {
-    $(this).css({"color": "#FF9900"});
-  }).on("mouseout", function() {
-    $(this).css({"color": "#333333"});
-  })
+  $("#catgotyBtn").on("mouseover", function() {
+    $("#catgotyBtn").css({
+      "color": "#FF9900"
+    });
+  });
+  $("#catgotyBtn").on("mouseout", function() {
+    $("#catgotyBtn").css({
+      "color": "#333333"
+    });
+  });
+});
+
+// プルダウンメニュー実装途中
+$(function(){
+  $('#catgotyBtn').hover(function(){
+      $("ul:not(:animated)", this).slideDown();
+  }, function(){
+      $("ul.dropdwn_menu",this).slideUp();
+  });
 });
