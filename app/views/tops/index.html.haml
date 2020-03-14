@@ -12,46 +12,41 @@
     .headInner__Foot
       %ul.headInner__Foot__left
         %li.headInner__Foot__left__category
-          #catgotyBtn カテゴリー
-          // プルダウンメニュー実装途中
-          %ul.dropdwnMenu
-            %li.categoryMenu__item
-              = link_to "レディース"
-            %li.categoryMenu__item
-              = link_to "メンズ"
-            %li.categoryMenu__item
-              = link_to "ベビー・キッズ"
-            %li.categoryMenu__item
-              = link_to "インテリア・住まい・小物"
-            %li.categoryMenu__item
-              = link_to "本・音楽・ゲーム"
-            %li.categoryMenu__item
-              = link_to "おもちゃ・ホビー・グッズ"
-            %li.categoryMenu__item
-              = link_to "コスメ・香水・美容"
-            %li.categoryMenu__item
-              = link_to "家電・スマホ・カメラ"
-            %li.categoryMenu__item
-              = link_to "スポーツ・レジャー"
-            %li.categoryMenu__item
-              = link_to "ハンドメイド"
-            %li.categoryMenu__item
-              = link_to "チケット"
-            %li.categoryMenu__item
-              = link_to "自動車・オートバイ"
-            %li.categoryMenu__item
-              = link_to "その他"
-              
+          #categoryBtn カテゴリー
+          %ul.dropDown
+            %li.dropDown-list
+              レディース
+              %ul.dropDown
+                %li.dropDown-list-cal
+                  トップス
+                  %ul.dropDown
+                    %li.dropDown-list-cal
+                      Tシャツ/カットソー(半袖/袖なし)
+                    %li.dropDown-list-cal
+                      Tシャツ/カットソー(七分/長袖)
+                    %li.dropDown-list-cal
+                      シャツ/ブラウス(半袖/袖なし)
+                %li.dropDown-list-cal
+                  ジャケット/アウター
+                %li.dropDown-list-cal
+                  パンツ
+            %li.dropDown-list
+              メンズ
+            %li.dropDown-list
+              ベビー・キッズ
+            %li.dropDown-list
+              インテリア・住まい・小物
+            %li.dropDown-list
+              本・音楽・ゲーム
+            %li.dropDown-list
+              おもちゃ・ホビー・グッズ
         %li.headInner__Foot__left__brand
-          #brandBtn ブランド
+          ブランド
       %ul.headInner__Foot__right
         %li.headInner__Foot__right__login
-        = link_to "#" do
           ログイン
         %li.headInner__Foot__right__signUp
-        = link_to "#" do
           新規会員登録
-
       
 %main
   .mainImage

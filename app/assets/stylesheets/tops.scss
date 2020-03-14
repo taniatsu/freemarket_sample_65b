@@ -52,33 +52,37 @@
       margin-top: 15px;
       display: flex;
       justify-content: space-between;
-      width: 22%;
+      width: 200px;
     }
 
     a {
       text-decoration: none;
       color: #333333;
     }
-
-      // プルダウンメニュー実装途中
-      #catgotyBtn {
-        cursor: pointer;
-      }
-
-        ul.dropdwnMenu {
-          display: inline;
-          list-style:none;
-          display: none;
-
-          li.categoryMenu__item {
-            width: 130%;
-            height: 45px;
-            line-height: 45px;
-            border-bottom: 1px solid #DDDDDD;
-            padding-left: 5px;
-          }
-        }
   }
+
+    .dropDown{
+      display: none;
+      position: relative;
+      width: 200px;
+      margin-top: 0;
+
+      li {
+        height: 50px;
+        line-height: 50px;
+        border-bottom: 1px solid #EEEEEE;
+        color: #333333;
+      }
+   
+    .dropDown-list{
+      .dropDown{
+        position: absolute;
+        left: 150px;
+        top: 0;
+      }
+    }
+  }
+
 }
 
 
