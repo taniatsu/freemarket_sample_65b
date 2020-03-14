@@ -1,0 +1,61 @@
+header {
+  background-color: #f8f8f8;
+
+  .headerLogo {
+    text-align: center;
+    padding-top:40px ;
+
+    img {
+    height: 50px;
+    }
+  }
+}
+
+section.confirmContainer {
+  text-align: center;
+  background-color: white;
+  width: 50%;
+  margin: auto;
+
+  .buyTitle {
+    padding:30px;
+    border-bottom: 1px solid #DDDDDD;
+
+    h1.buyTitle__text {
+      font-size: 22px;
+      font-weight: bold;
+    }
+  }
+
+  .buyItem {
+    padding: 30px;
+    border-bottom: 1px solid #DDDDDD;
+
+    .buyItem__inner {
+      width: 50%;
+      margin: auto;
+      text-align: left;
+    }
+
+
+    ul.buyItem__inner__box {
+      display: flex;
+
+      img {
+        width: 100px;
+      }
+
+      li.buyItem__inner__box__text {
+        margin-left: 20px;
+        font-size: 13px;
+
+        ul.buyItem__inner__box__text__itemPrice {
+          display: flex;
+          padding-top: 7px;
+        }
+      }
+    }
+    
+
+  }
+}
