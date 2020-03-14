@@ -59,30 +59,30 @@
       text-decoration: none;
       color: #333333;
     }
-  }
 
     .dropDown{
       display: none;
-      position: relative;
-      width: 200px;
+      position: absolute;
+      width: 220px;
       margin-top: 0;
+      background-color: white;
 
       li {
         height: 50px;
         line-height: 50px;
         border-bottom: 1px solid #EEEEEE;
         color: #333333;
+        padding: 5px;
       }
    
-    .dropDown-list{
-      .dropDown{
-        position: absolute;
-        left: 150px;
-        top: 0;
+      .dropDown-list{
+        .dropDown{
+          left: 220px;
+          top: 0;
+        }
       }
     }
   }
-
 }
 
 
