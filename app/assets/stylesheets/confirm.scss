@@ -11,11 +11,13 @@ header {
   }
 }
 
-section.confirmContainer {
+main {
+.confirmContainer {
   text-align: center;
   background-color: white;
   width: 50%;
   margin: auto;
+  padding: 20px;
 
   .buyTitle {
     padding:30px;
@@ -31,8 +33,8 @@ section.confirmContainer {
     padding: 30px;
     border-bottom: 1px solid #DDDDDD;
 
-    .buyItem__inner {
-      width: 50%;
+    &__inner {
+      width: 60%;
       margin: auto;
       text-align: left;
     }
@@ -55,7 +57,95 @@ section.confirmContainer {
         }
       }
     }
-    
+  }
 
+  .buyContent {
+
+    .buyForm {
+      width: 60%;
+      margin: auto;
+
+      ul {
+        padding: 30px;
+        border-bottom: 1px solid #DDDDDD;
+      }
+
+      ul.buyForm__priceBox {
+        display: flex;
+        justify-content: space-between;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      ul.buyForm__payment,.buyForm__deliveryAddress {
+        text-align: left;
+      }
+
+      a {
+        text-decoration: none;
+        color: #2C7CFF;
+        font-size: small;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      .buyForm__Btn {
+        padding: 30px;
+        
+        .buyBtn {
+          width: 100%;
+          height: 50px;
+          background-color: gray;
+          color: white;
+          font-size: 15px;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+}
+
+footer {
+  background-color: #f8f8f8;
+  padding: 30px;
+
+  .footerInner {
+    width: 30%;
+    text-align: center;
+    margin: auto;
+
+    ul.footerInner__navi {
+      display: flex;
+      justify-content: center;
+    }
+
+    a {
+      text-decoration: none;
+      color: black;
+      font-size: 12px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    li {
+      margin: 0 10px;
+    }
+
+    .footerLogo {
+      margin-top: 30px;
+
+      img {
+        height: 40px;
+      }
+    }
+
+    p {
+      font-size: 13px;
+    } 
   }
 }

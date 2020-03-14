@@ -42,7 +42,8 @@
               =icon("fa","plus-square")
               登録してください
         .buyForm__Btn
-          %button{type: "submit",value:"購入する",class:"buyBtn"}
+          %button{type: "submit",class:"buyBtn"}
+            購入する
 %footer
   .footerInner
     %ul.footerInner__navi
@@ -51,7 +52,10 @@
       %li
         = link_to "FURIMA利用規約"
       %li
-      = link_to "特定商取引に関する表記"
+        = link_to "特定商取引に関する表記"
+    .footerLogo
+      = image_tag "logo-white.png"
     %p
-      ©️FURIMAFURIMA
+      ©️FURIMA
+
 
