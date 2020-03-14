@@ -56,6 +56,11 @@
   .headInner__Foot{
     &__left{
       position: relative;
+      &__category{
+        &:hover{
+          color: #3CCACE;
+        }
+      }
     }
     .dropDown{
       display: none;
@@ -64,6 +69,7 @@
       z-index: 10;
       width: 100px;
       margin-top: 0;
+      color: #000;
       
       .dropDown-list-cal{
         background: #000;
