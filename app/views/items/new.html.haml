@@ -21,6 +21,9 @@
             ドラッグアンドドロップ
             %br
             またはクリックしてファイルをアップロード
+      .itemsNew__alert.displayNone
+        画像がありません
+
 
 
     .itemsNew__container
@@ -31,6 +34,8 @@
           .itemsNew__subTitle
             必須
         %input{type: "text", placeholder: "40字まで" ,class: "itemsNew__inputBox"}
+        .itemsNew__alert.displayNone
+          入力してください
 
       .itemsNew__innerContainer
         .itemsNew__title
@@ -39,6 +44,8 @@
           .itemsNew__subTitle
             必須
         %textarea{type: "text", rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsNew__textareaBox"}
+        .itemsNew__alert.displayNone
+          入力してください
 
     .itemsNew__container
       .itemsNew__mainTitle1
@@ -64,12 +71,18 @@
           %option{value: "11"} チケット
           %option{value: "12"} 自動車・オートバイ
           %option{value: "13"} その他
+        .itemsNew__alert.displayNone
+          選択してください
 
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
+        .itemsNew__alert.displayNone
+          選択してください
 
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
+        .itemsNew__alert.displayNone
+          選択してください
 
       .itemsNew__innerContainer
         .itemsNew__title
@@ -89,6 +102,8 @@
           %option{value: "8"} 3XL(4L)
           %option{value: "9"} 4XK(5L)以上
           %option{value: "10"} FREE SIZE
+        .itemsNew__alert.displayNone
+          選択してください
 
       .itemsNew__innerContainer
         .itemsNew__title
@@ -111,6 +126,8 @@
           %option{value: "3"} やや傷や汚れあり
           %option{value: "4"} 傷や汚れあり
           %option{value: "5"} 全体的に状態が悪い
+        .itemsNew__alert.displayNone
+          選択してください
 
     .itemsNew__container
       .itemsNew__mainTitle1
@@ -125,6 +142,8 @@
           %option{value: "0"} 選択してください
           %option{value: "1"} 送料込み（出品者負担）
           %option{value: "2"} 着払い（購入者負担）
+        .itemsNew__alert.displayNone
+          選択してください
 
       .itemsNew__innerContainer
         .itemsNew__title
@@ -134,6 +153,9 @@
             必須
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
+          %option{value: "1"} らくらくフリマ便
+        .itemsNew__alert.displayNone
+          選択してください
 
 
       .itemsNew__innerContainer
@@ -192,6 +214,8 @@
           %option{value: "47"} 鹿児島県
           %option{value: "48"} 沖縄県
           %option{value: "49"} その他
+        .itemsNew__alert.displayNone
+          選択してください
 
       .itemsNew__innerContainer
         .itemsNew__title
@@ -204,6 +228,8 @@
           %option{value: "1"} 1~2日で発送
           %option{value: "2"} 2~3日で発送
           %option{value: "3"} 4~7日で発送
+        .itemsNew__alert.displayNone
+          選択してください
 
     .itemsNew__container
       .itemsNew__mainTitle1
@@ -215,10 +241,17 @@
           必須
         .itemsNew__mainTitle.itemsNew__dollIcon
           ¥
-        %input{type: "number", placeholder: "0", style: "text-align: right;", class: "itemsNew__inputBox--price"}
+        %input{type: "number", placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsNew__inputBox--price"}
+      .itemsNew__alertInputBox
+        .itemsNew__alertInputBox2.displayNone
+          300以上9999999以下で入力してください
 
       .itemsNew__price1
         販売手数料（10%）
+        .sell-price-input
+          .right
+            #me_fee
+              
       .itemsNew__price2
         販売利益
 

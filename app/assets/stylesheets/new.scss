@@ -1,7 +1,3 @@
-* {
-  // border: solid 0.5px black;
-}
-
 .itemsNew {
   box-sizing: border-box;
   display: flex;
@@ -115,6 +111,25 @@
         }
       }
       
+      &__alert {
+        color: red;
+        margin-top: 16px;
+      }
+
+      &__alertInputBox {
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      &__alertInputBox2 {
+        color: red;
+        margin-top: 5px;
+      }
+
+      .displayNone {
+        display: none;
+      }
+
       &__titleInner {
         margin: 16px 0;
       }
@@ -126,6 +141,8 @@
         align-items: center;
         border-bottom: solid 1px rgb(245, 245, 245);
       }
+
+      
       
       &__price2 {
         height: 58px;
