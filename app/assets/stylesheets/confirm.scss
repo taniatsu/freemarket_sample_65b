@@ -22,8 +22,7 @@ main {
   .buyTitle {
     padding:30px;
     border-bottom: 1px solid #DDDDDD;
-
-    h1.buyTitle__text {
+    &__text {
       font-size: 22px;
       font-weight: bold;
     }
@@ -32,35 +31,28 @@ main {
   .buyItem {
     padding: 30px;
     border-bottom: 1px solid #DDDDDD;
-
     &__inner {
       width: 60%;
       margin: auto;
       text-align: left;
-    }
-
-
-    ul.buyItem__inner__box {
-      display: flex;
-
-      img {
-        width: 100px;
-      }
-
-      li.buyItem__inner__box__text {
-        margin-left: 20px;
-        font-size: 13px;
-
-        ul.buyItem__inner__box__text__itemPrice {
-          display: flex;
-          padding-top: 7px;
+      &__box{
+        display: flex;
+        img{
+          width: 100px;
+        }
+        &__text{
+          margin-left: 20px;
+          font-size: 13px;
+          &__itemPrice {
+            display: flex;
+            padding-top: 7px;
+          }
         }
       }
     }
   }
 
   .buyContent {
-
     .buyForm {
       width: 60%;
       margin: auto;
@@ -70,14 +62,14 @@ main {
         border-bottom: 1px solid #DDDDDD;
       }
 
-      ul.buyForm__priceBox {
+      &__priceBox {
         display: flex;
         justify-content: space-between;
         font-size: 20px;
         font-weight: bold;
       }
-
-      ul.buyForm__payment,.buyForm__deliveryAddress {
+      &__payment,
+      &__deliveryAddress {
         text-align: left;
       }
 
@@ -91,7 +83,7 @@ main {
         text-decoration: underline;
       }
 
-      .buyForm__Btn {
+      &__Btn {
         padding: 30px;
         
         .buyBtn {
@@ -117,7 +109,7 @@ footer.confirm {
     text-align: center;
     margin: auto;
 
-    ul.footerInner__navi {
+    &__navi {
       display: flex;
       justify-content: center;
     }
