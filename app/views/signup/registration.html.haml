@@ -12,6 +12,9 @@
           電話番号認証
           .signup-header__progress-status
         %li.signup-header__list
+          お届け先住所入力
+          .signup-header__progress-status
+        %li.signup-header__list
           完了
           .signup-header__progress-status
     
@@ -33,22 +36,33 @@
             = f.label 'パスワード'
             %span.signup-main__form-require 必須
             = f.password_field :password, {class: 'signup-main__input-default', placeholder: '7文字以上の半角英数字'}
-            %p ※ 英字と数字の両方を含めて設定してください
+            %p.signup-main__text1
+              ※ 英字と数字の両方を含めて設定してください
+          .signup-main__form-group
+            = f.label 'パスワード (確認)'
+            %span.signup-main__form-require 必須
+            = f.password_field :password_confirmation, { class: 'signup-main__input-default', placeholder: '7文字以上の半角英数字' }
           .signup-main__form-group
             %h3.signup-main__sub-head
               本人確認
-            %p.signup-main__text
+            %p.signup-main__text2
               安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
           .signup-main__form-group
-            = f.label 'お名前(全角)'
+            = f.label 'お名前kana(全角)'
             %span.signup-main__form-require 必須
-            = f.text_field :last_name, {class: 'signup-main__input-default-half', placeholder: '例) 山田'}
-            = f.text_field :first_name, {class: 'signup-main__input-default-half', placeholder: '例) 彩'}
+            = f.text_field :last_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) 山田'}
+            = f.text_field :first_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) 彩'}
           .signup-main__form-group
             = f.label 'お名前カナ(全角)'
             %span.signup-main__form-require 必須
-            = f.text_field :last_name, {class: 'signup-main__input-default-half', placeholder: '例) ヤマダ'}
-            = f.text_field :first_name, {class: 'signup-main__input-default-half', placeholder: '例) アヤ'}
+            = f.text_field :last_jp_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) ヤマダ'}
+            = f.text_field :first_jp_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) アヤ'}
           .signup-main__form-group
             = f.label '生年月日'
             %span.signup-main__form-require 必須
+            %br
+            .signup-main__birthday-select-wrap
+              .signup-main__select-wrap
+              
+              %span 年
+
