@@ -1,5 +1,4 @@
 $(function() {
-  console.log("OK");
   // カテゴリ色変更
   $("#categoryBtn").on("mouseover", function() {
     $(this).css({
@@ -35,7 +34,6 @@ $(function() {
   });
   // プルダウンメニュー
   $(".headInner__Foot__left li").hover(function(){
-    console.log("Hi");
     $(">ul:not(:animated)", this).slideDown();
     }, function(){
     $(">ul",this).slideUp();
