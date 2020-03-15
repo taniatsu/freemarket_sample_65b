@@ -8,9 +8,7 @@ Rails.application.routes.draw do
       get 'sms_confirmation'
       get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
       get 'address'
-      get 'credit_card'
       get 'done'
-      post 'pay'
     end
   end
   
