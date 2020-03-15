@@ -6,10 +6,10 @@
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|firstName|string|null: false|
-|lastName|string|null: false|
-|firstJpName|string|null: false|
-|lastJpName|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_jp_name|string|null: false|
+|last_jp_name|string|null: false|
 |year|integer|null: false|
 |month|date|null: false|
 |day|date|null: false|
@@ -22,11 +22,15 @@
 - has_many :items
 - has_many :likes
 - has_many :comments
-- has_many :delivery-addresses
-- has_one :self-address
+- has_many :delivery_addresses
+- has_many :bought_items
+- has_many :selling_items
+- has_many :sold_items
+- has_one :self_address
+- has_one :card
 
 
-## self-addressesテーブル
+## self_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
@@ -40,14 +44,14 @@
 - belongs_to :user
 
 
-## delivery-addressesテーブル
+## delivery_addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|firstName|string|null: false|
-|lastName|string|null: false|
-|firstJpName|string|null: false|
-|lastJpName|string|null: false|
+|first_name|string|null: false|
+|last_name|string|null: false|
+|first_jp_name|string|null: false|
+|last_jp_name|string|null: false|
 |zipcode|string|null: false|
 |prefecture|string|null: false|
 |city|string|null: false|
@@ -62,74 +66,57 @@
 ## itemsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|use|references|null: false, foreign_key: true|
+|user|references|null: false, foreign_key: true|
 |brand|references|null: false, foreign_key: true|
-|itemName|string|null: false|
-|exp|text|null: false|
+|category|references|null: false, foreign_key: true|
+|name|string|null: false|
+|explanation|text|null: false|
 |condition|string||
-|brand|string||
 |price|integer|null: false|
-|sizedate|string|null: false|
-|feeWhich|string|null: false|
-|fromWhere|string|null: false|
-|getDate|integer|null: false|
+|size|string|null: false|
+|fee_which|string|null: false|
+|from_where|string|null: false|
+|delivery_date|string|null: false|
 |status|string|null: false|
+|buyer_id|integer|null: false, class_name: "User", foreign_key: "buyer_id"|
+|seller_id|integer|null: false, class_name: "User", foreign_key: "seller_id"|
 
 ### Association
 - has_many :images
-- has_many :categoryLs
 - has_many :comments
 - has_many :likes
 - belongs_to :user
 - belongs_to :brand
+- belongs_to :category
+- belongs_to :buyer
+- belongs_to :seller
 
 
 ## imagesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |item|references|null: false, foreign_key: true|
+|url|string|null: false|
 
 ### Association
 - belongs_to :item
 
 
-## categoryLsテーブル
+## categoryiesテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item|references|null: false, foreign_key: true|
-|catName|string|null: false|
+|name|string|null: false|
+|ancestry|string|null: false|
 
 ### Association
-- has_many :categoryMs
-- belongs_to :item
-
-
-## categoryMsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|categoryL|references|null: false, foreign_key: true|
-|catName|string|null: false|
-
-### Association
-- has_many :categorySs
-- belongs_to :categoryL
-
-
-## categorySsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|categoryM|references|null: false, foreign_key: true|
-|catName|string|null: false|
-
-### Association
-- belongs_to :categoryM
+- has_many :items
+- has_ancestry
 
 
 ## brandsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|item|references|null: false, foreign_key: true|
-|brandName|string||
+|name|string||
 
 ### Association
 - has_many :items
@@ -157,4 +144,14 @@
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+## cardsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|user|references|null: false, foreign_key: true|
+|customer_id|string|null: false|
+|card_id|string|null: false|
+
+### Association
+- belongs_to :user
 ## ↑↑↑DB設計↑↑↑
