@@ -1,9 +1,11 @@
 .itemsNew
+
   .itemsNew__header
     = link_to root_path do
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsNew__logo'
 
   .itemsNew__body
+
     .itemsNew__container
       .itemsNew__title
         .itemsNew__mainTitle2
@@ -23,8 +25,6 @@
             またはクリックしてファイルをアップロード
       .itemsNew__alert.displayNone
         画像がありません
-
-
 
     .itemsNew__container
       .itemsNew__innerContainer
@@ -246,14 +246,17 @@
         .itemsNew__alertInputBox2.displayNone
           300以上9999999以下で入力してください
 
-      .itemsNew__price1
-        販売手数料（10%）
-        .sell-price-input
-          .right
-            #me_fee
+      .itemsNew__sellPrice
+        .itemsNew__sellPrice--left
+          販売手数料（10%）
+        .itemsNew__sellPrice--right
+          ー
               
-      .itemsNew__price2
-        販売利益
+      .itemsNew__priceProfit
+        .itemsNew__sellPrice--left
+          販売利益
+        .itemsNew__priceProfit--right
+          ー
 
       .itemsNew__btnBox
         %button{type: "submit", class: "itemsNew__sellBtn"}

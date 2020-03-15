@@ -134,20 +134,20 @@
         margin: 16px 0;
       }
       
-      &__price1 {
+      &__sellPrice {
         height: 70px;
         padding: 12px 0;
         display: flex;
+        justify-content: space-between;
         align-items: center;
         border-bottom: solid 1px rgb(245, 245, 245);
       }
 
-      
-      
-      &__price2 {
+      &__priceProfit {
         height: 58px;
-        padding-top: 12px;
+        padding: 12px 0;
         display: flex;
+        justify-content: space-between;
         align-items: center;
       }
 
