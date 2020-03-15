@@ -10,16 +10,16 @@
         %h2.mainBlock__ttl
           購入した商品
         .item_status
-          %p.dealing
+          %p.tabs.dealing.active
             取引中
-          %p.delt
+          %p.tabs.delt
             過去の取引
         .dealing__contents
-        -# = image_tag "logo.png"
-        %p.dealing__contents-item_status
-          取引中の商品はございません。
+          -# = image_tag "logo.png"
+          %p.dealing__contents-item_status.contentOn
+            取引中の商品はございません。
         .delt__contents
           -# = image_tag "logo.png"
-          %p.dealing__contents-item_status
+          %p.delt__contents-item_status
             過去に取引した商品はございません。
         

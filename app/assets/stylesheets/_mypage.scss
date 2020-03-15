@@ -15,7 +15,26 @@
       font-size: 16px;
       text-align: center;
       line-height: 72px;
+    }
+    .active{
+      background: #fff;
       border-top: 1px solid red;
     }
   }
+  .dealing__contents,.delt__contents{
+    p{
+      color: #d1d1d1;
+      text-align: center;
+      width: 300px;
+      margin: 150px auto;
+      display: none;
+    }
+    .contentOn{
+      display: block;
+    }
+  }
+  
+  // .contentOff{
+  //   display: none;
+  // }
 }
