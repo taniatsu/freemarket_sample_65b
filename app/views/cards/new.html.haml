@@ -1,0 +1,51 @@
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+
+    .mainBlock
+      %h2.mainBlock__ttl
+        クレジットカード情報入力
+      .formArea
+        %form
+          .formArea__num
+            %p.form__txt
+              カード番号
+              %span.must
+                必須
+            %input, text
+            %ul.cardsLists
+              %li.cardList
+                test
+              %li.cardList
+              %li.cardList
+              %li.cardList
+              %li.cardList
+              %li.cardList
+              %li.cardList
+          .formArea__expiration
+            %p.form__txt
+              有効期限
+              %span.must
+                必須
+            .formArea__expiration-month-year
+              %p.formArea__expiration-month
+                %input
+                月
+              %p.formArea__expiration-year
+                %input
+                年
+          .formArea__securityCode
+            %p.form__txt
+              セキュリティコード
+              %span.must
+                必須
+            %input, text
+            %p.formArea__securityCode-question
+              カード裏面の番号とは？
+
+          .formArea__btn
+            %btn
+              追加する
+= render "shared/banner"
+= render "shared/footer"
