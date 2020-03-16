@@ -1,6 +1,6 @@
 $(function(){
   //価格表示
-  $('.itemsNew__inputBox--price').on('input', function(){
+  $('.itemsNew__inputBox--sellPrice').on('input', function(){
     var price = $(this).val();
     var furima_fee = Math.floor(price * 0.1)
     var seller_gain = price - furima_fee

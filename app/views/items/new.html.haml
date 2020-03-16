@@ -5,23 +5,21 @@
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsNew__logo'
 
   .itemsNew__body
-
     .itemsNew__container
       .itemsNew__title
-        .itemsNew__mainTitle2
-          出品画像
         .itemsNew__subTitle
+          出品画像
+        .itemsNew__tag
           必須
-      .itemsNew__titleInner
+      .itemsNew__photoExplanation 
         最大10枚までアップロードできます
 
-      .itemsNew__photoUp--back
-        .itemsNew__photoUp--front
-          .itemsNew__photoUp--icon
-            = icon("fa", "camera", class: "fa-lg fa-fw")
-          .itemsNew__photoUp--text
-            ドラッグアンドドロップ
-            %br
+      .itemsNew__photoUp
+        .itemsNew__photoUp--icon
+          = icon("fa", "camera", class: "fa-lg fa-fw")
+        .itemsNew__photoUp--text
+          ドラッグアンドドロップ
+          %br
             またはクリックしてファイルをアップロード
       .itemsNew__alert.displayNone
         画像がありません
@@ -29,9 +27,9 @@
     .itemsNew__container
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            出品名
           .itemsNew__subTitle
+            出品名
+          .itemsNew__tag
             必須
         %input{type: "text", placeholder: "40字まで" ,class: "itemsNew__inputBox"}
         .itemsNew__alert.displayNone
@@ -39,24 +37,24 @@
 
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            出品の説明
           .itemsNew__subTitle
+            出品の説明
+          .itemsNew__tag
             必須
         %textarea{type: "text", rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsNew__textareaBox"}
         .itemsNew__alert.displayNone
           入力してください
 
     .itemsNew__container
-      .itemsNew__mainTitle1
+      .itemsNew__mainTitle
         商品の詳細
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            カテゴリー
           .itemsNew__subTitle
+            カテゴリー
+          .itemsNew__tag
             必須
-        %select.itemsNew__selectBox
+        %select.itemsNew__selectBox.L
           %option{value: "0"} 選択してください
           %option{value: "1"} レディース
           %option{value: "2"} メンズ
@@ -74,21 +72,28 @@
         .itemsNew__alert.displayNone
           選択してください
 
-        %select.itemsNew__selectBox
+        %select.itemsNew__selectBox.M.displayNone
           %option{value: "0"} 選択してください
+          %option{value: "1"} トップス
+          %option{value: "2"} ジャケット/アウター
+          %option{value: "3"} パンツ
         .itemsNew__alert.displayNone
           選択してください
 
-        %select.itemsNew__selectBox
+        %select.itemsNew__selectBox.S.displayNone
           %option{value: "0"} 選択してください
+          %option{value: "1"} Tシャツ/カットソー（半袖/袖なし）
+          %option{value: "2"} Tシャツ/カットソー（七分/長袖）
+          %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
+          %option{value: "4"} シャツ/ブラウス（七分/長袖）
         .itemsNew__alert.displayNone
           選択してください
 
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            サイズ
           .itemsNew__subTitle
+            サイズ
+          .itemsNew__tag
             必須
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
@@ -107,17 +112,17 @@
 
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
+          .itemsNew__subTitle
             ブランド
-          .itemsNew__subTitle--gray
+          .itemsNew__tag--gray
             任意
         %input{type: "text", placeholder: "選択してください" ,class: "itemsNew__inputBox"}
 
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            商品の状態
           .itemsNew__subTitle
+            商品の状態
+          .itemsNew__tag
             必須
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
@@ -130,13 +135,13 @@
           選択してください
 
     .itemsNew__container
-      .itemsNew__mainTitle1
+      .itemsNew__mainTitle
         配送について
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            配送料の負担
           .itemsNew__subTitle
+            配送料の負担
+          .itemsNew__tag
             必須
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
@@ -147,9 +152,9 @@
 
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            配送の方法
           .itemsNew__subTitle
+            配送の方法
+          .itemsNew__tag
             必須
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
@@ -157,12 +162,11 @@
         .itemsNew__alert.displayNone
           選択してください
 
-
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTitle2
-            発送元の地域
           .itemsNew__subTitle
+            発送元の地域
+          .itemsNew__tag
             必須
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
@@ -219,9 +223,9 @@
 
       .itemsNew__innerContainer
         .itemsNew__title
-          .itemsNew__mainTile2
+          .itemsNew__subTile
             発送までの日数
-          .itemsNew__subTitle
+          .itemsNew__tag
             必須
         %select.itemsNew__selectBox
           %option{value: "0"} 選択してください
@@ -232,16 +236,17 @@
           選択してください
 
     .itemsNew__container
-      .itemsNew__mainTitle1
+      .itemsNew__mainTitle
         価格（¥300〜9,999,999）
-      .itemsNew__priceBox
-        .itemsNew__mainTitle
-          販売価格
-        .itemsNew__subTitle
-          必須
-        .itemsNew__mainTitle.itemsNew__dollIcon
+      .itemsNew__sellContainer
+        .itemsNew__title
+          .itemsNew__subTitle
+            販売価格
+          .itemsNew__tag
+            必須
+        .itemsNew__sellPriceBox
           ¥
-        %input{type: "number", placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsNew__inputBox--price"}
+          %input{type: "number", placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsNew__inputBox--sellPrice"}
       .itemsNew__alertInputBox
         .itemsNew__alertInputBox2.displayNone
           300以上9999999以下で入力してください
@@ -251,14 +256,14 @@
           販売手数料（10%）
         .itemsNew__sellPrice--right
           ー
-              
+
       .itemsNew__priceProfit
         .itemsNew__sellPrice--left
           販売利益
         .itemsNew__priceProfit--right
           ー
 
-      .itemsNew__btnBox
+      .itemsNew__btnContainer
         %button{type: "submit", class: "itemsNew__sellBtn"}
           出品する
         %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
@@ -287,13 +292,11 @@
         %span>
         に同意したことになります。
 
-
-
   .itemsNew__footer
     .itemsNew__footerTop
       %ul.itemsNew__footerUl
         %li.itemsNew__footerList
-          = link_to('プライバシーポリシー', '#', class: 'itemsNew__footerList--link')
+          = link_to('プライバシーポリシー', {}, class: 'itemsNew__footerList--link')
         %li.itemsNew__footerList
           = link_to('フリマ利用規約', {}, class: 'itemsNew__footerList--link')
         %li.itemsNew__footerList
