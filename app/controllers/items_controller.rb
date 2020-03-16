@@ -1,4 +1,6 @@
 class ItemsController < ApplicationController
+  def index
+  end
   
   def show
   end
@@ -6,4 +8,6 @@ class ItemsController < ApplicationController
   def new
   end
 
+  def confirm
+  end
 end
