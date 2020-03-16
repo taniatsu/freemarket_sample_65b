@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   # ルート指定
   root 'tops#index'
-  get 'items/show', to: 'items#show'
-  get 'items/new', to: 'items#new'
-
-  # resources :items, only: :show
-
+  
   # ユーザーページのルーティング
   resources :users do
     resource :self_address
