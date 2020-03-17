@@ -22,50 +22,91 @@
       商品名
 
 %main.itemIndex
-  .itemIndex__categoryBox
+  .itemIndex__pickupCategory
     .itemIndex__pickupCategory__title
       %h1.itemIndex__pickupCategory__title__text
         メンズの商品一覧
     .itemIndex__pickupCategory__type
       %ul.itemIndex__pickupCategory__type__text
         %li.itemIndex__pickupCategory__type__text__name
-          トップス
+          = link_to "#" do
+            トップス
         %li.itemIndex__pickupCategory__type__text__name
-          ジャケット/アウター
+          = link_to "#" do
+            ジャケット/アウター
         %li.itemIndex__pickupCategory__type__text__name
-          パンツ
+          = link_to "#" do
+            パンツ
         %li.itemIndex__pickupCategory__type__text__name
-          靴
+          = link_to "#" do
+            靴
         %li.itemIndex__pickupCategory__type__text__name
-          バッグ
+          = link_to "#" do
+            バッグ
         %li.itemIndex__pickupCategory__type__text__name
-          スーツ
+          = link_to "#" do
+            スーツ
         %li.itemIndex__pickupCategory__type__text__name
-          帽子
+          = link_to "#" do
+            帽子
         %li.itemIndex__pickupCategory__type__text__name
-          アクセサリー
+          = link_to "#" do
+            アクセサリー
         %li.itemIndex__pickupCategory__type__text__name
-          小物
+          = link_to "#" do
+            小物
         %li.itemIndex__pickupCategory__type__text__name
-          時計
+          = link_to "#" do
+            時計
         %li.itemIndex__pickupCategory__type__text__name
-          水着
+          = link_to "#" do
+            水着
 
-  .productList__items
-    %a.productList__items__item
+  .itemIndex__productList
+    .itemIndex__productList__items
       = link_to "#" do
         = image_tag "free_img1.jpg"
-        .productList__items__item__text
-          %h8.name
+        .itemIndex__productList__items__text
+          %h8.itemIndex__productList__items__text__name
             商品名
-          %ul
-            %li.price
+          %ul.itemIndex__productList__items__text__box
+            %li.itemIndex__productList__items__text__box__price
               11000円
-            %li.likes
+            %li.itemIndex__productList__items__text__box__likes
               = icon('fa','star',class:"productList__icon")
-              .volume
+              .itemIndex__productList__items__text__box__likes__volume
                 20
-          %p.tax
+          %p.itemIndex__productList__items__text__tax
+            (税込)
+    .itemIndex__productList__items
+      = link_to "#" do
+        = image_tag "free_img1.jpg"
+        .itemIndex__productList__items__text
+          %h8.itemIndex__productList__items__text__name
+            商品名
+          %ul.itemIndex__productList__items__text__box
+            %li.itemIndex__productList__items__text__box__price
+              11000円
+            %li.itemIndex__productList__items__text__box__likes
+              = icon('fa','star',class:"productList__icon")
+              .itemIndex__productList__items__text__box__likes__volume
+                20
+          %p.itemIndex__productList__items__text__tax
+            (税込)
+    .itemIndex__productList__items
+      = link_to "#" do
+        = image_tag "free_img1.jpg"
+        .itemIndex__productList__items__text
+          %h8.itemIndex__productList__items__text__name
+            商品名
+          %ul.itemIndex__productList__items__text__box
+            %li.itemIndex__productList__items__text__box__price
+              11000円
+            %li.itemIndex__productList__items__text__box__likes
+              = icon('fa','star',class:"productList__icon")
+              .itemIndex__productList__items__text__box__likes__volume
+                20
+          %p.itemIndex__productList__items__text__tax
             (税込)
 
 
