@@ -1,13 +1,22 @@
 .itemsNew
-  
-  .content
-    %a.js-modal-open{:href => ""} クリックでモーダルを表示
+
   .modal.js-modal
     .modal__bg.js-modal-close
     .modal__content
-      %p ここにモーダルウィンドウで表示したいコンテンツを入れます。モーダルウィンドウを閉じる場合は下の「閉じる」をクリックするか、背景の黒い部分をクリックしても閉じることができます。
-      %a.js-modal-close{:href => ""} 閉じる
-
+      .modal__title.itemsNew__subTitle
+        出品が完了しました
+      .modal__inner
+        出品した商品は「
+        %span>
+        = link_to('出品した商品', {}, class: 'itemsNew__noteLink')
+        %span>
+        」からいつでも見ることができます
+        %span>
+      %button{type: "submit", onclick: "location.href='/items/new'", class: "modalBtn itemsNew__sellBtn"}
+        続けて出品する
+      %button{type: "submit", class: "modalBtn itemsNew__sellBtn"}
+        出品した商品をみる
+      = link_to('商品をシェアする')
 
   .itemsNew__header
     = link_to root_path do
@@ -273,8 +282,9 @@
           ー
 
       .itemsNew__btnContainer
-        %button{type: "submit", class: "itemsNew__sellBtn"}
-          出品する
+        .itemsNew__modalOpen
+          %button{type: "submit", class: "itemsNew__sellBtn"}
+            出品する
         %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
           もどる
       
