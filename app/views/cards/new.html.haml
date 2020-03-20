@@ -6,46 +6,60 @@
     .mainBlock
       %h2.mainBlock__ttl
         クレジットカード情報入力
-      .formArea
-        %form
-          .formArea__num
-            %p.form__txt
-              カード番号
-              %span.must
-                必須
-            %input, text
-            %ul.cardsLists
-              %li.cardList
-                test
-              %li.cardList
-              %li.cardList
-              %li.cardList
-              %li.cardList
-              %li.cardList
-              %li.cardList
-          .formArea__expiration
-            %p.form__txt
-              有効期限
-              %span.must
-                必須
-            .formArea__expiration-month-year
-              %p.formArea__expiration-month
-                %input
-                月
-              %p.formArea__expiration-year
-                %input
-                年
-          .formArea__securityCode
-            %p.form__txt
-              セキュリティコード
-              %span.must
-                必須
-            %input, text
-            %p.formArea__securityCode-question
-              カード裏面の番号とは？
+      .mainBlock__content
+        .formArea
+          = form_for @card do |c|
+            .formArea__num
+              -# = c.label :カード番号, class: '.form__txt'
+              %p.form__txt
+                カード番号
+                %span.must
+                  必須
+              = c.text_field :card_id, type: 'text', class: 'formArea-inputNum formArea-inputDef', placeholder: '半角数字のみ'
+              -# %input.formArea-inputNum.formArea-inputDef{:name => "number", :placeholder => "半角数字のみ", :type => "text", :maxlength=> "16"}/
+              %ul.cardsLists
+                %li.cardList
+                  = image_tag "visa.svg", class: "visa compLogo"
+                %li.cardList
+                  = image_tag "master-card.svg", class: "master-card compLogo"
+                %li.cardList
+                  = image_tag "saison-card.svg", class: "saison-card compLogo"
+                %li.cardList
+                  = image_tag "jcb.svg", class: "jcb compLogo"
+                %li.cardList
+                  = image_tag "american_express.svg", class: "american_express compLogo"
+                %li.cardList
+                  = image_tag "dinersclub.svg", class: "dinersclub compLogo"
+                %li.cardList
+                  = image_tag "discover.svg", class: "discover compLogo"
+            .formArea__expiration
+              %p.form__txt
+                有効期限
+                %span.must
+                  必須
+              .formArea__expiration-month-year
+                %p.formArea__expiration-month
+                  = c.select :exp_month, [["01",1],["02",2],["03",3],["04",4],["05",5],["06",6],["07",7],["08",8],["09",9],["10",10],["11",11],["12",12]],{} , class: 'formArea-inputDef'
+                  -# %input.formArea-inputDef
+                  -#   月
+                  %span.expire-text 月
+                %p.formArea__expiration-year
+                  = c.select :exp_year, [["19",2019],["20",2020],["21",2021],["22",2022],["23",2023],["24",2024],["25",2025],["26",2026],["27",2027],["28",2028],["29",2029]],{} , class: 'formArea-inputDef'
+                  -# %input.formArea-inputDef
+                    年
+                  %span.expire-text 年
+            .formArea__securityCode
+              %p.form__txt
+                セキュリティコード
+                %span.must
+                  必須
+              %input.formArea__securityCode-code.formArea-inputDef{:name => "code", :placeholder => "カード背面4桁もしくは3桁の番号", :type => "text", :maxlength=> "16"}/
+              %p.formArea__securityCode-question
+                カード裏面の番号とは？
 
-          .formArea__btn
-            %btn
-              追加する
+            .formArea__btn
+              %btn.formArea__btnItself
+                追加する
+        
 = render "shared/banner"
 = render "shared/footer"
