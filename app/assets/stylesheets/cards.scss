@@ -10,6 +10,24 @@
     width: 100%;
     background: #fff;
     padding: 24px 16px 40px;
+    &-inner{
+      max-width: 343px;
+      margin: 0 auto;
+    }
+    .add__card{
+      margin-top: 20px;
+    }
+    .payQuestion{
+      margin: 50px auto 0;
+      padding-top: 20px;
+      text-align: right;
+      width: 90%;
+      border-top: 1px solid #f5f5f5;
+      a{
+        font-size: 14px;
+        color: #0099e8;
+      }
+    }
   }
   .form__txt{
     font-size: 14px;
@@ -88,11 +106,17 @@
         justify-content: space-between;
         width: 100%;
       }
-      &-month input{
-        width: calc(100% - 38px);
+      &-month {
+        width: 50%;
+        select{
+          width: calc(100% - 38px);
+        }
       }
-      &-year input{
-        width: calc(100% - 38px);
+      &-year{
+        width: 50%;
+        select{
+          width: calc(100% - 38px);
+        }
       }
     }
     &__securityCode{
@@ -108,12 +132,14 @@
       }
     }
     &__btn{
+      display: block;
       width: 100%;
       text-align: center;
       color: #fff;
       background: var(--main-color);
       margin: 24px 0 0;
       line-height: 48px;
+      cursor: pointer;
     }
   }
   
