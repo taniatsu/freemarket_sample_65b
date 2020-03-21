@@ -1,12 +1,13 @@
-header {
-  background-color: #f8f8f8;
+header.confirmHeader {
+  background-color: #f5f5f5;
 
   .headerLogo {
-    text-align: center;
-    padding-top:40px ;
+    padding:40px 0;
+    margin: auto;
+    width: 150px;
 
     img {
-    height: 50px;
+    height: 40px;
     }
   }
 }
@@ -101,7 +102,7 @@ main {
 }
 
 footer.confirm {
-  background-color: #f8f8f8;
+  background-color: #f5f5f5;
   padding: 30px;
 
   .footerInner {
@@ -133,6 +134,7 @@ footer.confirm {
 
       img {
         height: 40px;
+        width: 150px;
       }
     }
 
