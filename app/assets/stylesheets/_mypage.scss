@@ -1,6 +1,15 @@
 .myPage{
   width: 100%;
   height: 200px;
+  &__status{
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    &-inner{
+      max-width: 343px;
+      margin: 0 auto;
+    }
+  }
 }
 .boughtItems{
   width: 100%;
@@ -18,7 +27,7 @@
     }
     .active{
       background: #fff;
-      border-top: 1px solid red;
+      border-top: 1px solid var(--main-color);;
     }
   }
   .dealing__contents,.delt__contents{
