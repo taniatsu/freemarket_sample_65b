@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   # ルート指定
   root 'tops#index'
-
+  
   # ユーザーページのルーティング
   resources :users do
     resource :self_address
