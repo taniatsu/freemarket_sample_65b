@@ -1,0 +1,21 @@
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+
+    .mainBlock
+      %h2.mainBlock__ttl
+        いいね!一覧
+      %ul.likes__lists
+        %li.like__list
+          .like__list-img
+            = image_tag "pict-reason-03.jpg"
+          .like__list-txt
+            %p.like__list-txt-ttl
+              テストテストテストテストテストテストテストテスト
+            %p.like__list-txt-price
+              ¥5,000
+          .like__list-arrow
+            %i.fas.fa-chevron-right
+= render "shared/banner"
+= render "shared/footer"
