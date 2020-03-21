@@ -1,4 +1,6 @@
+.items{
 .itemIndex{
+  padding: 40px 0;
   &__pickupCategory{
     width: 50%;
     margin: auto;
@@ -69,4 +71,5 @@
       }      
     }
   }
+}
 }
