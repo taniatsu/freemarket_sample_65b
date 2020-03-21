@@ -22,24 +22,27 @@
       %h2.signupMain__head.signupMain__head--registration
         電話番号認証
       .signupMain__inner.signupMain__inner--registrationForm
-      = form_for @user, local: true, url: address_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+        = form_for @user, local: true, url: address_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+          .signupMain__content
+            .signupMain__formGroup
+              = f.label '認証番号'
+              = f.number_field :tel, { class: 'signupMain__inputDefault', placeholder: '認証番号を入力' }
+            %p.signupMain__text2
+              SMSで届いた認証番号を入力してください
+            = f.submit '認証して完了', class: 'signupMain__btnDefault signupMain__btnRed'
+      .signupMain__inner.signupMain__inner--registrationForm
         .signupMain__content
           .signupMain__formGroup
-            = f.label '認証番号'
-            = f.number_field :tel, { class: 'signupMain__inputDefault', placeholder: '認証番号を入力' }
-          %p.signupMain__text2
-            SMSで届いた認証番号を入力してください
-          = f.submit '認証して完了', class: 'signupMain__btnDefault signupMain__btnRed'
-          .signupMain__formGroup
-            = f.label '30秒たっても認証番号が届かない方へ'
+            %p.signupMain__text2
+              30秒たっても認証番号が届かない方へ
             %p.signupMain__text2
               電話で認証番号を聞くこともできます。
-            %button.signupMain__btnDefault.signupMain__btnRed
+            %button.signupMain__btnDefault.signupMain__btnGry
               電話で認証番号を聞く（通話無料）
           .signupMain__formGroup
             %p.signupMain__text2
               認証番号を再送することも出来ます。もう一度電話番号を入力してください。
-            %button.signupMain__btnDefault.signupMain__btnRed
+            %button.signupMain__btnDefault.signupMain__btnGry
               電話番号を入力する
           .signupMain__formGroup
             .signupMain__textCenter
@@ -48,20 +51,4 @@
               SMS受信設定
             を確認して、もう一度電話番号を入力してください。
           %br
-  %footer.signupFooter
-    %nav
-      %ul.clearfix
-        %li
-          = link_to '#' do
-            プライバシポリシー
-        %li
-          = link_to '#' do
-            フリマ利用規約
-        %li
-          = link_to '#' do
-            特定商取引に関する表記
-    = link_to '#', class: 'signupFooter__logo' do
-      = image_tag 'logo-white.png', alt: "mercari", width: "150", height:"65"
-    %p
-      %small
-        ©️ FURIMA
+  = render 'signup/footer'

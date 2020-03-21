@@ -65,3 +65,6 @@ gem "font-awesome-sass"
 
 # deviseの導入
 gem 'devise'
+
+# active hashの導入
+gem 'active_hash'

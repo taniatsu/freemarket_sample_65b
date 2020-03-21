@@ -13,27 +13,11 @@
           = link_to '/signup/registration', class: 'signupMain__btnDefault signupMain__btnMail' do
             = icon 'far', 'envelope'
             メールアドレスで登録する
-          %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--facebook{ id: 'signup-main__facebook-login' }
+          %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--facebook
             = icon 'fab', 'facebook-square'
             Facebookで登録する
-          %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--google{ id: 'signup-main__google-login' }
+          %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--google
             = icon 'fab', 'google'
             Googleで登録する
 
-  %footer.signupFooter
-    %nav
-      %ul.clearfix
-        %li
-          = link_to '#' do
-            プライバシポリシー
-        %li
-          = link_to '#' do
-            フリマ利用規約
-        %li
-          = link_to '#' do
-            特定商取引に関する表記
-    = link_to '#', class: 'signupFooter__logo' do
-      = image_tag 'logo-white.png'
-    %p
-      %small
-        ©️ FURIMA
+  = render 'signup/footer'

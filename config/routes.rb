@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     collection do
       get 'registration'
       get 'sms_confirmation'
-      get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
+      # get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
       get 'address'
       get 'done'
     end

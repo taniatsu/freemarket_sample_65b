@@ -11,11 +11,12 @@ class SignupController < ApplicationController
     @user = User.new
   end
 
-  def sms_confirmation_sms
-    @user = User.new
-  end
+  # def sms_confirmation_sms
+  #   @user = User.new
+  # end
 
   def address
     @user = User.new
   end
+
 end
