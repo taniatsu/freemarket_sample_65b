@@ -1,0 +1,67 @@
+.signupBody
+  %header.signupHeader
+    %h1
+      = link_to root_path do
+        = image_tag 'logo.png'
+    %nav.signupHeader__progressBar.signupHeader__bar
+      %ol.clearfix
+        %li.signupHeader__list.signupHeader__list--through
+          会員情報
+          .signupHeader__progressStatus
+        %li.signupHeader__list.signupHeader__list--active
+          電話番号認証
+          .signupHeader__progressStatus
+        %li.signupHeader__list
+          お届け先住所入力
+          .signupHeader__progressStatus
+        %li.signupHeader__list
+          完了
+          .signupHeader__progressStatus
+  %main.signupMain
+    %section.signupMain__container
+      %h2.signupMain__head.signupMain__head--registration
+        電話番号認証
+      .signupMain__inner.signupMain__inner--registrationForm
+      = form_for @user, local: true, url: address_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+        .signupMain__content
+          .signupMain__formGroup
+            = f.label '認証番号'
+            = f.number_field :tel, { class: 'signupMain__inputDefault', placeholder: '認証番号を入力' }
+          %p.signupMain__text2
+            SMSで届いた認証番号を入力してください
+          = f.submit '認証して完了', class: 'signupMain__btnDefault signupMain__btnRed'
+          .signupMain__formGroup
+            = f.label '30秒たっても認証番号が届かない方へ'
+            %p.signupMain__text2
+              電話で認証番号を聞くこともできます。
+            %button.signupMain__btnDefault.signupMain__btnRed
+              電話で認証番号を聞く（通話無料）
+          .signupMain__formGroup
+            %p.signupMain__text2
+              認証番号を再送することも出来ます。もう一度電話番号を入力してください。
+            %button.signupMain__btnDefault.signupMain__btnRed
+              電話番号を入力する
+          .signupMain__formGroup
+            .signupMain__textCenter
+            SMSが届かない場合は
+            = link_to '#', target: '_blank' do
+              SMS受信設定
+            を確認して、もう一度電話番号を入力してください。
+          %br
+  %footer.signupFooter
+    %nav
+      %ul.clearfix
+        %li
+          = link_to '#' do
+            プライバシポリシー
+        %li
+          = link_to '#' do
+            フリマ利用規約
+        %li
+          = link_to '#' do
+            特定商取引に関する表記
+    = link_to '#', class: 'signupFooter__logo' do
+      = image_tag 'logo-white.png', alt: "mercari", width: "150", height:"65"
+    %p
+      %small
+        ©️ FURIMA

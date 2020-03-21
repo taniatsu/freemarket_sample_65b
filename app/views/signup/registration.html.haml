@@ -1,68 +1,106 @@
-.signup-container
-  %header.signup-header
+.signupBody
+  %header.signupHeader
     %h1
       = link_to root_path do
         = image_tag 'logo.png'
-    %nav.signup-header__progress-bar.signup-header__bar
+    %nav.signupHeader__progressBar.signupHeader__bar
       %ol.clearfix
-        %li.signup-header__list.signup-header__list--active
+        %li.signupHeader__list.signupHeader__list--active
           会員情報
-          .signup-header__progress-status
-        %li.signup-header__list
+          .signupHeader__progressStatus
+        %li.signupHeader__list
           電話番号認証
-          .signup-header__progress-status
-        %li.signup-header__list
+          .signupHeader__progressStatus
+        %li.signupHeader__list
           お届け先住所入力
-          .signup-header__progress-status
-        %li.signup-header__list
+          .signupHeader__progressStatus
+        %li.signupHeader__list
           完了
-          .signup-header__progress-status
+          .signupHeader__progressStatus
     
-  %main.signup-main
-    %section.signup-main__container
-      %h2.signup-main__head.signup-main__head--registration
+  %main.signupMain
+    %section.signupMain__container
+      %h2.signupMain__head.signupMain__head--registration
         会員情報入力
-      = form_for @user, local: true, url: sms_confirmation_signup_index_path, method: 'GET', novalidate: 'novalidate' do |f|
-        .signup-main__content
-          .signup-main__form-group
+      .signupMain__inner.signupMain__inner--registrationForm
+      = form_for @user, local: true, url: sms_confirmation_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+        .signupMain__content
+          .signupMain__formGroup
             = f.label 'ニックネーム'
-            %span.signup-main__form-require 必須
-            = f.text_field :nickname, { class: 'signup-main__input-default', placeholder: '例) メルカリ太郎' }
-          .signup-main__form-group
+            %span.signupMain__formRequire 必須
+            = f.text_field :nickname, { class: 'signupMain__inputDefault', placeholder: '例) メルカリ太郎' }
+          .signupMain__formGroup
             = f.label 'メールアドレス'
-            %span.signup-main__form-require 必須
-            = f.email_field :email, { class: 'signup-main__input-default', placeholder: 'PC・携帯どちらでも可'}
-          .signup-main__form-group
+            %span.signupMain__formRequire 必須
+            = f.email_field :email, { class: 'signupMain__inputDefault', placeholder: 'PC・携帯どちらでも可'}
+          .signupMain__formGroup
             = f.label 'パスワード'
-            %span.signup-main__form-require 必須
-            = f.password_field :password, {class: 'signup-main__input-default', placeholder: '7文字以上の半角英数字'}
-            %p.signup-main__text1
+            %span.signupMain__formRequire 必須
+            = f.password_field :password, {class: 'signupMain__inputDefault', placeholder: '7文字以上の半角英数字'}
+            %p.signupMain__text1
               ※ 英字と数字の両方を含めて設定してください
-          .signup-main__form-group
+          .signupMain__formGroup
             = f.label 'パスワード (確認)'
-            %span.signup-main__form-require 必須
-            = f.password_field :password_confirmation, { class: 'signup-main__input-default', placeholder: '7文字以上の半角英数字' }
-          .signup-main__form-group
-            %h3.signup-main__sub-head
+            %span.signupMain__formRequire 必須
+            = f.password_field :password_confirmation, { class: 'signupMain__inputDefault', placeholder: '7文字以上の半角英数字' }
+          .signupMain__formGroup
+            %h3.signupMain__subHead
               本人確認
-            %p.signup-main__text2
+            %p.signupMain__text2
               安心・安全にご利用いただくために、お客さまの本人情報の登録にご協力ください。他のお客さまに公開されることはありません。
-          .signup-main__form-group
-            = f.label 'お名前kana(全角)'
-            %span.signup-main__form-require 必須
-            = f.text_field :last_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) 山田'}
-            = f.text_field :first_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) 彩'}
-          .signup-main__form-group
-            = f.label 'お名前カナ(全角)'
-            %span.signup-main__form-require 必須
-            = f.text_field :last_jp_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) ヤマダ'}
-            = f.text_field :first_jp_name, {class: 'signup-main__input-default signup-main__input-default--half', placeholder: '例) アヤ'}
-          .signup-main__form-group
-            = f.label '生年月日'
-            %span.signup-main__form-require 必須
+          .signupMain__formGroup
+            = f.label 'お名前(全角)'
+            %span.signupMain__formRequire 必須
             %br
-            .signup-main__birthday-select-wrap
-              .signup-main__select-wrap
-              
-              %span 年
-
+            = f.text_field :last_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) 山田'}
+            = f.text_field :first_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) 彩'}
+          .signupMain__formGroup
+            = f.label 'お名前カナ(全角)'
+            %span.signupMain__formRequire 必須
+            %br
+            = f.text_field :last_jp_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) ヤマダ'}
+            = f.text_field :first_jp_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) アヤ'}
+          .signupMain__formGroup
+            = f.label '生年月日'
+            %span.signupMain__formRequire 必須
+            %br
+            .signupMain__birthdaySelectWrap
+              .signupMain__selectWrap
+              != sprintf(f.date_select(:year, prefix:'year',with_css_classes:'year', prompt:"--",use_month_numbers:true, start_year:Time.now.year, end_year:1900, date_separator:'%s'),'年','月')+'日'
+              %span.select-icon
+                = icon "fas", "angle-down", class: "select-icon1"
+                = icon "fas", "angle-down", class: "select-icon2"
+                = icon "fas", "angle-down", class: "select-icon3"
+          .signupMain__formGroup
+            %p.signupMain__text1
+              ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
+          .signupMain__formGroup
+            .signupMain__textCenter
+            「次へ進む」のボタンを押すことにより、
+            = link_to '#', target: '_blank' do
+              利用規約
+            に同意したものとします
+          = f.submit'次へ進む', class: 'signupMain__btnDefault signupMain__btnRed'
+          .signupMain__formGroup
+            .signupMain__textRight
+              %p
+                = link_to '#', target: '_blank' do
+                  本人情報の登録について
+                  = icon 'fas', 'chevron-right'
+  %footer.signupFooter
+    %nav
+      %ul.clearfix
+        %li
+          = link_to '#' do
+            プライバシポリシー
+        %li
+          = link_to '#' do
+            フリマ利用規約
+        %li
+          = link_to '#' do
+            特定商取引に関する表記
+    = link_to '#', class: 'signupFooter__logo' do
+      = image_tag 'logo-white.png', alt: "mercari", width: "150", height:"65"
+    %p
+      %small
+        ©️ FURIMA

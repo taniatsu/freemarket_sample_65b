@@ -1,4 +1,13 @@
-.signup-header{
+.signupBody {
+  min-height: 100%;
+  font-family: "Source Sans Pro", Helvetica, Arial, 游ゴシック体, YuGothic, メイリオ, Meiryo, sans-serif;
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+  line-height: 1;
+  background: rgb(245, 245, 245);
+}
+
+.signupHeader{
   text-align: center;
   h1 {
     display: inline-block;
@@ -15,9 +24,93 @@
     width: 120px;
     height: 33px;
   }
+  &__list {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    min-width: 40px;
+    margin: 0 5% 0 0;
+    font-size: 12px;
+    color: #888;
+    .signupHeader__progressStatus {
+      width: 12px;
+      height: 12px;
+      margin: 8px auto 0;
+      background: #ccc;
+      border-radius: 50%;
+      &:before {
+        position: absolute;
+        bottom: 5px;
+        z-index: -1;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #ccc;
+        right: 50%;
+      }
+      &:after{
+        position: absolute;
+        bottom: 5px;
+        z-index: -1;
+        display: block;
+        content: '';
+        width: 100%;
+        height: 2px;
+        background: #ccc;
+        left: 50%;
+      }
+    }
+    &--active {
+      font-weight: 600;
+      color: #3CCACE;
+      .signupHeader__progressStatus {
+        background: #3CCACE;
+        &:before {
+          background-color: #3CCACE;
+        }
+      }
+    }
+    &--through {
+      .signupHeader__progressStatus {
+        background: #3CCACE;
+        &:after {
+          background-color: #3CCACE;
+        }
+      }
+    }
+    &--passed {
+      .signupHeader__progressStatus {
+      background: #3CCACE;
+        &:before {
+          background-color: #3CCACE;
+        }
+        &:after {
+          background-color: #3CCACE;
+        }
+      }
+    }
+  }
+  &__progressBar {
+    font-size: 0;
+    text-align: center;
+    ol {
+      margin: 0;
+    }
+    li:first-child .signupHeader__progressStatus:before {
+      display: none;
+    }
+    li:last-child .signupHeader__progressStatus:after {
+      display: none;
+    }
+  }
+  &__bar.signupHeader__progressBar {
+    padding: 16px 0;
+    border-top: 1px solid #eee;
+  }
 }
 
-.signup-main {
+.signupMain {
   display: block;
   &__container {
     background: #fff;
@@ -58,10 +151,21 @@
     padding: 0;
     font-size: 14px;
   }
-  &__sub-head {
+  &__textCenter {
+    text-align: center;
+  }
+  a {
+    color: #0099e8;
+    text-decoration: none;
+  }
+  &__textRight {
+    padding-bottom: 32px;
+    text-align: right;
+  }
+  &__subHead {
     font-size: 14px;
   }
-  &__btn-mail {
+  &__btnMail {
     color: #fff;
     background-color: #3CCACE;
     position: relative;
@@ -74,7 +178,7 @@
       font-size: 16px;
     }
   }
-  &__btn-default {
+  &__btnDefault {
     border-radius: 4px;
     display: block;
     width: 100%;
@@ -89,7 +193,7 @@
       text-decoration: none;
     }
   }
-  &__btn-sns {
+  &__btnSns {
     position: relative;
     i {
       position: absolute;
@@ -114,7 +218,12 @@
       color: #333;
     }
   }
-  &__form-group {
+  &__btnRed {
+    background: #3CCACE;
+    border: 1px solid #3CCACE;
+    color: #fff;
+  }
+  &__formGroup {
     margin: 40px 0 0;
     &:first-child {
       margin: 0;
@@ -124,7 +233,7 @@
       display: inline-block;
     }
   }
-  &__form-require {
+  &__formRequire {
     background: #3CCACE;
     margin: 0 0 0 8px;
     padding: 2px 4px;
@@ -133,7 +242,7 @@
     font-size: 12px;
     vertical-align: top;
   }
-  &__input-default {
+  &__inputDefault {
     width: 100%;
     height: 48px;
     padding: 10px 16px 8px;
@@ -148,12 +257,14 @@
     }
     &--half {
       width: calc(50% - 6px);
+      &:first-of-type {
+        margin-right: 8px;
+      }       
     }
   }
 }
 
-.signup-footer {
-  position: absolute;
+.signupFooter {
   right: 0;
   bottom: 0;
   left: 0;
@@ -175,6 +286,7 @@
   a {
     display: block;
     color: #333;
+    text-decoration: none;
   }
   &__logo {
     width: 80px;
@@ -182,6 +294,7 @@
     margin: 40px auto 0;
     img {
       width: 150px;
+      vertical-align: middle;
     }
   }
   p {
@@ -193,7 +306,7 @@
 }
 
 @media screen and (min-width: 768px){
-  .signup-header {
+  .signupHeader {
     height: 128px;
     h1 {
       margin-top: 40px;
@@ -207,35 +320,52 @@
       width: 185px;
       height: 49px;
     }
+    &__progressBar {
+      display: inline-block;
+      vertical-align: top;
+      li {
+        margin-right: 40px;
+        min-width: 60px;
+      }
+    }
+    &__bar.signupHeader__progressBar {
+      padding: 40px 0 0 44px;
+      border: 0;
+    }
   }
 
-  .signup-main__container {
+  .signupMain__container {
     width: 700px;
     margin: 0 auto;
   }
-  .signup-main__head--registration {
+  .signupMain__head--registration {
     font-size: 22px;
     padding: 32px;
   }
-  .signup-main__inner {
-    padding: 64px;
-  }
-  .signup-main__inner--registration-form {
-    padding: 40px 40px 64px;
-  }
-  .signup-main__sub-head {
+  .signupMain__suBhead {
     font-size: 16px;
     font-weight: 600;
   }
 
-  .signup-footer {
+  .signupFooter {
     width: 456px;
-    height: 220px;
     margin: 0 auto;
   }
-  .signup-footer li {
+  .signupFooter li {
     display: inline-block;
     margin: 0 0 0 16px;
+  }
+}
+
+@media screen and (min-width: 1068px) {
+  .signupMain__inner--registrationForm {
+    padding: 40px 40px 64px;
+  }
+  .signupMain__btnRed {
+    margin-top: 32px;
+  }
+  .signupMain__text--right {
+    margin: 24px 0 0;
   }
 }
 
