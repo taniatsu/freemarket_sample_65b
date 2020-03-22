@@ -9,13 +9,11 @@
         .formArea
           = form_tag('/cards', method: :post, action: "create", id: 'charge-form',  name: "inputForm") do
             .formArea__num
-              -# = c.label :カード番号, class: '.form__txt'
               %p.form__txt
                 カード番号
                 %span.must
                   必須
               = text_field_tag "number", "", class: 'formArea-inputNum formArea-inputDef', placeholder: '半角数字のみ',maxlength: "16", type: "text", id: "card_number"
-              -# %input.formArea-inputNum.formArea-inputDef{:name => "number", :placeholder => "半角数字のみ", :type => "text", :maxlength=> "16"}/
               %ul.cardsLists
                 %li.cardList
                   = image_tag "visa.svg", class: "visa compLogo"
@@ -78,15 +76,11 @@
                 %span.must
                   必須
               = text_field_tag "cvc", "", class: "formArea__securityCode-code formArea-inputDef", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
-              -# %input.formArea__securityCode-code.formArea-inputDef{:name => "code", :placeholder => "カード背面4桁もしくは3桁の番号", :type => "text", :maxlength=> "16"}/
               %p.formArea__securityCode-question
                 カード裏面の番号とは？
 
             .formArea__bt
               = submit_tag "追加する", id: "token_submit", class: "formArea__btn"
-                
-              -# %btn.formArea__btnItself
-                追加する
         
 = render "shared/banner"
 = render "shared/footer"
