@@ -1,0 +1,61 @@
+%header.confirmHeader
+  .headerLogo
+    =link_to root_path do
+      = image_tag "logo.png"
+%main
+  %section.confirmContainer
+    .buyTitle
+      %h1.buyTitle__text
+        購入内容の確認
+    .buyItem
+      .buyItem__inner
+        %ul.buyItem__inner__box
+          %li.buyItem__inner__box__img
+            = image_tag "free_img3.jpg"
+          %li.buyItem__inner__box__text
+            %p.buyItem__inner__box__text__itemName
+              [商品名]新品・未使用・テストテストテスト
+            %ul.buyItem__inner__box__text__itemPrice
+              %li.price
+                ¥30,000
+              %li.feeTax
+                （税込）送料込み
+    %section.buyContent
+      %form.buyForm
+        %ul.buyForm__priceBox
+          %li.buyForm__priceBox__text
+            支払い金額
+          %li.buyForm__priceBox__price
+            ¥30,000
+        %ul.buyForm__payment
+          %h3
+            支払い方法
+          %p
+            =link_to "#" do
+              =icon("fa","plus-square")
+              登録してください
+        %ul.buyForm__deliveryAddress
+          %h4
+            配送先
+          %p
+            =link_to "#" do
+              =icon("fa","plus-square")
+              登録してください
+        .buyForm__Btn
+          %button{type: "submit",class:"buyBtn"}
+            購入する
+%footer.confirm
+  .footerInner
+    %ul.footerInner__navi
+      %li
+        = link_to "プライバシー"
+      %li
+        = link_to "FURIMA利用規約"
+      %li
+        = link_to "特定商取引に関する表記"
+    .footerLogo
+      = image_tag "logo-white.png"
+    %p
+      ©️FURIMA
+
+

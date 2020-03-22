@@ -1,0 +1,107 @@
+= render "shared/header"
+
+= render "shared/navi"
+
+%main.showItem
+  .mainBox
+    .mainBox__itemName
+      商品名
+    .mainBox__mainImage
+      = image_tag "free_img1.jpg"
+    %ul.mainBox__imageBox
+      %li.mainBox__imageBox__leftImage
+        = image_tag "free_img1.jpg"
+      %li.mainBox__imageBox__centerImage
+        = image_tag "free_img2.jpg"
+      %li.mainBox__imageBox__rightImage
+        = image_tag "free_img3.jpg"
+    .mainBox__priceBox
+      %h.mainBox__priceBox__itemPrice
+        ¥30000
+      %p.mainBox__priceBox__tax
+        (税込)送料込み
+    .mainBox__text
+      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
+
+    %table.mainTable
+      %tr
+        %th
+          出品者
+        %td
+          名前
+      %tr
+        %th
+          カテゴリー
+        %td
+          = link_to "#" do
+            %p ベビー・キッズ
+          = link_to "#" do
+            %p ベビー服(男女兼用)〜95cm
+          = link_to "#" do
+            %p アウター
+      %tr
+        %th
+          ブランド
+        %td
+          
+      %tr
+        %th
+          商品のサイズ
+        %td
+          
+      %tr
+        %th
+          商品の状態
+        %td
+          未使用に近い
+      %tr
+        %th
+          配送料の負担
+        %td
+          送料込み（出品者負担）
+      %tr
+        %th
+          発送元の地域
+        %td
+          = link_to "#" do
+            岩手
+      %tr
+        %th
+          発送日の目安
+        %td
+          4-7日で発送
+
+    .mainBox__btns
+      %ul.favoritBtn
+        = icon("fa","star",class:"star__icon")
+        %li.text
+          お気に入り 0
+      %ul.reportBtn
+        = icon("fa","flag",class:"flag__icon")
+        %li.text
+          不適切な商品の通報
+
+  .commentBox
+    %textarea{type: "text",class:"comment__form"}
+    .commentBox__Info
+      .commentBox__Info__text
+      相手のことを考え丁寧なコメントを心がけましょう。
+      %br
+      不快な言葉遣いなどは利用制限や退会処分となることがあります。
+    %button{type: "submit",value:"コメントする",class:"commentBox__btn"}
+      = icon("fa","comment",class:"comment__icon")
+      コメントする
+
+  %ul.page
+    %li.page__front
+      = link_to "#" do
+        = icon("fa","chevron-left")
+        前の商品
+    %li.page__back
+      = link_to "#" do
+        後ろの商品
+        = icon("fa","chevron-right",class:"navi__icon")
+
+= render "shared/banner"
+
+= render "shared/footer"

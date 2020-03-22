@@ -1,0 +1,49 @@
+%header
+  .headInner
+    .headInner__Head
+      .headInner__Head__title
+        =link_to root_path do
+          = image_tag "logo.png"
+      .headInner__Head__searchBox
+        %input{type: "text",placeholder: "キーワードから探す",size:"100",class:"searchBox__input"}
+        %button{type: "submit"}
+          = icon('fa','search',class:"searchBox__icon")
+          
+    .headInner__Foot
+      %ul.headInner__Foot__left
+        %li.headInner__Foot__left__category
+          #categoryBtn カテゴリー
+          %ul.dropDown
+            %li.dropDown-list
+              レディース
+              %ul.dropDown
+                %li.dropDown-list-cal
+                  トップス
+                  %ul.dropDown
+                    %li.dropDown-list-cal
+                      Tシャツ/カットソー(半袖/袖なし)
+                    %li.dropDown-list-cal
+                      Tシャツ/カットソー(七分/長袖)
+                    %li.dropDown-list-cal
+                      シャツ/ブラウス(半袖/袖なし)
+                %li.dropDown-list-cal
+                  ジャケット/アウター
+                %li.dropDown-list-cal
+                  パンツ
+            %li.dropDown-list
+              メンズ
+            %li.dropDown-list
+              ベビー・キッズ
+            %li.dropDown-list
+              インテリア・住まい・小物
+            %li.dropDown-list
+              本・音楽・ゲーム
+            %li.dropDown-list
+              おもちゃ・ホビー・グッズ
+        %li.headInner__Foot__left__brand
+          ブランド
+      %ul.headInner__Foot__right
+        %li.headInner__Foot__right__login
+          ログイン
+        %li.headInner__Foot__right__signUp
+          新規会員登録
