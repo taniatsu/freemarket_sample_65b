@@ -10,7 +10,7 @@
         新規会員登録
       .signupMain__inner.signupMain__inner--registrationForm
         .signupMain__content
-          = link_to '/signup/registration', class: 'signupMain__btnDefault signupMain__btnMail' do
+          = link_to registration_signup_index_path, class: 'signupMain__btnDefault signupMain__btnMail' do
             = icon 'far', 'envelope'
             メールアドレスで登録する
           %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--facebook

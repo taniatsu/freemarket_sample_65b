@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 20200321023845) do
     t.index ["user_id"], name: "index_addresses_on_user_id", using: :btree
   end
 
+  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nickname",                            null: false
     t.string   "email",                               null: false
@@ -45,16 +52,6 @@ ActiveRecord::Schema.define(version: 20200321023845) do
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
-end
 
   add_foreign_key "addresses", "users"
-ActiveRecord::Schema.define(version: 20200315092754) do
-
-  create_table "likes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id"
-    t.integer  "item_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
 end
