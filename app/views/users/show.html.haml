@@ -1,6 +1,7 @@
+= render "shared/header"
 %main
   .commonContents
-    = render "commom/sub_block"
+    = render "shared/sub_block"
     .mainBlock
       .myPage
         %h2.mainBlock__ttl
@@ -30,4 +31,5 @@
           -# = image_tag "logo.png"
           %p.delt__contents-item_status
             過去に取引した商品はございません。
-        
+= render "shared/banner"
+= render "shared/footer"
