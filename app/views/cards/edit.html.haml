@@ -1,0 +1,92 @@
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+    .mainBlock
+      %h2.mainBlock__ttl
+        クレジットカード情報入力
+      .mainBlock__content
+        .formArea
+          = form_tag('/cards', method: :post, action: "create", id: 'charge-form',  name: "inputForm") do
+            .formArea__num
+              -# = c.label :カード番号, class: '.form__txt'
+              %p.form__txt
+                カード番号
+                %span.must
+                  必須
+              = text_field_tag "number", "", class: 'formArea-inputNum formArea-inputDef', placeholder: '半角数字のみ',maxlength: "16", type: "text", id: "card_number"
+              -# %input.formArea-inputNum.formArea-inputDef{:name => "number", :placeholder => "半角数字のみ", :type => "text", :maxlength=> "16"}/
+              %ul.cardsLists
+                %li.cardList
+                  = image_tag "visa.svg", class: "visa compLogo"
+                %li.cardList
+                  = image_tag "master-card.svg", class: "master-card compLogo"
+                %li.cardList
+                  = image_tag "saison-card.svg", class: "saison-card compLogo"
+                %li.cardList
+                  = image_tag "jcb.svg", class: "jcb compLogo"
+                %li.cardList
+                  = image_tag "american_express.svg", class: "american_express compLogo"
+                %li.cardList
+                  = image_tag "dinersclub.svg", class: "dinersclub compLogo"
+                %li.cardList
+                  = image_tag "discover.svg", class: "discover compLogo"
+            .formArea__expiration
+              %p.form__txt
+                有効期限
+                %span.must
+                  必須
+              .formArea__expiration-month-year
+                %p.formArea__expiration-month
+                  %select.formArea-inputDef#exp_month{name: "exp_month", type: "text"}
+                    %option{value: ""} --
+                    %option{value: "1"}01
+                    %option{value: "2"}02
+                    %option{value: "3"}03
+                    %option{value: "4"}04
+                    %option{value: "5"}05
+                    %option{value: "6"}06
+                    %option{value: "7"}07
+                    %option{value: "8"}08
+                    %option{value: "9"}09
+                    %option{value: "10"}10
+                    %option{value: "11"}11
+                    %option{value: "12"}12
+                    %i
+                      = icon('fas', 'chevron-down')
+                  %span 月
+                %p.formArea__expiration-year
+                  %select.formArea-inputDef#exp_year{name: "exp_year", type: "text"}
+                    %option{value: ""} --
+                    %option{value: "2019"}19
+                    %option{value: "2020"}20
+                    %option{value: "2021"}21
+                    %option{value: "2022"}22
+                    %option{value: "2023"}23
+                    %option{value: "2024"}24
+                    %option{value: "2025"}25
+                    %option{value: "2026"}26
+                    %option{value: "2027"}27
+                    %option{value: "2028"}28
+                    %option{value: "2029"}29
+                    %i
+                      = icon('fas', 'chevron-down')
+                  %span  年
+            .formArea__securityCode
+              %p.form__txt
+                セキュリティコード
+                %span.must
+                  必須
+              = text_field_tag "cvc", "", class: "formArea__securityCode-code formArea-inputDef", placeholder: "カード背面4桁もしくは3桁の番号", maxlength: "4", id: "cvc"
+              -# %input.formArea__securityCode-code.formArea-inputDef{:name => "code", :placeholder => "カード背面4桁もしくは3桁の番号", :type => "text", :maxlength=> "16"}/
+              %p.formArea__securityCode-question
+                カード裏面の番号とは？
+
+            .formArea__bt
+              = submit_tag "追加する", id: "token_submit", class: "formArea__btn"
+                
+              -# %btn.formArea__btnItself
+                追加する
+        
+= render "shared/banner"
+= render "shared/footer"
