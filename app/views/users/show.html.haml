@@ -1,0 +1,35 @@
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+    .mainBlock
+      .myPage
+        %h2.mainBlock__ttl
+          マイページ
+        .myPage__status
+          .myPage__status-inner
+            %ul.myPage__status-lists
+              %li.myPage__status-list
+                ユーザー名：テストさん
+              %li.myPage__status-list
+                評価：テスト
+              %li.myPage__status-list
+                出品数：テスト
+      .boughtItems
+        %h2.mainBlock__ttl
+          購入した商品
+        .item_status
+          %p.tabs.dealing.active
+            取引中
+          %p.tabs.delt
+            過去の取引
+        .dealing__contents
+          -# = image_tag "logo.png"
+          %p.dealing__contents-item_status.contentOn
+            取引中の商品はございません。
+        .delt__contents
+          -# = image_tag "logo.png"
+          %p.delt__contents-item_status
+            過去に取引した商品はございません。
+= render "shared/banner"
+= render "shared/footer"

@@ -1,0 +1,19 @@
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+    .mainBlock
+      %h2.mainBlock__ttl
+        支払い方法
+      .mainBlock__content
+        .mainBlock__content-inner
+          %h3.mainBlock__subTtl クレジットカード一覧
+          .card__payment__list
+          %form.card__payment__content
+          .card__list
+            .card__list__picture  
+          .card__number 
+            = "**** **** **** "
+          .expire__date 
+        .payQuestion
+          = link_to "支払い方法について", edit_card_path(1)
