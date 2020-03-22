@@ -1,0 +1,104 @@
+.signupBody
+  %header.signupHeader
+    %h1
+      = link_to root_path do
+        = image_tag 'logo.png'
+    %nav.signupHeader__progressBar.signupHeader__bar
+      %ol.clearfix
+        %li.signupHeader__list.signupHeader__list--through
+          会員情報
+          .signupHeader__progressStatus
+        %li.signupHeader__list.signupHeader__list--passed
+          電話番号入力
+          .signupHeader__progressStatus
+        %li.signupHeader__list.signupHeader__list--active
+          お届け先住所入力
+          .signupHeader__progressStatus
+        %li.signupHeader__list
+          完了
+          .signupHeader__progressStatus
+  %main.signupMain
+    %section.signupMain__container
+      %h2.signupMain__head.signupMain__head--registration
+        お届け先住所入力
+      .signupMain__inner.signupMain__inner--registrationForm
+        = form_for @user, local: true, url: done_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+          .signupMain__content
+            .signupMain__formGroup
+              = f.label '郵便番号'
+              %span.signupMain__formRequire 必須
+              = f.text_field :nickname, { class: 'signupMain__inputDefault', placeholder: '例) 123-4567' }
+            .signupMain__formGroup
+              = f.label '都道府県'
+              %span.signupMain__formRequire 必須
+              %br
+              %select.signupMain__selectBox
+                %option{value: "0"} ーー
+                %option{value: "1"} 北海道
+                %option{value: "2"} 青森県
+                %option{value: "3"} 岩手県
+                %option{value: "4"} 宮城県
+                %option{value: "5"} 秋田県
+                %option{value: "6"} 山形県
+                %option{value: "7"} 福島県
+                %option{value: "8"} 茨城県
+                %option{value: "9"} 栃木県
+                %option{value: "10"} 群馬園
+                %option{value: "12"} 埼玉県
+                %option{value: "13"} 千葉県
+                %option{value: "14"} 東京都
+                %option{value: "15"} 神奈川県
+                %option{value: "16"} 新潟県
+                %option{value: "17"} 富山県
+                %option{value: "18"} 石川県
+                %option{value: "19"} 福井県
+                %option{value: "20"} 山梨県
+                %option{value: "21"} 長野県
+                %option{value: "22"} 岐阜県
+                %option{value: "23"} 静岡県
+                %option{value: "24"} 愛知県
+                %option{value: "25"} 三重県
+                %option{value: "26"} 滋賀県
+                %option{value: "27"} 京都府
+                %option{value: "28"} 大阪府
+                %option{value: "29"} 兵庫県
+                %option{value: "30"} 奈良県
+                %option{value: "31"} 和歌山県
+                %option{value: "32"} 鳥取県
+                %option{value: "33"} 島根県
+                %option{value: "34"} 岡山県
+                %option{value: "35"} 広島県
+                %option{value: "36"} 山口県
+                %option{value: "37"} 徳島県
+                %option{value: "38"} 香川県
+                %option{value: "39"} 愛媛県
+                %option{value: "40"} 高知県
+                %option{value: "41"} 福岡県
+                %option{value: "42"} 佐賀県
+                %option{value: "43"} 長崎県
+                %option{value: "44"} 熊本県
+                %option{value: "45"} 大分県
+                %option{value: "46"} 宮崎県
+                %option{value: "47"} 鹿児島県
+                %option{value: "48"} 沖縄県
+                %option{value: "49"} 未定
+            .signupMain__formGroup
+              = f.label '市区町村'
+              %span.signupMain__formRequire 必須
+              = f.text_field :nickname, { class: 'signupMain__inputDefault', placeholder: '例) 横浜市緑区' }
+            .signupMain__formGroup
+              = f.label '番地'
+              %span.signupMain__formRequire 必須
+              = f.text_field :nickname, { class: 'signupMain__inputDefault', placeholder: '例) 青山1-1-1' }
+            .signupMain__formGroup
+              = f.label '建物名'
+              %span.signupMain__formRequire 任意
+              = f.text_field :nickname, { class: 'signupMain__inputDefault', placeholder: '例) 柳ビル103' }
+            .signupMain__formGroup
+              = f.label '電話'
+              %span.signupMain__formRequire 任意
+              = f.text_field :nickname, { class: 'signupMain__inputDefault', placeholder: '例) 09012345678' }
+            .signupMain__formGroup
+            %button.signupMain__btnDefault.signupMain__btnRed
+              登録を完了する
+  = render 'signup/footer'

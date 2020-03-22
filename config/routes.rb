@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+  
+  devise_for :users
+  
+  resources :signup do
+    collection do
+      get 'registration'
+      get 'sms_confirmation'
+      # get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
+      get 'address'
+      get 'done'
+    end
+  end
+  
   # ルート指定
   root 'tops#index'
   
