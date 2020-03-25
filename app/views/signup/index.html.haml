@@ -1,0 +1,23 @@
+.signupBody
+  %header.signupHeader
+    %h1
+      =link_to "root_path" do
+        =image_tag 'logo.png'
+
+  %main.signupMain
+    %section.signupMain__container
+      %h2.signupMain__head.signupMain__head--registration
+        新規会員登録
+      .signupMain__inner.signupMain__inner--registrationForm
+        .signupMain__content
+          = link_to registration_signup_index_path, class: 'signupMain__btnDefault signupMain__btnMail' do
+            = icon 'far', 'envelope'
+            メールアドレスで登録する
+          %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--facebook
+            = icon 'fab', 'facebook-square'
+            Facebookで登録する
+          %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--google
+            = icon 'fab', 'google'
+            Googleで登録する
+
+  = render 'signup/footer'

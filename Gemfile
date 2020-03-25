@@ -69,3 +69,9 @@ gem 'haml-rails'
 gem "font-awesome-sass"
 # ancestryの導入
 gem 'ancestry'
+
+# deviseの導入
+gem 'devise'
+
+# active hashの導入
+gem 'active_hash'
