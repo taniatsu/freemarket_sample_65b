@@ -2,11 +2,11 @@ Rails.application.routes.draw do
   
   devise_for :users
   
+  #ユーザー登録のルーティング
   resources :signup do
     collection do
       get 'registration'
       get 'sms_confirmation'
-      # get 'sms_confirmation/sms', to: 'signup#sms_confirmation_sms'
       get 'address'
       get 'done'
     end

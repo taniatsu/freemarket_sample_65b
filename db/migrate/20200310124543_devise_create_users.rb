@@ -14,12 +14,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.date :month,                null: false
       t.date :day,                  null: false
       t.integer :tel
-      t.string :zipcode,            null: false
-      t.string :prefecture,         null: false
-      t.string :city,               null: false
-      t.string :address,            null: false
-      t.string :building
-      t.string :tel_num
       t.string :encrypted_password, null: false, default: ""
 
       ## Recoverable

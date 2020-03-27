@@ -276,6 +276,49 @@ a {
       }       
     }
   }
+  &__birthdaySelectWrap {
+    .signupMain__selectWrap {
+      display: inline-block;
+      width: calc(30% - 17px);
+      &:first-of-type {
+        width: calc(34% - 17px);
+      }
+      .fa-chevron-down{
+        right: 12px;
+      }
+      select{
+        padding: 0 10px;
+      }
+      &+span {
+        margin: 0 2px;
+      }
+    }
+    select {
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+  }
+  &__selectWrap {
+    margin: 8px 0 0;
+    position: relative;
+    background: #fff;
+    .fa-chevron-down{
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      z-index: 2;
+      color: #888;
+      font-size: 8px;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+    }
+  }
   &__selectBox {
     width: 100%;
     height: 48px;
@@ -296,18 +339,6 @@ a {
   }
 }
 
-.year, .month, .day {
-  width: calc(34% - 30px);
-  height: 48px;
-  padding: 0 16px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-  background: 0;
-  font-size: 16px;
-  line-height: 1.5;
-  margin: 8px 0 0;
-  cursor: pointer;
-}
 .signupFooter {
   right: 0;
   bottom: 0;
@@ -389,6 +420,14 @@ a {
   .signupMain__subHead {
     font-size: 16px;
     font-weight: 600;
+  }
+  .signupMain__birthdaySelectWrap {
+    .signupMain__selectWrap {
+      width: 76px;
+      &:first-of-type {
+        width: 76px;
+      }
+    }
   }
 
   .signupFooter {

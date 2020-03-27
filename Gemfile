@@ -73,3 +73,6 @@ gem 'devise'
 
 # active hashの導入
 gem 'active_hash'
+
+#Could not find a JavaScript runtimeのエラーに対して導入
+gem 'therubyracer'
