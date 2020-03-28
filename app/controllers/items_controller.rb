@@ -3,14 +3,9 @@ class ItemsController < ApplicationController
   before_action :testset, only:[:show]
 
   def index
-    @items = Item.all
-    # @itemttt = Item.new
-    
-    @image = @item.images
+    @items = Item.all 
+    # if @items.status = 0
 
-    @images = Image.all
-    # @images = @item.images.find(1)
-    # @imagesTest = @images.find(1)
   end
   
   def show
@@ -25,7 +20,6 @@ class ItemsController < ApplicationController
   private
   def testset
     @item = Item.find(params[:id])
-    # @image= Image.find(params[:image_id])
   end
 
 end

@@ -47,10 +47,12 @@
     .itemIndex__productList
       - @items.each do |item|
         .itemIndex__productList__items
+          -if item.status == "0"
+            .itemIndex__productList__items__sold
+              SOLD
           = link_to "#" do
-            - @images.each do |image|
-              = image.url
-            -# = image_tag "free_img2.jpg"
+            -# = image_tag "free_img1.jpg"
+            =item.thumbnail
             .itemIndex__productList__items__text
               %h8.itemIndex__productList__items__text__name
                 = item.name
