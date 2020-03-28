@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :items do
     resources :likes
     resources :comments
+    resources :images
     collection do
       get 'confirm'
     end

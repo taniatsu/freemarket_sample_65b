@@ -45,52 +45,24 @@
               水着
 
     .itemIndex__productList
-      .itemIndex__productList__items
-        = link_to "#" do
-          = image_tag "free_img1.jpg"
-          .itemIndex__productList__items__text
-            %h8.itemIndex__productList__items__text__name
-              商品名
-            %ul.itemIndex__productList__items__text__box
-              %li.itemIndex__productList__items__text__box__price
-                11000円
-              %li.itemIndex__productList__items__text__box__likes
-                = icon('fa','star',class:"productList__icon")
-                .itemIndex__productList__items__text__box__likes__volume
-                  20
-            %p.itemIndex__productList__items__text__tax
-              (税込)
-      .itemIndex__productList__items
-        = link_to "#" do
-          = image_tag "free_img1.jpg"
-          .itemIndex__productList__items__text
-            %h8.itemIndex__productList__items__text__name
-              商品名
-            %ul.itemIndex__productList__items__text__box
-              %li.itemIndex__productList__items__text__box__price
-                11000円
-              %li.itemIndex__productList__items__text__box__likes
-                = icon('fa','star',class:"productList__icon")
-                .itemIndex__productList__items__text__box__likes__volume
-                  20
-            %p.itemIndex__productList__items__text__tax
-              (税込)
-      .itemIndex__productList__items
-        = link_to "#" do
-          = image_tag "free_img1.jpg"
-          .itemIndex__productList__items__text
-            %h8.itemIndex__productList__items__text__name
-              商品名
-            %ul.itemIndex__productList__items__text__box
-              %li.itemIndex__productList__items__text__box__price
-                11000円
-              %li.itemIndex__productList__items__text__box__likes
-                = icon('fa','star',class:"productList__icon")
-                .itemIndex__productList__items__text__box__likes__volume
-                  20
-            %p.itemIndex__productList__items__text__tax
-              (税込)
-
+      - @items.each do |item|
+        .itemIndex__productList__items
+          = link_to "#" do
+            - @images.each do |image|
+              = image.url
+            -# = image_tag "free_img2.jpg"
+            .itemIndex__productList__items__text
+              %h8.itemIndex__productList__items__text__name
+                = item.name
+              %ul.itemIndex__productList__items__text__box
+                %li.itemIndex__productList__items__text__box__price
+                  = "#{item.price}円"
+                %li.itemIndex__productList__items__text__box__likes
+                  = icon('fa','star',class:"productList__icon")
+                  .itemIndex__productList__items__text__box__likes__volume
+                    20
+              %p.itemIndex__productList__items__text__tax
+                (税込)
 
 = render "shared/banner"
 = render "shared/footer"
