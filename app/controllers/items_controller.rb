@@ -3,9 +3,7 @@ class ItemsController < ApplicationController
   before_action :testset, only:[:show]
 
   def index
-    @items = Item.all 
-    # if @items.status = 0
-
+    @items = Item.all.order(id: "DESC")
   end
   
   def show
