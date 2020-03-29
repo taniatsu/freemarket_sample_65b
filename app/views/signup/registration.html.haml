@@ -23,7 +23,7 @@
       %h2.signupMain__head.signupMain__head--registration
         会員情報入力
       .signupMain__inner.signupMain__inner--registrationForm
-        = form_for @user, local: true, url: sms_confirmation_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+        = form_for @user, local: true, url: sms_confirmation_signup_index_path, method: :get, class: 'signupMain__inner signupMain__inner--registrationForm' do |f|
           .signupMain__content
             .signupMain__formGroup
               = f.label 'ニックネーム'

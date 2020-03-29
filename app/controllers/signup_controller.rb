@@ -10,6 +10,8 @@ class SignupController < ApplicationController
   def sms_confirmation
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
+    session[:password] = user_params[:password]
+    session[:password_confirmation] = user_params[:password_confirmation]
     session[:last_name] = user_params[:last_name]
     session[:first_name] = user_params[:first_name]
     session[:last_jp_name] = user_params[:last_jp_name]
@@ -35,6 +37,8 @@ class SignupController < ApplicationController
     @user = User.new(
     nickname: session[:nickname],
     email: session[:email],
+    password: session[:password],
+    password_confirmation: session[:password_confirmation],
     last_name: session[:last_name],
     first_name: session[:first_name],
     last_jp_name: session[:last_jp_name],
@@ -50,6 +54,13 @@ class SignupController < ApplicationController
     building: session[:building],
     telephone: session[:telephone]
     )
+    if @user.save
+      # ログインするための情報を保管
+      session[:id] = @user.id
+      redirect_to done_signup_index_path
+    else
+      render '/signup/registration'
+    end
   end
 
   def done
@@ -62,6 +73,8 @@ class SignupController < ApplicationController
     params.require(:user).permit(
       :nickname,
       :email,
+      :password, 
+      :password_confirmation, 
       :last_name,
       :first_name,
       :last_jp_name,
