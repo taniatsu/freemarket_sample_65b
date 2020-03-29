@@ -1,0 +1,49 @@
+.myPage{
+  width: 100%;
+  height: 200px;
+  &__status{
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    &-inner{
+      max-width: 343px;
+      margin: 0 auto;
+    }
+  }
+}
+.boughtItems{
+  width: 100%;
+  height: 500px;
+  background: #fff;
+  .item_status{
+    display: flex;
+    justify-content: center;
+    p{
+      background: #d1d1d1;
+      width: 50%;
+      font-size: 16px;
+      text-align: center;
+      line-height: 72px;
+    }
+    .active{
+      background: #fff;
+      border-top: 1px solid var(--main-color);;
+    }
+  }
+  .dealing__contents,.delt__contents{
+    p{
+      color: #d1d1d1;
+      text-align: center;
+      width: 300px;
+      margin: 150px auto;
+      display: none;
+    }
+    .contentOn{
+      display: block;
+    }
+  }
+  
+  // .contentOff{
+  //   display: none;
+  // }
+}

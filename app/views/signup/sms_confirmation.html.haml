@@ -1,0 +1,41 @@
+.signupBody
+  %header.signupHeader
+    %h1
+      = link_to root_path do
+        = image_tag 'logo.png'
+    %nav.signupHeader__progressBar.signupHeader__bar
+      %ol.clearfix
+        %li.signupHeader__list.signupHeader__list--through
+          会員情報
+          .signupHeader__progressStatus
+        %li.signupHeader__list.signupHeader__list--active
+          電話番号入力
+          .signupHeader__progressStatus
+        %li.signupHeader__list
+          お届け先住所入力
+          .signupHeader__progressStatus
+        %li.signupHeader__list
+          完了
+          .signupHeader__progressStatus
+  %main.signupMain
+    %section.signupMain__container
+      %h2.signupMain__head.signupMain__head--registration
+        電話番号の確認
+      .signupMain__inner.signupMain__inner--registrationForm
+        = form_for @user, local: true, url: address_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+          .signupMain__content
+            .signupMain__formGroup
+              = f.label '携帯電話の電話番号'
+              %span.signupMain__formRequire 必須
+              = f.text_field :tel, { class: 'signupMain__inputDefault', placeholder: '携帯電話の番号を入力' }
+            .signupMain__formGroup
+              = f.submit'次へ進む', class: 'signupMain__btnDefault signupMain__btnRed'
+            %p.signupMain__text2
+              ※電話番号は本人確認や不正利用防止のために利用します。他のユーザーに公開されることはありません。
+            .signupMain__formGroup
+              .signupMain__textRight
+                %p
+                  = link_to '#', target: '_blank' do
+                    電話番号の確認が必要な理由
+                    = icon 'fas', 'chevron-right'
+  = render 'signup/footer'
