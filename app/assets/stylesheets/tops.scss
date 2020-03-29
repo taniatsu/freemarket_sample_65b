@@ -332,7 +332,10 @@
       margin-left: -30px;
     }
     }
-
+    .productList__items__item:hover{
+      opacity: 0.8;
+      transition-duration: 0.3s;
+    }
     a {
       text-decoration: none;
       color: black;
@@ -343,7 +346,7 @@
       display: flex;
       height: 150px;
       vertical-align: bottom;
-    } 
+    }
 
     &__item__text {
       background-color: white;

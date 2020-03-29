@@ -47,7 +47,7 @@
     .itemIndex__productList
       - @items.each do |item|
         .itemIndex__productList__items
-          -if item.status == "0"
+          -if item.buyer_id > 0
             .itemIndex__productList__items__sold
               SOLD
           = link_to "#" do

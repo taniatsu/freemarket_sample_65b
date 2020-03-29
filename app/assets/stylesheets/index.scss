@@ -44,17 +44,16 @@
     margin: auto;
     padding: 50px 0;
     display: grid;
-    grid-template-rows: 33% 33% 33%;
+    grid-template-rows: 22% 22% 22%;
     grid-template-columns: 30% 30% 30%;
     grid-gap: 5%;
     &__items{
       width: 100%;
+      position: relative;
       &__sold{
-      // transform: rotate(-30deg);
+      transform: rotate(-30deg);
       font-size: 28px;
       text-align: center;
-      width: 0;
-      height: 0;
       border-width: 200px 200px 0 0;
       background-color: hotpink;
       color: #fff;
@@ -62,7 +61,7 @@
       font-weight: 600;
       width: 150px;
       position: absolute;
-      // margin-left: -30px;
+      margin-left: -30px;
       }
 
       a{
