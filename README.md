@@ -67,7 +67,8 @@
 |Column|Type|Options|
 |------|----|-------|
 |user|references|null: false, foreign_key: true|
-|brand|references|null: false, foreign_key: true|
+|brand|string||
+|thumbnail|string||
 |category|references|null: false, foreign_key: true|
 |name|string|null: false|
 |explanation|text|null: false|
