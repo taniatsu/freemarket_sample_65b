@@ -1,0 +1,24 @@
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+    .mainBlock
+      %h2.mainBlock__ttl
+        支払い方法
+      .mainBlock__content
+        .mainBlock__content-inner
+          %h3.mainBlock__subTtl クレジットカード一覧
+          .add__card
+            .payment__list__content
+              = link_to edit_card_path(1), class: "formArea__btn" do
+                %i
+                = icon('fas', 'credit-card', class: "card__icon")
+                クレジットカードを追加する
+              -# = link_to edit_card_path(current_user), class: "formArea__btn" do
+              -#   %i
+              -#   = icon('fas', 'credit-card', class: "card__icon")
+              -#   クレジットカードを追加する
+        .payQuestion
+          = link_to "支払い方法について", edit_card_path(1)
+= render "shared/banner"
+= render "shared/footer"

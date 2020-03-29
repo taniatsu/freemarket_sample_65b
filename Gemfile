@@ -67,3 +67,11 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 # font-awesomeの導入
 gem "font-awesome-sass"
+# ancestryの導入
+gem 'ancestry'
+
+# deviseの導入
+gem 'devise'
+
+# active hashの導入
+gem 'active_hash'

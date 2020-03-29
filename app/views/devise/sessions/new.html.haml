@@ -1,0 +1,29 @@
+.signupBody
+  %header.signupHeader
+    %h1
+      =link_to "root_path" do
+        =image_tag 'logo.png'
+
+  %main.signupMain
+    .loginPanel
+      .loginNoAccount
+        %p アカウントをお持ちでない方はこちら
+        = link_to '新規会員登録', signup_index_path
+      .loginFormInner
+        %button.btnDefault.btnSns.btnSnsFacebook
+          = icon 'fab', 'facebook-square'
+          Facebookで登録する
+        %button.btnDefault.btnSns.btnSnsGoogle
+          = icon 'fab', 'google'
+          Googleで登録する
+      %form{ action: '/login/', method: 'POST', novalidate: 'novalidate' }
+        .loginFormInner
+          .formGroup
+            %input.loginInputText.inputDefault{ type: 'email', name: 'email', placeholder: 'メールアドレス' }
+          .formGroup
+            %input.loginInputText.inputDefault{ type: 'password', name: 'password', placeholder: 'パスワード' }
+          %button.loginSubmit.btnDefault.btnRed{ type: 'submit' }
+            ログイン
+          = link_to '#' do
+            パスワードをお忘れの方
+  = render 'signup/footer'
