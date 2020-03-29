@@ -223,8 +223,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  ancestry
   active_hash
+  ancestry
   byebug
   capistrano
   capistrano-bundler
