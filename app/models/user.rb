@@ -3,10 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-  extend ActiveHash::Associations::ActiveRecordExtensions
-    belongs_to_active_hash :year
-    belongs_to_active_hash :month
-    belongs_to_active_hash :day
+  
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
@@ -19,4 +16,9 @@ class User < ApplicationRecord
   validates :first_name, presence: true, length: { maximum: 20 }
   validates :last_jp_name, presence: true, length: { maximum: 20 }, format: { with: VALID_KATAKANA_REGEX }
   validates :first_jp_name, presence: true, length: { maximum: 20 }, format: { with: VALID_KATAKANA_REGEX }
+
+  extend ActiveHash::Associations::ActiveRecordExtensions
+    belongs_to_active_hash :year
+    belongs_to_active_hash :month
+    belongs_to_active_hash :day
 end

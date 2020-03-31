@@ -1,5 +1,6 @@
 class SignupController < ApplicationController
-  
+  before_action :validates_must, only: :sms_confirmation
+
   def index
   end
 
@@ -8,18 +9,37 @@ class SignupController < ApplicationController
   end
 
   def sms_confirmation
-    session[:nickname] = user_params[:nickname]
-    session[:email] = user_params[:email]
+    # session[:nickname] = user_params[:nickname]
+    # session[:email] = user_params[:email]
     session[:password] = user_params[:password]
     session[:password_confirmation] = user_params[:password_confirmation]
-    session[:last_name] = user_params[:last_name]
-    session[:first_name] = user_params[:first_name]
-    session[:last_jp_name] = user_params[:last_jp_name]
-    session[:first_jp_name] = user_params[:first_jp_name]
+    # session[:last_name] = user_params[:last_name]
+    # session[:first_name] = user_params[:first_name]
+    # session[:last_jp_name] = user_params[:last_jp_name]
+    # session[:first_jp_name] = user_params[:first_jp_name]
     session[:year_id] = user_params[:year_id]
     session[:month_id] = user_params[:month_id]
     session[:day_id] = user_params[:day_id]
     @user = User.new
+  end
+
+  def validates_must
+    session[:nickname] = user_params[:nickname]
+    session[:email] = user_params[:email]
+    session[:last_name] = user_params[:last_name]
+    session[:first_name] = user_params[:first_name]
+    session[:last_jp_name] = user_params[:last_jp_name]
+    session[:first_jp_name] = user_params[:first_jp_name]
+
+    @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      last_name: session[:last_name],
+      first_name: session[:first_name],
+      last_jp_name: session[:last_jp_name],
+      first_jp_name: session[:first_jp_name]
+    )
+    render '/signup/registration' unless @user.valid?
   end
 
   def address
@@ -66,6 +86,8 @@ class SignupController < ApplicationController
   def done
     sign_in User.find(session[:id]) unless user_signed_in?
   end
+
+  
 
   private
 # 許可するキーを設定します
