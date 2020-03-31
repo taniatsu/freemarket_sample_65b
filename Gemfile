@@ -76,3 +76,6 @@ gem 'active_hash'
 
 #Could not find a JavaScript runtimeのエラーに対して導入
 gem 'therubyracer'
+
+#エラーメッセージ日本語化
+gem 'rails-i18n'

@@ -22,7 +22,7 @@
       %h2.signupMain__head.signupMain__head--registration
         電話番号の確認
       .signupMain__inner.signupMain__inner--registrationForm
-        = form_for @user, local: true, url: address_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm', novalidate: 'novalidate' do |f|
+        = form_for @user, url: address_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm' do |f|
           .signupMain__content
             .signupMain__formGroup
               = f.label '携帯電話の電話番号'

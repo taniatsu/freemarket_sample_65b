@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200326140621) do
+ActiveRecord::Schema.define(version: 20200329121507) do
 
   create_table "addresses", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id"
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 20200326140621) do
     t.integer  "year_id",                             null: false
     t.integer  "month_id",                            null: false
     t.integer  "day_id",                              null: false
-    t.integer  "tel"
+    t.string   "tel"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
