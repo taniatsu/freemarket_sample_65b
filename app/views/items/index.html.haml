@@ -50,7 +50,7 @@
           -if item.buyer_id > 0
             .itemIndex__productList__items__sold
               SOLD
-          = link_to "#" do
+          = link_to "items/#{item.id}" do
             = image_tag "free_img1.jpg"
             -# =item.thumbnail
             .itemIndex__productList__items__text

@@ -75,3 +75,6 @@ gem 'devise'
 
 # active hashの導入
 gem 'active_hash'
+
+# ページネーション導入
+gem 'kaminari'
