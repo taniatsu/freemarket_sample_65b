@@ -16,12 +16,12 @@
         %button.btnDefault.btnSns.btnSnsGoogle
           = icon 'fab', 'google'
           Googleで登録する
-      %form{ action: '/login/', method: 'POST', novalidate: 'novalidate' }
+      %form{ action: 'user_session_path', method: 'POST' }
         .loginFormInner
           .formGroup
             %input.loginInputText.inputDefault{ type: 'email', name: 'email', placeholder: 'メールアドレス' }
-          .formGroup
-            %input.loginInputText.inputDefault{ type: 'password', name: 'password', placeholder: 'パスワード' }
+          -# .formGroup
+          -#   %input.loginInputText.inputDefault{ type: 'password', name: 'password', placeholder: 'パスワード' }
           %button.loginSubmit.btnDefault.btnRed{ type: 'submit' }
             ログイン
           = link_to '#' do

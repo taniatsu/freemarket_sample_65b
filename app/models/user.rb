@@ -11,7 +11,6 @@ class User < ApplicationRecord
 
   # registrationの項目
   validates :nickname, presence: true, length: { maximum: 12 }
-  validates :email, presence: true, allow_blank: true
   validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX,  message: 'は不適切です'}
   validates :last_name, presence: true
   validates :first_name, presence: true
@@ -21,8 +20,8 @@ class User < ApplicationRecord
   validates :month_id, presence: true
   validates :day_id, presence: true
   validates :password, presence: true, allow_blank: true
-  validates :password, length: { minimum: 7 }, format: { with: VALID_PASSWORD_REGEX }
-  validates :password_confirmation, presence: true, length: { minimum: 7 }, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, length: { in: 7..128 }, format: { with: VALID_PASSWORD_REGEX }
+  validates :password_confirmation, presence: true, length: { in: 7..128 }, format: { with: VALID_PASSWORD_REGEX }
   # sms_comfirmationの項目
   validates :tel, presence: true, format: { with: VALID_PHONE_REGEX }
   # addressの項目

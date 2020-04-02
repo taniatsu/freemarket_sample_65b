@@ -7,4 +7,16 @@ ja:
         nickname: ニックネーム
         email: メールアドレス
         password: パスワード
-        password_confirmation: 確認用パスワード
+        password_confirmation: パスワード（確認）
+        last_name: 姓
+        first_name: 名
+        last_jp_name: 姓カナ
+        first_jp_name: 名カナ
+        year_id: 年
+        month_id: 月
+        day_id: 日
+        tel: 電話番号
+        prefecture_id: 県名
+        city: 市
+        address: 番地
+        telephone: 電話番号

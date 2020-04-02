@@ -150,6 +150,14 @@ a {
       line-height: 1.5;
     }
   }
+  &__errorText {
+    color: #ea352d;
+    line-height: 1.5;
+    font-size: 14px;
+    li{
+      margin-top: 8px;
+    }
+  }
   &__text1 {
     margin: 8px 0 0;
     color: #888;
@@ -245,6 +253,14 @@ a {
     label {
       font-weight: 600;
       display: inline-block;
+    } 
+    &--half {
+      .field_with_erros {
+        display: inline;
+        &:last-of-type .signupMain__inputDefult--half {
+          margin-right: 0;
+        }
+      }
     }
   }
   &__formRequire {

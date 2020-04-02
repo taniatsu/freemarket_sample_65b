@@ -28,19 +28,27 @@
               = f.label '郵便番号'
               %span.signupMain__formRequire 必須
               = f.text_field :zip_code, { class: 'signupMain__inputDefault', placeholder: '例) 123-4567' }
+              %ul.signupMain__errorText
+                = render partial: 'error-messages', locals: { user: @user, column: "zip_code"}
             .signupMain__formGroup
               = f.label '都道府県'
               %span.signupMain__formRequire 必須
               .signupMain__selectWrap
                 = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+                %ul.signupMain__errorText
+                  = render partial: 'error-messages', locals: { user: @user, column: "prefecture"}
             .signupMain__formGroup
               = f.label '市区町村'
               %span.signupMain__formRequire 必須
               = f.text_field :city, { class: 'signupMain__inputDefault', placeholder: '例) 横浜市緑区' }
+              %ul.signupMain__errorText
+                = render partial: 'error-messages', locals: { user: @user, column: "city"}
             .signupMain__formGroup
               = f.label '番地'
               %span.signupMain__formRequire 必須
               = f.text_field :address, { class: 'signupMain__inputDefault', placeholder: '例) 青山1-1-1' }
+              %ul.signupMain__errorText
+                = render partial: 'error-messages', locals: { user: @user, column: "address"}
             .signupMain__formGroup
               = f.label '建物名'
               %span.signupMain__formRequire 任意

@@ -44,7 +44,27 @@ class SignupController < ApplicationController
 
   def address
     session[:tel] = user_params[:tel]
-    @user = User.new
+    @user = User.new(
+      nickname: session[:nickname],
+      email: session[:email],
+      password: session[:password],
+      password_confirmation: session[:password_confirmation],
+      last_name: session[:last_name],
+      first_name: session[:first_name],
+      last_jp_name: session[:last_jp_name],
+      first_jp_name: session[:first_jp_name],
+      year_id: session[:year_id],
+      month_id: session[:month_id],
+      day_id: session[:day_id],
+      tel: '09012345678',
+      zip_code: '1234567',
+      prefecture_id: '1',
+      city: '札幌',
+      address: '中央区',
+      building: 'ビル',
+      telephone: '08098765432'
+    )
+    render '/signup/sms_confirmation' unless @user.valid?
   end
 
   def create

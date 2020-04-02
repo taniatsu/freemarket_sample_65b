@@ -28,6 +28,8 @@
               = f.label '携帯電話の電話番号'
               %span.signupMain__formRequire 必須
               = f.text_field :tel, { class: 'signupMain__inputDefault', placeholder: '携帯電話の番号を入力' }
+              %ul.signupMain__errorText
+                = render partial: 'error-messages', locals: { user: @user, column: "tel"}
             .signupMain__formGroup
               = f.submit'次へ進む', class: 'signupMain__btnDefault signupMain__btnRed'
             %p.signupMain__text2
