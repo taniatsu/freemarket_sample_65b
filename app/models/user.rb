@@ -10,7 +10,7 @@ class User < ApplicationRecord
   VALID_KATAKANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/
   VALID_PASSWORD_REGEX = /\A(?=.*?[a-zA-Z])(?=.*?\d)[a-zA-Z\d!@#\$%\^\&*\)\(+=._-]{7,128}\z/i
 
-  validates :nickname, presence: true, length: { maximum: 12 }
+  # validates :nickname, presence: true, length: { maximum: 12 }
   validates :email, presence: true, uniqueness: true, format: { with: VALID_EMAIL_REGEX }
   validates :last_name, presence: true, length: { maximum: 20 }
   validates :first_name, presence: true, length: { maximum: 20 }
