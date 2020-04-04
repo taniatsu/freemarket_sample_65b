@@ -1,5 +1,9 @@
 class ItemsController < ApplicationController
+
+
   def index
+    @items = Item.page(params[:page]).per(12)
+    @parents = Category.all.where(ancestry: nil)
   end
   
   def show
@@ -10,4 +14,9 @@ class ItemsController < ApplicationController
 
   def confirm
   end
+
+  private
+  def testset
+  end
+
 end
