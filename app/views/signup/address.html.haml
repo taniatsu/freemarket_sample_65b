@@ -33,10 +33,11 @@
             .signupMain__formGroup
               = f.label '都道府県'
               %span.signupMain__formRequire 必須
-              .signupMain__selectWrap
-                = f.collection_select :prefecture_id, Prefecture.all, :id, :name
-                %ul.signupMain__errorText
-                  = render partial: 'error-messages', locals: { user: @user, column: "prefecture"}
+              .signupMain__prefectureSelectWrap
+                .signupMain__selectWrap
+                  = f.collection_select :prefecture_id, Prefecture.all, :id, :name
+                  %ul.signupMain__errorText
+                    = render partial: 'error-messages', locals: { user: @user, column: "prefecture"}
             .signupMain__formGroup
               = f.label '市区町村'
               %span.signupMain__formRequire 必須

@@ -97,7 +97,13 @@ describe User do
       expect(user.errors[:addresss]).to include("を入力してください")
     end
 
-    it " nicknameが8文字以上であれば登録できないこと" do
+    it " nicknameが13文字以上であれば登録できないこと" do
+      user = build(:user, nickname: "aaaaaaaaaaaaa")
+      user.valid?
+      expect(user).to be_valid
+    end
+
+    it "nicknameが12文字以下では登録できること " do
       user = build(:user, nickname: "aaaaaaaaaaaa")
       user.valid?
       expect(user.errors[:nickname]).to include("は12文字以内で入力してください")
@@ -133,19 +139,6 @@ describe User do
       user.valid?
       expect(user.errors[:password]).to include("英数字を含めて入力してください")
     end
-
-    t "passwordとpassword_confirmationが一致していないと登録できない" do
-      user = build(:user, password: "a123456", password_confirmation: "a123456")
-      user.valid?
-      expect(user).to be_valid
-    end
-
-    it "passwordとpassword_confirmationが一致していないと登録できない" do
-      user = build(:user, password: "a123456", password_confirmation: "b987654")
-      user.valid?
-      expect(user.errors[:password_confirmation][0]).to include("とパスワードの入力が一致しません")
-    end
-
 
   end
 end

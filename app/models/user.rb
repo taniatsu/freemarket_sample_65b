@@ -14,16 +14,16 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX,  message: 'は不適切です'}
   validates :last_name, presence: true
   validates :first_name, presence: true
-  validates :last_jp_name, presence: true, format: { with: VALID_KATAKANA_REGEX }
-  validates :first_jp_name, presence: true, format: { with: VALID_KATAKANA_REGEX }
+  validates :last_jp_name, presence: true, format: { with: VALID_KATAKANA_REGEX, message: 'はカナ入力です' }
+  validates :first_jp_name, presence: true, format: { with: VALID_KATAKANA_REGEX, message: 'はカナ入力です' }
   validates :year_id, presence: true
   validates :month_id, presence: true
   validates :day_id, presence: true
   validates :password, presence: true, allow_blank: true
-  validates :password, length: { in: 7..128 }, format: { with: VALID_PASSWORD_REGEX }
-  validates :password_confirmation, presence: true, length: { in: 7..128 }, format: { with: VALID_PASSWORD_REGEX }
+  validates :password, length: { maximum: 7 }, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字で入力してください' }
+  validates :password_confirmation, presence: true, length: { maximum: 7 }, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字で入力してください' }
   # sms_comfirmationの項目
-  validates :tel, presence: true, format: { with: VALID_PHONE_REGEX }
+  validates :tel, presence: true, format: { with: VALID_PHONE_REGEX, message: 'は数字で入力してください' }
   # addressの項目
   validates :zip_code, presence: true
   validates :prefecture_id, presence: true, numericality: { only_integer: true }
