@@ -2,7 +2,6 @@ class ItemsController < ApplicationController
 
 
   def index
-    @items = Item.all.order(id: "DESC")
     @items = Item.page(params[:page]).per(12)
     @parents = Category.all.where(ancestry: nil)
   end
