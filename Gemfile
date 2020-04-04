@@ -43,6 +43,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem "rspec-rails"
 end
 
 group :development do

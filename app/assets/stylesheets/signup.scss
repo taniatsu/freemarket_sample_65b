@@ -296,18 +296,6 @@ a {
     .signupMain__selectWrap {
       display: inline-block;
       width: calc(30% - 17px);
-      &:first-of-type {
-        width: calc(34% - 17px);
-      }
-      .fa-chevron-down{
-        right: 12px;
-      }
-      select{
-        padding: 0 10px;
-      }
-      &+span {
-        margin: 0 2px;
-      }
     }
     select {
       height: 48px;
@@ -324,16 +312,6 @@ a {
     margin: 8px 0 0;
     position: relative;
     background: #fff;
-    .fa-chevron-down{
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      z-index: 2;
-      color: #888;
-      font-size: 8px;
-      -webkit-transform: translate(0, -50%);
-      transform: translate(0, -50%);
-    }
   }
   &__selectBox {
     width: 100%;
@@ -440,9 +418,6 @@ a {
   .signupMain__birthdaySelectWrap {
     .signupMain__selectWrap {
       width: 76px;
-      &:first-of-type {
-        width: 76px;
-      }
     }
   }
 
