@@ -78,6 +78,12 @@ ActiveRecord::Schema.define(version: 20200328053809) do
     t.datetime "remember_created_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "zip_code",                            null: false
+    t.string   "prefecture_id",                       null: false
+    t.string   "city",                                null: false
+    t.string   "address",                             null: false
+    t.string   "building"
+    t.string   "telephone"
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end

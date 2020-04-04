@@ -43,6 +43,9 @@ group :development, :test do
   gem 'capistrano-bundler'
   gem 'capistrano-rails'
   gem 'capistrano3-unicorn'
+  gem 'factory_bot_rails'
+  gem 'database_cleaner'
+  gem "rspec-rails"
 end
 
 group :development do
@@ -75,6 +78,12 @@ gem 'devise'
 
 # active hashの導入
 gem 'active_hash'
+
+#Could not find a JavaScript runtimeのエラーに対して導入
+gem 'therubyracer'
+
+#エラーメッセージ日本語化
+gem 'rails-i18n'
 
 # ページネーション導入
 gem 'kaminari'
