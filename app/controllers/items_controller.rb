@@ -1,9 +1,9 @@
 class ItemsController < ApplicationController
 
-  before_action :testset, only:[:show]
 
   def index
-    @items = Item.all.order(id: "DESC")
+    @items = Item.page(params[:page]).per(12)
+    @parents = Category.all.where(ancestry: nil)
   end
   
   def show
@@ -18,7 +18,6 @@ class ItemsController < ApplicationController
 
   private
   def testset
-    @item = Item.find(params[:id])
   end
 
 end

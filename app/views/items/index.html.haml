@@ -1,4 +1,4 @@
-= render "shared/header"
+= render "shared/header", parents: @parents
 
 = render "shared/navi"
 
@@ -47,11 +47,12 @@
     .itemIndex__productList
       - @items.each do |item|
         .itemIndex__productList__items
-          -if item.status == "0"
+          -if item.buyer_id > 0
             .itemIndex__productList__items__sold
               SOLD
-          = link_to "#" do
+          = link_to "items/#{item.id}" do
             = image_tag "free_img1.jpg"
+            -# carrierwave導入したら下記に画像変更
             -# =item.thumbnail
             .itemIndex__productList__items__text
               %h8.itemIndex__productList__items__text__name
@@ -65,6 +66,8 @@
                     20
               %p.itemIndex__productList__items__text__tax
                 (税込)
+
+    = paginate(@items)
 
 = render "shared/banner"
 = render "shared/footer"
