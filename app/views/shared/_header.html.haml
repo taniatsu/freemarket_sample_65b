@@ -16,7 +16,7 @@
           %ul.dropDown
             - @parents.each do |parent|
               %li.dropDown-list
-                = link_to parent.name
+                = link_to "#{parent.name}","/items/#{parent.id}"
                 %ul.dropDown
                   - parent.children.each do |child|
                     %li.dropDown-list-cal

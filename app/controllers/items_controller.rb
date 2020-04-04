@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
 
-  # before_action :testset, only:[:show]
 
   def index
     @items = Item.all.order(id: "DESC")
@@ -19,7 +18,6 @@ class ItemsController < ApplicationController
 
   private
   def testset
-    # @item = Item.find(params[:id])
   end
 
 end
