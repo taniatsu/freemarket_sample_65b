@@ -66,12 +66,6 @@ ActiveRecord::Schema.define(version: 20200328053809) do
     t.date     "month",                               null: false
     t.date     "day",                                 null: false
     t.integer  "tel"
-    t.string   "zipcode",                             null: false
-    t.string   "prefecture",                          null: false
-    t.string   "city",                                null: false
-    t.string   "address",                             null: false
-    t.string   "building"
-    t.string   "tel_num"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
