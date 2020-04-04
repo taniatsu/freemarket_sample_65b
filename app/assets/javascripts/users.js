@@ -4,7 +4,7 @@ $(function(){
   var tab_content_dealing = $('.dealing__contents-item_status');
   var tab_content_delt = $('.delt__contents-item_status');
   
-  tab_b.on('click', function(){
+  tab_delt.on('click', function(){
     if(!tab_delt.hasClass('active')){
       tab_delt.addClass('active');
       tab_content_delt.addClass('contentOn');
@@ -12,7 +12,7 @@ $(function(){
       tab_content_dealing.removeClass('contentOn');
     }
   });
-  tab_a.on('click', function(){
+  tab_dealing.on('click', function(){
     if(!tab_dealing.hasClass('active')){
       tab_dealing.addClass('active');
       tab_content_dealing.addClass('contentOn');

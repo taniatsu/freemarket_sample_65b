@@ -1,0 +1,100 @@
+.items{
+.itemIndex{
+  padding: 50px 0;
+  &__pickupCategory{
+    width: 50%;
+    margin: auto;
+    &__title{
+      height: 50px;
+      line-height: 50px;
+      background-color: var(--main-color);
+      text-align: center;
+      border-radius: 5px 5px 0 0;
+      &__text{
+        font-size: 20px;
+        font-weight: bold;
+        color: white;
+      }
+    }
+    &__type{
+      background-color: white;
+      padding: 10px;
+      margin-bottom: 20px;
+      &__text{
+        color: #FF9900;
+        font-size: small;
+        display: flex;
+        flex-wrap: wrap;
+        a{
+          color: #FF9900;
+        }
+        a:hover{
+          text-decoration: underline;
+        }
+      }
+      li.itemIndex__pickupCategory__type__text__name{
+        margin: 10px;
+      }
+    }
+  }
+
+  &__productList{
+    width: 50%;
+    flex-wrap: wrap;
+    margin: auto;
+    padding: 50px 0;
+    display: grid;
+    grid-template-rows: 22% 22% 22%;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 5%;
+    &__items{
+      width: 100%;
+      position: relative;
+      &__sold{
+      transform: rotate(-30deg);
+      font-size: 28px;
+      text-align: center;
+      border-width: 200px 200px 0 0;
+      background-color: hotpink;
+      color: #fff;
+      letter-spacing: 2px;
+      font-weight: 600;
+      width: 150px;
+      position: absolute;
+      margin-left: -30px;
+      }
+
+      a{
+        color: black;
+      }
+      &__text{
+        background-color: white;
+        text-align: left;
+        padding: 15px;
+        font-size: 16px;
+        &__box{
+          display: flex;
+          justify-content: space-between;
+          &__likes{
+            display: flex;
+            i{
+              padding-top: 3px;
+            }
+          }
+        }
+        &__tax{
+          font-size: 10px;
+        }
+      }      
+    }
+    &__items:hover{
+      opacity: 0.8;
+      transition-duration: 0.3s;
+    }
+  }
+  .pagination {
+    text-align: center;
+    padding-top: 30px;
+  }  
+}
+}

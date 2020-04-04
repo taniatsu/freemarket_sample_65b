@@ -70,8 +70,8 @@
       box-shadow: 5px 5px 3px gray; 
 
       li {
-        height: 50px;
-        line-height: 50px;
+        height: 45px;
+        line-height: 45px;
         border-bottom: 1px solid #EEEEEE;
         color: #333333;
         padding: 5px;
@@ -294,24 +294,48 @@
   background-color: #F8F8F8;
 
   &__info {
-    padding: 20px 0;
+    padding: 30px 0;
 
-    h7.productList__info__category {
+    .productList__info__category{
       font-size: 28px;
       font-weight: bold;
     }
 
-    p.productList__info__title {
+    .productList__info__title {
       font-size: 24px;
       font-weight: bold;
       color: var(--main-color);
-    }
+     }
   }
 
   &__items {
-    display: flex;
-    justify-content: center;
-
+    width: 50%;
+    flex-wrap: wrap;
+    margin: auto;
+    margin-top: 50px;
+    display: grid;
+    grid-template-rows: 50%;
+    grid-template-columns: 30% 30% 30%;
+    grid-gap: 5%;
+    &__item{
+      width: 100%;
+    &__sold{
+      transform: rotate(-30deg);
+      font-size: 28px;
+      text-align: center;
+      background-color: hotpink;
+      color: #fff;
+      letter-spacing: 2px;
+      font-weight: 600;
+      width: 150px;
+      position: absolute;
+      margin-left: -30px;
+    }
+    }
+    .productList__items__item:hover{
+      opacity: 0.8;
+      transition-duration: 0.3s;
+    }
     a {
       text-decoration: none;
       color: black;
@@ -319,10 +343,10 @@
     }
 
     img {
-      width: 220px;
+      display: flex;
       height: 150px;
       vertical-align: bottom;
-    } 
+    }
 
     &__item__text {
       background-color: white;

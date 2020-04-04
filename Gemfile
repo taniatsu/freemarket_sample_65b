@@ -70,6 +70,8 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'haml-rails'
 # font-awesomeの導入
 gem "font-awesome-sass"
+# ancestryの導入
+gem 'ancestry'
 
 # deviseの導入
 gem 'devise'
@@ -82,3 +84,6 @@ gem 'therubyracer'
 
 #エラーメッセージ日本語化
 gem 'rails-i18n'
+
+# ページネーション導入
+gem 'kaminari'
