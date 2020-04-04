@@ -12,23 +12,14 @@ class User < ApplicationRecord
   # registrationの項目
   validates :nickname, presence: true, length: { maximum: 12 }
   validates :email, uniqueness: true, format: { with: VALID_EMAIL_REGEX,  message: 'は不適切です'}
-  validates :last_name, presence: true
-  validates :first_name, presence: true
-  validates :last_jp_name, presence: true, format: { with: VALID_KATAKANA_REGEX, message: 'はカナ入力です' }
-  validates :first_jp_name, presence: true, format: { with: VALID_KATAKANA_REGEX, message: 'はカナ入力です' }
-  validates :year_id, presence: true
-  validates :month_id, presence: true
-  validates :day_id, presence: true
-  validates :password, presence: true, allow_blank: true
-  validates :password, length: { maximum: 7 }, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字で入力してください' }
-  validates :password_confirmation, presence: true, length: { maximum: 7 }, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字で入力してください' }
+  validates :last_name, :first_name, :year_id, :month_id, :day_id, presence: true
+  validates :last_jp_name, :first_jp_name, presence: true, format: { with: VALID_KATAKANA_REGEX, message: 'はカナ入力です' }
+  validates :password, :password_confirmation, presence: true, length: { maximum: 7 }, format: { with: VALID_PASSWORD_REGEX, message: 'は半角英数字で入力してください' }
   # sms_comfirmationの項目
   validates :tel, presence: true, format: { with: VALID_PHONE_REGEX, message: 'は数字で入力してください' }
   # addressの項目
-  validates :zip_code, presence: true
+  validates :zip_code, :city, :address, presence: true
   validates :prefecture_id, presence: true, numericality: { only_integer: true }
-  validates :city, presence: true
-  validates :address, presence: true
   # 建物の名前、お届け先の練和番号は任意の為、項目はなし
 
   extend ActiveHash::Associations::ActiveRecordExtensions
