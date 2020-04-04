@@ -150,6 +150,14 @@ a {
       line-height: 1.5;
     }
   }
+  &__errorText {
+    color: #ea352d;
+    line-height: 1.5;
+    font-size: 14px;
+    li{
+      margin-top: 8px;
+    }
+  }
   &__text1 {
     margin: 8px 0 0;
     color: #888;
@@ -245,6 +253,14 @@ a {
     label {
       font-weight: 600;
       display: inline-block;
+    } 
+    &--half {
+      .field_with_erros {
+        display: inline;
+        &:last-of-type .signupMain__inputDefult--half {
+          margin-right: 0;
+        }
+      }
     }
   }
   &__formRequire {
@@ -279,21 +295,22 @@ a {
   &__birthdaySelectWrap {
     .signupMain__selectWrap {
       display: inline-block;
-      width: calc(30% - 17px);
-      &:first-of-type {
-        width: calc(34% - 17px);
-      }
-      .fa-chevron-down{
-        right: 12px;
-      }
-      select{
-        padding: 0 10px;
-      }
-      &+span {
-        margin: 0 2px;
-      }
     }
     select {
+      width: 70px;
+      height: 48px;
+      padding: 0 16px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      background: 0;
+      font-size: 16px;
+      line-height: 1.5;
+      cursor: pointer;
+    }
+  }
+  &__prefectureSelectWrap {
+    select {
+      width: 80px;
       height: 48px;
       padding: 0 16px;
       border-radius: 4px;
@@ -306,36 +323,7 @@ a {
   }
   &__selectWrap {
     margin: 8px 0 0;
-    position: relative;
     background: #fff;
-    .fa-chevron-down{
-      position: absolute;
-      right: 16px;
-      top: 50%;
-      z-index: 2;
-      color: #888;
-      font-size: 8px;
-      -webkit-transform: translate(0, -50%);
-      transform: translate(0, -50%);
-    }
-  }
-  &__selectBox {
-    width: 100%;
-    height: 48px;
-    border-radius: 4px;
-    border: solid 1px rgb(204, 204, 204);
-    outline: none;
-    padding: 0 16px;
-    margin-top: 16px;
-    font-size: inherit;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: image-url("chevron-down-solid.svg");
-    background-repeat: no-repeat;
-    background-size: 15px 15px;
-    background-position: right 20px center;
-    background-color: white;
   }
 }
 
@@ -424,9 +412,6 @@ a {
   .signupMain__birthdaySelectWrap {
     .signupMain__selectWrap {
       width: 76px;
-      &:first-of-type {
-        width: 76px;
-      }
     }
   }
 

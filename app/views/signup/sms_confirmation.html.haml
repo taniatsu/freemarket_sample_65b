@@ -22,12 +22,14 @@
       %h2.signupMain__head.signupMain__head--registration
         電話番号の確認
       .signupMain__inner.signupMain__inner--registrationForm
-        = form_for @user, local: true, url: address_signup_index_path, method: :get, class: 'signupMain__inner signupMain__inner--registrationForm' do |f|
+        = form_for @user, url: address_signup_index_path, method: 'GET', class: 'signupMain__inner signupMain__inner--registrationForm' do |f|
           .signupMain__content
             .signupMain__formGroup
               = f.label '携帯電話の電話番号'
               %span.signupMain__formRequire 必須
               = f.text_field :tel, { class: 'signupMain__inputDefault', placeholder: '携帯電話の番号を入力' }
+              %ul.signupMain__errorText
+                = render partial: 'error-messages', locals: { user: @user, column: "tel"}
             .signupMain__formGroup
               = f.submit'次へ進む', class: 'signupMain__btnDefault signupMain__btnRed'
             %p.signupMain__text2

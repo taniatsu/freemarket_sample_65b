@@ -1,0 +1,73 @@
+= render "shared/header", parents: @parents
+
+= render "shared/navi"
+
+%main.items
+  .itemIndex
+    .itemIndex__pickupCategory
+      .itemIndex__pickupCategory__title
+        %h1.itemIndex__pickupCategory__title__text
+          メンズの商品一覧
+      .itemIndex__pickupCategory__type
+        %ul.itemIndex__pickupCategory__type__text
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              トップス
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              ジャケット/アウター
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              パンツ
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              靴
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              バッグ
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              スーツ
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              帽子
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              アクセサリー
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              小物
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              時計
+          %li.itemIndex__pickupCategory__type__text__name
+            = link_to "#" do
+              水着
+
+    .itemIndex__productList
+      - @items.each do |item|
+        .itemIndex__productList__items
+          -if item.buyer_id > 0
+            .itemIndex__productList__items__sold
+              SOLD
+          = link_to "items/#{item.id}" do
+            = image_tag "free_img1.jpg"
+            -# carrierwave導入したら下記に画像変更
+            -# =item.thumbnail
+            .itemIndex__productList__items__text
+              %h8.itemIndex__productList__items__text__name
+                = item.name
+              %ul.itemIndex__productList__items__text__box
+                %li.itemIndex__productList__items__text__box__price
+                  = "#{item.price}円"
+                %li.itemIndex__productList__items__text__box__likes
+                  = icon('fa','star',class:"productList__icon")
+                  .itemIndex__productList__items__text__box__likes__volume
+                    20
+              %p.itemIndex__productList__items__text__tax
+                (税込)
+
+    = paginate(@items)
+
+= render "shared/banner"
+= render "shared/footer"

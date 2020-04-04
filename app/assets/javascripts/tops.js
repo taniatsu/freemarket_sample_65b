@@ -13,23 +13,23 @@ $(function() {
   // カテゴリ大プルダウン色変更
   $(".dropDown-list").on("mouseover", function() {
     $(this).css({
-      "color": "#FF9900"
+      "background-color": "#3CCACE",
     });
   });
   $(".dropDown-list").on("mouseout", function() {
     $(this).css({
-      "color": "#333333"
+      "background-color": "white",
     });
   });
   // カテゴリ中・小プルダウン色変更
   $("li.dropDown-list-cal").on("mouseover", function() {
     $(this).css({
-      "color": "#FF9900"
+      "background-color": "#3CCACE",
     });
   });
   $("li.dropDown-list-cal").on("mouseout", function() {
     $(this).css({
-      "color": "#333333"
+      "background-color": "white",
     });
   });
   // プルダウンメニュー
