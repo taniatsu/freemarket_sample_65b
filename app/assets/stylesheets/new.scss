@@ -118,9 +118,9 @@ $mainBackgroundColor: rgb(245, 245, 245);
       }
   }
   
-      // &__innerContainer {
-      //   padding-bottom: 30px;
-      // }
+      &__innerContainer {
+        padding-bottom: 30px;
+      }
 
 // 商品詳細入力のタイトル設定
       &__title {
