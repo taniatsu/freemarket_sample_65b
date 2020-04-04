@@ -19,9 +19,9 @@
       = form_for(resource, as: resource_name, url: session_path(resource_name),  action: '/login/', method: 'POST') do |f|
         .loginFormInner
           .formGroup
-            %input.loginInputText.inputDefault{ type: 'email', name: 'email', placeholder: 'メールアドレス' }
+            = f.email_field :email
           .formGroup
-            %input.loginInputText.inputDefault{ type: 'password', name: 'password', placeholder: 'パスワード' }
+            = f.password_field :password
           %button.loginSubmit.btnDefault.btnRed{ type: 'submit' }
             ログイン
           = link_to '#' do
