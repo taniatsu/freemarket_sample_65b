@@ -18,7 +18,7 @@
             -# .expire__date 
             -# <p><%= link_to '削除', tweet_path(@tweeted.id), method: :delete %></p>
             .card__delete-btn 
-              = link_to '削除する', delete_cards_path(@card.id), method: :delete 
+              = link_to '削除する', delete_cards_path, method: :post 
               -# = form_tag(delete_cards_path, method: :post, name: "inputForm") do
               -#   %input{ type: "hidden", name: "card_id", value: "" }
               -#   %button.delete__button 削除する

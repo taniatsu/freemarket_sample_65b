@@ -26,12 +26,13 @@ class CardsController < ApplicationController
   end
 
   def delete
+    @parents = Category.all.where(ancestry: nil)
     @card = current_user.cards.first
     if @card.present?
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       @card.delete
-      # render action: "edit", id: current_user.id
+      render action: "edit", id: current_user.id
     end
       redirect_to action: "edit", id: current_user.id
   end
@@ -48,6 +49,7 @@ class CardsController < ApplicationController
   end
 
   def confirmation
+    @parents = Category.all.where(ancestry: nil)
     card = current_user.cards
     redirect_to action: "show" if card.exists?
   end
