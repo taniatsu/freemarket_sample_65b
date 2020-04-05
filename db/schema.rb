@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200328053809) do
+ActiveRecord::Schema.define(version: 20200329121507) do
+
+  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -62,16 +70,10 @@ ActiveRecord::Schema.define(version: 20200328053809) do
     t.string   "first_name",                          null: false
     t.string   "last_jp_name",                        null: false
     t.string   "first_jp_name",                       null: false
-    t.integer  "year",                                null: false
-    t.date     "month",                               null: false
-    t.date     "day",                                 null: false
-    t.integer  "tel"
-    t.string   "zipcode",                             null: false
-    t.string   "prefecture",                          null: false
-    t.string   "city",                                null: false
-    t.string   "address",                             null: false
-    t.string   "building"
-    t.string   "tel_num"
+    t.integer  "year_id",                             null: false
+    t.integer  "month_id",                            null: false
+    t.integer  "day_id",                              null: false
+    t.string   "tel"
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
