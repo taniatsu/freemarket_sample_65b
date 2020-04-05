@@ -32,7 +32,15 @@ Rails.application.routes.draw do
   end
 
   # カード登録ページのルーティング
-  resources :cards
+  resources :cards, only: [:create, :show, :edit] do
+    collection do
+      post 'delete', to: 'cards/current_user.id/delete'
+      post 'show'
+    end
+    member do
+      get 'confirmation'
+    end
+  end 
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
