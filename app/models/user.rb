@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :cards
+
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   VALID_PHONE_REGEX = /\A\d{10}$|^\d{11}\z/
   VALID_KATAKANA_REGEX = /\A[\p{katakana}\p{blank}ー－]+\z/
