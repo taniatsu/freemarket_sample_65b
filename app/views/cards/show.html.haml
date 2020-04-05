@@ -8,17 +8,19 @@
       .mainBlock__content
         .mainBlock__content-inner
           %h3.mainBlock__subTtl クレジットカード一覧
-          .card__payment__list
-          %form.card__payment__content
-          .card__list
-            .card__list__picture  
-          .card__number 
-            = "**** **** **** " + @default_card_information.last4
-          .expire__date 
-          -# <p><%= link_to '削除', tweet_path(@tweeted.id), method: :delete %></p>
-          -# = link_to '削除', tweet_path(@tweeted.id), method: :delete 
-          = form_tag(delete_cards_path, method: :post, name: "inputForm") do
-            %input{ type: "hidden", name: "card_id", value: "" }
-            %button.delete__button 削除する
+          -# .card__payment__list
+          -# %form.card__payment__content
+          -# .card__list
+            -# .card__list__picture 
+          .card__info 
+            .card__number 
+              = "**** **** **** " + @default_card_information.last4
+            -# .expire__date 
+            -# <p><%= link_to '削除', tweet_path(@tweeted.id), method: :delete %></p>
+            .card__delete-btn 
+              = link_to '削除する', delete_cards_path(@card.id), method: :delete 
+              -# = form_tag(delete_cards_path, method: :post, name: "inputForm") do
+              -#   %input{ type: "hidden", name: "card_id", value: "" }
+              -#   %button.delete__button 削除する
         .payQuestion
           = link_to "支払い方法について", edit_card_path(1)
