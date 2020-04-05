@@ -4,6 +4,7 @@ class CardsController < ApplicationController
   before_action :get_payjp_info, only: [:new_create, :create, :delete, :show]
 
   def edit
+    @parents = Category.all.where(ancestry: nil)
   end
 
   def create
