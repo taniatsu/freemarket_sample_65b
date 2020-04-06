@@ -74,6 +74,17 @@ main.showItem {
     &__text {
       text-align: left;
       padding: 30px 0;
+      word-wrap: normal;
+    }
+    &__buyBtn{
+      font-size: 25px;
+      background-color: var(--main-color);
+      margin: auto;
+      width: 70%;
+      a{
+        text-decoration: none;
+        color: white;
+      }
     }
 
     table.mainTable {
@@ -81,7 +92,7 @@ main.showItem {
       height: 400px;
       border-collapse: collapse;
       font-size: 13px;
-      margin: auto;
+      margin-top: 30px;
 
       tr {
         border: solid 1px gray;

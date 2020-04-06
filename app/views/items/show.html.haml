@@ -1,13 +1,15 @@
-= render "shared/header"
+= render "shared/header", parents: @parents
 
 = render "shared/navi"
 
 %main.showItem
   .mainBox
     .mainBox__itemName
-      商品名
+      = @item.name
     .mainBox__mainImage
       = image_tag "free_img1.jpg"
+      -# carrierwave導入したら下記に画像変更
+      -# = @item.thumbnail
     %ul.mainBox__imageBox
       %li.mainBox__imageBox__leftImage
         = image_tag "free_img1.jpg"
@@ -17,12 +19,39 @@
         = image_tag "free_img3.jpg"
     .mainBox__priceBox
       %h.mainBox__priceBox__itemPrice
-        ¥30000
+        ="#{@item.price}円"
       %p.mainBox__priceBox__tax
         (税込)送料込み
     .mainBox__text
-      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-
+      =@item.explanation
+    .mainBox__btns
+    -if user_signed_in?
+      -if  current_user.id == @item.user_id
+        =link_to "#" do
+          .mainBox__editBtn 
+            商品の編集
+        =link_to "#" do
+          .mainBOx__destroyBtn
+            商品の削除
+      -else
+        -if @item.buyer_id > 0
+          .mainBox__buyBtn
+            SOLD
+        -else 
+          = link_to "confirm_items_path"do
+            .mainBox__buyBtn
+              購入する
+    -else
+      -if @item.buyer_id > 0
+        .mainBox__buyBtn
+          SOLD
+      -else
+        = link_to "confirm_items_path"do
+          .mainBox__buyBtn
+            購入する
+    -unless user_signed_in? && @item.user_id == current_user.id
+      .mainBox__buyBtn
+        購入できません
     %table.mainTable
       %tr
         %th
@@ -80,6 +109,7 @@
         = icon("fa","flag",class:"flag__icon")
         %li.text
           不適切な商品の通報
+    
 
   .commentBox
     %textarea{type: "text",class:"comment__form"}

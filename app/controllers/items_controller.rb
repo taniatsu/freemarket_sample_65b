@@ -7,12 +7,17 @@ class ItemsController < ApplicationController
   end
   
   def show
+    @parents = Category.all.where(ancestry: nil)
+    @item = Item.find(params[:id])
   end
 
   def new
   end
 
   def confirm
+  end
+
+  def edit
   end
 
   private
