@@ -1,3 +1,16 @@
-%h2 購入が完了しました！
-%p Apple MacBook Pro 13インチ
-%p ¥135,000(送料込み)
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+    .mainBlock
+      %h2.mainBlock__ttl
+        購入が完了しました！
+      .mainBlock__content
+        .mainBlock__content-inner
+          %p
+            = @item.name
+          %p
+            = "¥" + @item.price.to_s
+          %br
+= render "shared/banner"
+= render "shared/footer"

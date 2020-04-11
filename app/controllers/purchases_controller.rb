@@ -2,6 +2,7 @@ class PurchasesController < ApplicationController
   require 'payjp'
 
   def index
+    @parents = Category.all.where(ancestry: nil)
     @item = Item.find(1)
     # @item = Item.find(params[:item_id])
 
