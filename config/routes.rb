@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   
-  get 'purchases/index'
+  # get 'purchases/index'
 
-  get 'purchases/done'
+  # get 'purchases/done'
 
   devise_for :users
   
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
   end 
 
   # 購入
-  resources :purchase, only: [:index] do
+  resources :purchases, only: [:index] do
     collection do
       get 'index', to: 'purchases#index'
       post 'pay', to: 'purchases#pay'

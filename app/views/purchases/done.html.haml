@@ -12,5 +12,7 @@
           %p
             = "¥" + @item.price.to_s
           %br
+          .toTop
+          = link_to "トップへ戻る", root_path
 = render "shared/banner"
 = render "shared/footer"

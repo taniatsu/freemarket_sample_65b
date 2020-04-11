@@ -33,5 +33,7 @@ class PurchasesController < ApplicationController
   end
 
   def done
+    @item = Item.find(1)
+    @parents = Category.all.where(ancestry: nil)
   end
 end
