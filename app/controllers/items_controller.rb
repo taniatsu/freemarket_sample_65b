@@ -15,7 +15,7 @@ class ItemsController < ApplicationController
   end
 
   def confirm
-    item = Item.find(params[:item_id])
+    # item = Item.find(params[:item_id])
   end
 
   def edit

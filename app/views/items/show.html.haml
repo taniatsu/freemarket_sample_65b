@@ -54,7 +54,7 @@
         %th
           出品者
         %td
-          名前
+          = @item.user.nickname
       %tr
         %th
           カテゴリー
@@ -69,33 +69,32 @@
         %th
           ブランド
         %td
-          
+          = @item.brand
       %tr
         %th
           商品のサイズ
         %td
-          
+          = @item.size
       %tr
         %th
           商品の状態
         %td
-          未使用に近い
+          = @item.condition
       %tr
         %th
           配送料の負担
         %td
-          送料込み（出品者負担）
+          = @item.fee_which
       %tr
         %th
           発送元の地域
         %td
-          = link_to "#" do
-            岩手
+          = @item.from_where
       %tr
         %th
           発送日の目安
         %td
-          4-7日で発送
+          = @item.delivery_date
 
     .mainBox__btns
       %ul.favoritBtn
@@ -105,7 +104,8 @@
       %ul.reportBtn
         = icon("fa","flag",class:"flag__icon")
         %li.text
-          不適切な商品の通報
+          =link_to "#"do
+            不適切な商品の通報
     
 
   .commentBox
