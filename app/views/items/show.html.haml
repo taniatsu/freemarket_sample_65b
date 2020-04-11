@@ -24,34 +24,31 @@
         (税込)送料込み
     .mainBox__text
       =@item.explanation
-    .mainBox__btns
-    -if user_signed_in?
-      -if  current_user.id == @item.user_id
-        =link_to "#" do
-          .mainBox__editBtn 
-            商品の編集
-        =link_to "#" do
-          .mainBOx__destroyBtn
-            商品の削除
+    .mainBox__btn
+      -if user_signed_in?
+        -if  current_user.id == @item.user_id
+          =link_to edit_item_path(@item) do
+            .mainBox__editBtn
+              商品の編集
+          =link_to item_path(@item.id),method: :delete do
+            .mainBox__destroyBtn
+              商品の削除
+        -else
+          -if @item.buyer_id > 0
+            .mainBox__soldBtn
+              SOLD OUT
+          -else 
+            = link_to confirm_items_path(@item) do
+              .mainBox__buyBtn
+                購入画面に進む
       -else
         -if @item.buyer_id > 0
-          .mainBox__buyBtn
-            SOLD
-        -else 
-          = link_to "confirm_items_path"do
+          .mainBox__soldBtn
+            SOLD OUT
+        -else
+          = link_to confirm_items_path(@item) do
             .mainBox__buyBtn
-              購入する
-    -else
-      -if @item.buyer_id > 0
-        .mainBox__buyBtn
-          SOLD
-      -else
-        = link_to "confirm_items_path"do
-          .mainBox__buyBtn
-            購入する
-    -unless user_signed_in? && @item.user_id == current_user.id
-      .mainBox__buyBtn
-        購入できません
+              購入画面に進む
     %table.mainTable
       %tr
         %th
