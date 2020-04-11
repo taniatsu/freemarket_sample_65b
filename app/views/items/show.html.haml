@@ -11,12 +11,10 @@
       -# carrierwave導入したら下記に画像変更
       -# = @item.thumbnail
     %ul.mainBox__imageBox
-      %li.mainBox__imageBox__leftImage
-        = image_tag "free_img1.jpg"
-      %li.mainBox__imageBox__centerImage
-        = image_tag "free_img2.jpg"
-      %li.mainBox__imageBox__rightImage
-        = image_tag "free_img3.jpg"
+      -@item.images.each do |i|
+        - if i.url.present?
+          %li.mainBox__imageBox__leftImage
+            = image_tag i.url
     .mainBox__priceBox
       %h.mainBox__priceBox__itemPrice
         ="#{@item.price}円"
