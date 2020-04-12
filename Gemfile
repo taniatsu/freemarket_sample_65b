@@ -87,3 +87,8 @@ gem 'rails-i18n'
 
 # ページネーション導入
 gem 'kaminari'
+
+#SNS認証
+gem 'omniauth-rails_csrf_protection' 
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'

@@ -15,9 +15,9 @@
             メールアドレスで登録する
           %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--facebook
             = icon 'fab', 'facebook-square'
-            Facebookで登録する
+            = link_to 'Facebookで登録する', user_facebook_omniauth_authorize_path, method: :post
           %button.signupMain__btnDefault.signupMain__btnSns.signupMain__btnSns--google
             = icon 'fab', 'google'
-            Googleで登録する
+            = link_to 'Googleで登録する', user_google_oauth2_omniauth_authorize_path, method: :post
 
   = render 'signup/footer'
