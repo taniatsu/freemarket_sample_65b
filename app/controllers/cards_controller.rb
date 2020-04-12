@@ -39,10 +39,10 @@ class CardsController < ApplicationController
 
   def show
     @parents = Category.all.where(ancestry: nil)
-    @card = current_user.cards.first
-    if @card.present?
-      customer = Payjp::Customer.retrieve(@card.customer_id)
-      @default_card_information = customer.cards.retrieve(@card.card_id)
+    card = current_user.cards.first
+    if card.present?
+      customer = Payjp::Customer.retrieve(card.customer_id)
+      @default_card_information = customer.cards.retrieve(card.card_id)
     else
       redirect_to action: "confirmation", id: current_user.id
     end

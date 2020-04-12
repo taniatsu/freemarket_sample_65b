@@ -23,15 +23,7 @@ document.addEventListener(
             document.inputForm.submit();
             alert("登録が完了しました"); //確認用
           } else {
-            alert("カード情報が正しくありません。");
-            // if(number === ''){
-            //   alert("カード情報が正しくありません。");
-            // }else if(cvc === ''){
-            //   alert("セキュリティーコードが正しくありません。")
-            // }else if(exp_month === ''|| exp_year === ''){
-            //   alert("有効期限が正しくありません。")
-            // }
-            
+            alert("カード情報が正しくありません。")
           }
         });
       });

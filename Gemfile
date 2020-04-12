@@ -90,3 +90,6 @@ gem 'kaminari'
 
 # Payjpの導入
 gem 'payjp'
+
+# ransackの導入
+gem 'ransack'
