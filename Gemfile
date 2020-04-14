@@ -78,3 +78,6 @@ gem 'active_hash'
 
 # ページネーション導入
 gem 'kaminari'
+
+# デバックツールの導入
+gem 'pry-rails'

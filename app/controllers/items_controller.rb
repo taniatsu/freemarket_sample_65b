@@ -1,6 +1,5 @@
 class ItemsController < ApplicationController
 
-
   def index
     @items = Item.page(params[:page]).per(12)
     @parents = Category.all.where(ancestry: nil)
@@ -14,23 +13,26 @@ class ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to controller: :items, action: :index
-    else
-      render "new"
-    end
+    binding.pry
+    Item.create(item_params)
+    # redirect_to root_path
+    # @item = Item.new(item_params)
+    # @item.save
+    #   redirect_to controller: :items, action: :index
+    # else
+    #   render "new"
+    # end
   end
 
   def confirm
   end
 
 private
-  def testset
-  end
-
   def item_params
     params.require(:item).permit(:name)
+  end
+
+  def testset
   end
 
 
