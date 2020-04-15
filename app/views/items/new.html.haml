@@ -24,25 +24,25 @@
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsNew__logo'
 
   .itemsNew__body
-    .itemsNew__container
-      .itemsNew__title
-        -# = form_for @item do |f|
-        .itemsNew__subTitle
-          出品画像
-        .itemsNew__tag
-          必須
-      .itemsNew__photoExplanation 
-        最大10枚までアップロードできます
+    = form_for @item do |f|
+      .itemsNew__container
+        .itemsNew__title
+          .itemsNew__subTitle
+            出品画像
+          .itemsNew__tag
+            必須
+        .itemsNew__photoExplanation 
+          最大10枚までアップロードできます
 
-      .itemsNew__photoUp
-        .itemsNew__photoUp--icon
-          = icon("fa", "camera", class: "fa-lg fa-fw")
-        .itemsNew__photoUp--text
-          ドラッグアンドドロップ
-          %br
-            またはクリックしてファイルをアップロード
-      .itemsNew__alert.displayNone
-        画像がありません
+        .itemsNew__photoUp
+          .itemsNew__photoUp--icon
+            = icon("fa", "camera", class: "fa-lg fa-fw")
+          .itemsNew__photoUp--text
+            ドラッグアンドドロップ
+            %br
+              またはクリックしてファイルをアップロード
+        .itemsNew__alert.displayNone
+          画像がありません
 
     .itemsNew__container
       .itemsNew__innerContainer

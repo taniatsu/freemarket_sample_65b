@@ -81,3 +81,9 @@ gem 'kaminari'
 
 # デバックツールの導入
 gem 'pry-rails'
+
+# CarrierWaveの導入
+gem 'carrierwave'
+
+# mini_magickの導入
+gem 'mini_magick'
