@@ -24,6 +24,15 @@ class ItemsController < ApplicationController
     # end
   end
 
+  def edit
+  end
+
+  def update
+  end
+
+  def destroy
+  end
+
   def confirm
   end
 
