@@ -20,6 +20,9 @@ class ItemsController < ApplicationController
   def edit
   end
 
+  def destroy
+  end
+
   private
   def testset
   end
