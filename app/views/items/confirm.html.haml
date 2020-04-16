@@ -11,13 +11,15 @@
       .buyItem__inner
         %ul.buyItem__inner__box
           %li.buyItem__inner__box__img
-            = image_tag "free_img3.jpg"
+            = image_tag "free_img1.jpg"
+            -# carrierwave導入したら下記に画像変更
+            -# = @item.thumbnail
           %li.buyItem__inner__box__text
             %p.buyItem__inner__box__text__itemName
-              [商品名]新品・未使用・テストテストテスト
+              = @item.name
             %ul.buyItem__inner__box__text__itemPrice
               %li.price
-                ¥30,000
+                = "#{@item.price}円"
               %li.feeTax
                 （税込）送料込み
     %section.buyContent
@@ -26,7 +28,7 @@
           %li.buyForm__priceBox__text
             支払い金額
           %li.buyForm__priceBox__price
-            ¥30,000
+            = "#{@item.price}円"
         %ul.buyForm__payment
           %h3
             支払い方法

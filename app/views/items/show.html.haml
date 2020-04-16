@@ -36,7 +36,7 @@
             .mainBox__soldBtn
               SOLD OUT
           -else 
-            = link_to confirm_items_path(@item) do
+            = link_to confirm_item_path(@item) do
               .mainBox__buyBtn
                 購入画面に進む
       -else
@@ -44,7 +44,7 @@
           .mainBox__soldBtn
             SOLD OUT
         -else
-          = link_to confirm_items_path(@item) do
+          = link_to confirm_item_path(@item) do
             .mainBox__buyBtn
               購入画面に進む
     %table.mainTable
