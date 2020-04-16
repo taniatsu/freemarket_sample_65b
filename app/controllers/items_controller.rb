@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :set_item, only: [:show, :confirm]
 
 
   def index
@@ -8,14 +9,12 @@ class ItemsController < ApplicationController
   
   def show
     @parents = Category.all.where(ancestry: nil)
-    @item = Item.find(params[:id])
   end
 
   def new
   end
 
   def confirm
-    @item = Item.find(params[:id])
   end
 
   def edit
@@ -23,6 +22,10 @@ class ItemsController < ApplicationController
 
   private
   def testset
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 
 end
