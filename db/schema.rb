@@ -96,4 +96,5 @@ ActiveRecord::Schema.define(version: 20200411031426) do
   end
 
   add_foreign_key "images", "items"
+  add_foreign_key "sns_credentials", "users"
 end

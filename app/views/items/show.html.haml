@@ -1,34 +1,58 @@
-= render "shared/header"
+= render "shared/header", parents: @parents
 
 = render "shared/navi"
 
 %main.showItem
   .mainBox
     .mainBox__itemName
-      商品名
+      = @item.name
     .mainBox__mainImage
       = image_tag "free_img1.jpg"
+      -# carrierwave導入したら下記に画像変更
+      -# = @item.thumbnail
     %ul.mainBox__imageBox
-      %li.mainBox__imageBox__leftImage
-        = image_tag "free_img1.jpg"
-      %li.mainBox__imageBox__centerImage
-        = image_tag "free_img2.jpg"
-      %li.mainBox__imageBox__rightImage
-        = image_tag "free_img3.jpg"
+      -@item.images.each do |i|
+        - if i.url.present?
+          %li.mainBox__imageBox__leftImage
+            = image_tag i.url
     .mainBox__priceBox
       %h.mainBox__priceBox__itemPrice
-        ¥30000
+        ="#{@item.price}円"
       %p.mainBox__priceBox__tax
         (税込)送料込み
     .mainBox__text
-      テキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキストテキスト
-
+      =@item.explanation
+    .mainBox__btn
+      -if user_signed_in?
+        -if  current_user.id == @item.user_id
+          =link_to edit_item_path(@item) do
+            .mainBox__editBtn
+              商品の編集
+          =link_to item_path(@item.id),method: :delete do
+            .mainBox__destroyBtn
+              商品の削除
+        -else
+          -if @item.buyer_id > 0
+            .mainBox__soldBtn
+              SOLD OUT
+          -else 
+            = link_to confirm_item_path(@item) do
+              .mainBox__buyBtn
+                購入画面に進む
+      -else
+        -if @item.buyer_id > 0
+          .mainBox__soldBtn
+            SOLD OUT
+        -else
+          = link_to confirm_item_path(@item) do
+            .mainBox__buyBtn
+              購入画面に進む
     %table.mainTable
       %tr
         %th
           出品者
         %td
-          名前
+          = @item.user.nickname
       %tr
         %th
           カテゴリー
@@ -43,33 +67,32 @@
         %th
           ブランド
         %td
-          
+          = @item.brand
       %tr
         %th
           商品のサイズ
         %td
-          
+          = @item.size
       %tr
         %th
           商品の状態
         %td
-          未使用に近い
+          = @item.condition
       %tr
         %th
           配送料の負担
         %td
-          送料込み（出品者負担）
+          = @item.fee_which
       %tr
         %th
           発送元の地域
         %td
-          = link_to "#" do
-            岩手
+          = @item.from_where
       %tr
         %th
           発送日の目安
         %td
-          4-7日で発送
+          = @item.delivery_date
 
     .mainBox__btns
       %ul.favoritBtn
@@ -79,7 +102,9 @@
       %ul.reportBtn
         = icon("fa","flag",class:"flag__icon")
         %li.text
-          不適切な商品の通報
+          =link_to "#"do
+            不適切な商品の通報
+    
 
   .commentBox
     %textarea{type: "text",class:"comment__form"}
