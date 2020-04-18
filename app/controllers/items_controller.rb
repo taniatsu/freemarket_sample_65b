@@ -11,6 +11,8 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
+    # @parents = Category.all.order("ancestry ASC").limit(13)
+    @parents = Category.all.where(ancestry: nil)
   end
 
   def create
