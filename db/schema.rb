@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200329121507) do
+ActiveRecord::Schema.define(version: 20200418092846) do
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -55,15 +55,6 @@ ActiveRecord::Schema.define(version: 20200329121507) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sns_credentials", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id", using: :btree
-  end
-
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "nickname",                            null: false
     t.string   "email",                               null: false
@@ -92,5 +83,4 @@ ActiveRecord::Schema.define(version: 20200329121507) do
   end
 
   add_foreign_key "images", "items"
-  add_foreign_key "sns_credentials", "users"
 end
