@@ -32,9 +32,9 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       @card.delete
-      render action: "edit", id: current_user.id
+      # render action: "edit", id: current_user.id
     end
-      redirect_to action: "edit", id: current_user.id
+      # redirect_to action: "edit", id: current_user.id
   end
 
   def show

@@ -164,4 +164,17 @@
       border-radius: 3px;
     }
   }
+  .card__add-btn{
+    margin: 20px auto 0;
+    text-align: center;
+    width: 300px;
+    a{
+      width: 100%;
+      display: block;
+      background: var(--main-color);
+      padding: 15px;
+      color: #fff;
+    }
+    
+  }
 }
