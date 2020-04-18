@@ -198,8 +198,37 @@ main.showItem {
       text-decoration: none;
       color: var(--main-color);
     }
-
   }
+}
 
-
+#preview,#preview2{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  .img_view{
+    width: calc(620px / 5);
+  }
+  .btn_wrapper{
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.dropzone-area2{
+  display: none;
+}
+.input_area{
+  display: none;
+}
+.dropzone-container{
+  
+  .dropzone-area,.dropzone-area2{
+    height: 100%;
+    background: #DDDDDD;
+  }
+  .dropzone-1colum{
+    display:flex;
+  }
+  .dropzone-2colum{
+    display:flex;
+  }
 }

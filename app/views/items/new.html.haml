@@ -34,13 +34,34 @@
         .itemsNew__photoExplanation 
           最大10枚までアップロードできます
 
-        = f.fields_for :images do |image|
-          .js-file_group{"data-index" => "#{image.index}"}
-            = image.file_field :url, class: 'js-file'
-            %br/
-            %span.js-remove 削除
+        -# = f.fields_for :images do |image|
+        -#   .js-file_group{"data-index" => "#{image.index}"}
+        -#     = image.file_field :url, class: 'js-file'
+        -#     %br/
+        -#     %span.js-remove 削除
 
-
+        = form_for @item, html: {class: "sell-form dropzone", id: "item-dropzone"} do |f|
+          %h2.sell-form__header
+            商品情報を入力
+          .sell-form-container
+            %label.sell-form-container__label
+              出品画像
+            %span.sell-form-container__require
+              必須
+            = f.fields_for :product_images do |image|
+              .dropzone-container
+                .dropzone-1colum
+                  #preview
+                  .dropzone-area
+                    = image.label :image, class: "dropzone-box", for: "upload-image" do
+                      .input_area
+                        = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                      %p ここをクリックしてください
+                .dropzone-2colum
+                  #preview2
+                  .dropzone-area2
+                    = image.label :image, class: "dropzone-box", for: "upload-image" do
+                      %p ここをクリックしてください
           -# .itemsNew__photoUp
           -#   .itemsNew__photoUp--icon
           -#     = icon("fa", "camera", class: "fa-lg fa-fw")
