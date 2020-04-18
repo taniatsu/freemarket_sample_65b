@@ -14,7 +14,7 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # binding.pry
+    binding.pry
     Item.create(item_params)
     # redirect_to root_path
     # @item = Item.new(item_params)
@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
 
 private
   def item_params
-    params.require(:item).permit(:name, images_attributes: [:url])
+    params.require(:item).permit(:name, :explanation, images_attributes: [:url])
   end
 
   def testset

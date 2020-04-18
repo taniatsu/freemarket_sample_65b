@@ -34,12 +34,11 @@
         .itemsNew__photoExplanation 
           最大10枚までアップロードできます
 
-        = f.fields_for :images do |image|
-          .js-file_group{"data-index" => "#{image.index}"}
-            = image.file_field :url, class: 'js-file'
-            %br/
-            %span.js-remove 削除
-
+        -# = f.fields_for :images do |image|
+        -#   .js-file_group{"data-index" => "#{image.index}"}
+        -#     = image.file_field :url, class: 'js-file'
+        -#     %br/
+        -#     %span.js-remove 削除
 
           -# .itemsNew__photoUp
           -#   .itemsNew__photoUp--icon
@@ -50,30 +49,29 @@
           -# .itemsNew__alert.displayNone
           -#   画像がありません
 
-    .itemsNew__container
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            出品名
-          .itemsNew__tag
-            必須
-        = form_for @item do |f|
+      .itemsNew__container
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              出品名
+            .itemsNew__tag
+              必須
           = f.text_field :name, placeholder: "40字まで", class: "itemsNew__inputBox"
-          = f.submit "出品", class:"button"
-        -# %input{type: "text", placeholder: "40字まで" ,class: "itemsNew__inputBox"}
-        -# = f.text_field :name, id: "input-default",  placeholder: "商品名（必須 40文字まで)"
-        .itemsNew__alert.displayNone
-          入力してください
+          .itemsNew__alert.displayNone
+            入力してください
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            出品の説明
-          .itemsNew__tag
-            必須
-        %textarea{type: "text", rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsNew__textareaBox"}
-        .itemsNew__alert.displayNone
-          入力してください
+      .itemsNew__container
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              出品の説明
+            .itemsNew__tag
+              必須
+          = f.text_area :explanation, class: "itemsNew__textareaBox", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "7"
+          = f.submit "出品", class:"button"
+          -# %textarea{type: "text", rows: 7, placeholder: "", class: ""}
+          .itemsNew__alert.displayNone
+            入力してください
 
     .itemsNew__container
       .itemsNew__mainTitle
@@ -99,16 +97,16 @@
           %option{value: "11"} チケット
           %option{value: "12"} 自動車・オートバイ
           %option{value: "13"} その他
-        .itemsNew__alert.displayNone
-          選択してください
+        -# .itemsNew__alert.displayNone
+        -#   選択してください
 
         %select.itemsNew__selectBox.M.displayNone
           %option{value: "0"} 選択してください
           %option{value: "1"} トップス
           %option{value: "2"} ジャケット/アウター
           %option{value: "3"} パンツ
-        .itemsNew__alert.displayNone
-          選択してください
+        -# .itemsNew__alert.displayNone
+        -#   選択してください
 
         %select.itemsNew__selectBox.S.displayNone
           %option{value: "0"} 選択してください
@@ -116,7 +114,7 @@
           %option{value: "2"} Tシャツ/カットソー（七分/長袖）
           %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
           %option{value: "4"} シャツ/ブラウス（七分/長袖）
-        .itemsNew__alert.displayNone
+        -# .itemsNew__alert.displayNone
           選択してください
 
       .itemsNew__innerContainer
