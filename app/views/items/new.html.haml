@@ -34,15 +34,21 @@
         .itemsNew__photoExplanation 
           最大10枚までアップロードできます
 
-        .itemsNew__photoUp
-          .itemsNew__photoUp--icon
-            = icon("fa", "camera", class: "fa-lg fa-fw")
-          .itemsNew__photoUp--text
-            ドラッグアンドドロップ
-            %br
-              またはクリックしてファイルをアップロード
-        .itemsNew__alert.displayNone
-          画像がありません
+        = f.fields_for :images do |image|
+          .js-file_group{"data-index" => "#{image.index}"}
+            = image.file_field :url, class: 'js-file'
+            %br/
+            %span.js-remove 削除
+
+
+          -# .itemsNew__photoUp
+          -#   .itemsNew__photoUp--icon
+          -#     = icon("fa", "camera", class: "fa-lg fa-fw")
+          -#   .itemsNew__photoUp--text
+          -#     クリックしてファイルをアップロード
+          -#   =image.file_field :url 
+          -# .itemsNew__alert.displayNone
+          -#   画像がありません
 
     .itemsNew__container
       .itemsNew__innerContainer
