@@ -28,7 +28,7 @@ Rails.application.routes.draw do
     resources :likes
     resources :comments
     resources :images
-    collection do
+    member do
       get 'confirm'
     end
   end
