@@ -32,8 +32,7 @@ $(document).on('turbolinks:load', function(){
       })
       $.each(images, function(index, image) {
         image.attr('data-image', index);
-        preview2.append(image[5]);
-        preview2.append(image[6]);
+        preview2.append(image);
         dropzone2.css({
           'width': `calc(100% - (135px * ${images.length - 5}))`
         })
@@ -42,7 +41,7 @@ $(document).on('turbolinks:load', function(){
         dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
       }
     } else {
-        $('#preview').empty();
+        // $('#preview').empty();
         $.each(images, function(index, image) {
           image.attr('data-image', index);
           preview.append(image);
@@ -63,7 +62,7 @@ $(document).on('turbolinks:load', function(){
     var new_image = $(`<input multiple= "multiple" name="product_images[image][]" class="upload-image" data-image= ${images.length} type="file" id="upload-image">`);
     input_area.prepend(new_image);
   });
-
+  
   $(document).on('click', '.delete', function() {
     var target_image = $(this).parent().parent();
     $.each(inputs, function(index, input){
