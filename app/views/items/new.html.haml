@@ -50,20 +50,22 @@
               必須
             = f.fields_for :product_images do |image|
               .dropzone-container
-                .dropzone-1colum
-                  #preview
-                  .dropzone-area
-                    = image.label :image, class: "dropzone-box", for: "upload-image" do
-                      .input_area
-                        = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                      %p ここをクリックしてください
-                .dropzone-2colum
-                  #preview2
-                  .dropzone-area2
-                    = image.label :image, class: "dropzone-box", for: "upload-image" do
-                      .input_area
-                        = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
-                      %p ここをクリックしてください
+                #preview
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p.upload-btn
+                      %i.fa.fa-camera
+                      ここをクリックしてください
+                #preview2
+                .dropzone-area2
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p.upload-btn
+                      %i.fa.fa-camera
+                      ここをクリックしてください
           -# .itemsNew__photoUp
           -#   .itemsNew__photoUp--icon
           -#     = icon("fa", "camera", class: "fa-lg fa-fw")

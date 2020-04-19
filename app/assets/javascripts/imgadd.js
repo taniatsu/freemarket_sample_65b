@@ -14,7 +14,7 @@ $(document).on('turbolinks:load', function(){
     inputs.push($(this));
     var img = $(`<div class= "img_view"><img></div>`);
     reader.onload = function(e) {
-      var btn_wrapper = $('<div class="btn_wrapper"><div class="btn edit">編集</div><div class="btn delete">削除</div></div>');
+      var btn_wrapper = $('<div class="btn_wrapper"><div class="btn delete">削除</div></div>');
       img.append(btn_wrapper);
       img.find('img').attr({
         src: e.target.result
@@ -33,26 +33,26 @@ $(document).on('turbolinks:load', function(){
       $.each(images, function(index, image) {
         image.attr('data-image', index);
         preview2.append(image);
-        dropzone2.css({
-          'width': `calc(100% - (135px * ${images.length - 5}))`
-        })
+        // dropzone2.css({
+        //   'width': `calc(100% - (135px * ${images.length - 5}))`
+        // })
       })
       if(images.length == 9) {
         dropzone2.find('p').replaceWith('<i class="fa fa-camera"></i>')
       }
     } else {
-        // $('#preview').empty();
+        $('#preview').empty();
         $.each(images, function(index, image) {
           image.attr('data-image', index);
           preview.append(image);
         })
-        dropzone.css({
-          'width': `calc(100% - (135px * ${images.length}))`
-        })
+        // dropzone.css({
+        //   'width': `calc(100% - (135px * ${images.length}))`
+        // })
     }
-    if(images.length == 4) {
-      dropzone.find('p').replaceWith('<i class="fa fa-camera"></i>')
-    }
+    // if(images.length == 4) {
+    //   dropzone.find('p').replaceWith('<i class="fa fa-camera"></i>')
+    // }
     if(images.length == 10) {
       dropzone2.css({
         'display': 'none'

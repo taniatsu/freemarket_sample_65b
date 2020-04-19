@@ -205,8 +205,10 @@ main.showItem {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  margin-bottom: 50px;
   .img_view{
     width: calc(620px / 5);
+    height: 120px;
   }
   .btn_wrapper{
     display: flex;
@@ -223,12 +225,29 @@ main.showItem {
   
   .dropzone-area,.dropzone-area2{
     height: 100%;
-    background: #DDDDDD;
+    // background: #DDDDDD;
   }
   .dropzone-1colum{
     display:flex;
   }
   .dropzone-2colum{
     display:flex;
+  }
+  .upload-btn{
+    width: 50%;
+    margin: 19px auto 0;
+    text-align: center;
+    background: #ddd;
+    padding: 20px;
+  }
+  .img_view{
+    img{
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+  .delete{
+    color: var(--main-color);
+    margin: 5px 0;
   }
 }
