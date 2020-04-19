@@ -10,14 +10,10 @@
           %h3.mainBlock__subTtl クレジットカード一覧
           .add__card
             .payment__list__content
-              = link_to edit_card_path(1), class: "formArea__btn" do
+              = link_to edit_card_path(current_user.id), class: "formArea__btn" do
                 %i
-                = icon('fas', 'credit-card', class: "card__icon")
+                = icon('fas', 'card', class: "card__icon")
                 クレジットカードを追加する
-              -# = link_to edit_card_path(current_user), class: "formArea__btn" do
-              -#   %i
-              -#   = icon('fas', 'credit-card', class: "card__icon")
-              -#   クレジットカードを追加する
         .payQuestion
           = link_to "支払い方法について", edit_card_path(1)
 = render "shared/banner"
