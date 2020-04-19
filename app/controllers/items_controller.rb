@@ -22,7 +22,8 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    # item.destroy
+    @parents = Category.all.where(ancestry: nil)
+    item.destroy
   end
 
   private
