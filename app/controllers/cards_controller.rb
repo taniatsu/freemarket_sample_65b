@@ -1,6 +1,4 @@
 class CardsController < ApplicationController
-
-  # before_action :get_user_params, only: [:edit, :confirmation, :show]
   before_action :get_payjp_info, only: [:new_create, :create, :delete, :show]
 
   def edit
@@ -32,7 +30,6 @@ class CardsController < ApplicationController
       customer = Payjp::Customer.retrieve(@card.customer_id)
       customer.delete
       @card.delete
-      # render action: "edit", id: current_user.id
     end
       redirect_to action: "edit", id: current_user.id
   end
