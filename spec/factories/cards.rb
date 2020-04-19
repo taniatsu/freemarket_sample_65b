@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :card do
-    number                {"1234567812345678"}
-    exp_month             {"01"}
-    exp_year              {"25"}
-    cvc                   {"123"}
+    user_id                {"1"}
+    customer_id             {"2"}
+    card_id              {"testtest0010"}
   end
 end
