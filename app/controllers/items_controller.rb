@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :confirm]
+  before_action :set_item, only: [:show, :confirm, :destroy]
   before_action :set_category, only: [:index, :show, :destroy]
 
   def index
@@ -19,8 +19,11 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    if current_user.id == @item.user_id
+      @item.destroy
+    else
+      render :show,　notice: '削除できませんでした'
+    end
   end
 
   private
