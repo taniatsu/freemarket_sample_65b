@@ -97,7 +97,7 @@ main.showItem {
         background: rgba(0, 0, 0, 0.8);
         display: none;
         z-index: 1;
-      }
+      
       #modalWindow{
         width: 35%;
         height: 250px;
@@ -126,17 +126,20 @@ main.showItem {
         }
       
       #modal-close-btn {
-        width: 50%;
+        width: 100%;
         height: 60px;
         cursor: pointer;
       }
       #delete-comformation-btn {
-        width: 50%;
+        width: 100%;
         height: 60px;
         color:red;
         cursor: pointer;
       }
-    
+      button{
+        font-size: 20px;
+      }
+      }
       .mainBox__soldBtn{
         background-color: hotpink;
         margin: 7px 0;

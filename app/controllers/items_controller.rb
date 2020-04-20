@@ -1,14 +1,12 @@
 class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :confirm]
-
+  before_action :set_category, only: [:index, :show, :destroy]
 
   def index
     @items = Item.page(params[:page]).per(12)
-    @parents = Category.all.where(ancestry: nil)
   end
   
   def show
-    @parents = Category.all.where(ancestry: nil)
   end
 
   def new
@@ -22,7 +20,6 @@ class ItemsController < ApplicationController
 
   def destroy
     item = Item.find(params[:id])
-    @parents = Category.all.where(ancestry: nil)
     item.destroy
   end
 
@@ -32,6 +29,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @parents = Category.all.where(ancestry: nil)
   end
 
 end
