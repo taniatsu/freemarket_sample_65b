@@ -3,6 +3,10 @@ class CardsController < ApplicationController
 
   def edit
     @parents = Category.all.where(ancestry: nil)
+    @card = current_user.cards.first
+    if @card.present?
+      redirect_to action: "show", id: current_user.id
+    end
   end
 
   def create
