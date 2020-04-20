@@ -29,6 +29,14 @@ Rails.application.routes.draw do
     member do
       get 'confirm'
     end
+    # 購入
+    resources :purchases, only: [:index] do
+      collection do
+        get 'index', to: 'purchases#index'
+        post 'pay', to: 'purchases#pay'
+        get 'done', to: 'purchases#done'
+      end
+    end
   end
 
   # カード登録ページのルーティング
@@ -42,13 +50,6 @@ Rails.application.routes.draw do
     end
   end 
   
-  # 購入
-  resources :purchases, only: [:index] do
-    collection do
-      get 'index', to: 'purchases#index'
-      post 'pay', to: 'purchases#pay'
-      get 'done', to: 'purchases#done'
-    end
-  end
+  
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

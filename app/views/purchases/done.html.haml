@@ -1,0 +1,18 @@
+= render "shared/header"
+%main
+  .commonContents
+    = render "shared/sub_block"
+    .mainBlock
+      %h2.mainBlock__ttl
+        購入が完了しました！
+      .mainBlock__content
+        .mainBlock__content-inner
+          %p
+            = @item.name
+          %p
+            = "¥" + @item.price.to_s
+          %br
+          .toTop
+          = link_to "トップへ戻る", root_path
+= render "shared/banner"
+= render "shared/footer"

@@ -5,6 +5,7 @@ class PurchasesController < ApplicationController
     @parents = Category.all.where(ancestry: nil)
     # @item = Item.find(1)
     @item = Item.find(params[:item_id])
+    # @group = Group.find(params[:group_id])
 
     card = Card.where(user_id: current_user.id).first
     #Cardテーブルは前回記事で作成、テーブルからpayjpの顧客IDを検索
@@ -21,7 +22,8 @@ class PurchasesController < ApplicationController
   end
 
   def pay
-    @item = Item.find(1)
+    # @item = Item.find(1)
+    @item = Item.find(params[:item_id])
     card = Card.where(user_id: current_user.id).first
     Payjp.api_key = "sk_test_7cd71a4afd3931baa6be94c1"
     Payjp::Charge.create(
