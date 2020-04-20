@@ -19,8 +19,7 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    if current_user.id == @item.user_id
-      @item.destroy
+    if current_user.id == @item.user_id && @item.destroy
     else
       render :show,　notice: '削除できませんでした'
     end
