@@ -2,33 +2,6 @@
 
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
-  # def facebook
-  #   callback_for(:facebook)
-  # end
-
-  # def google_oauth2
-  #   callback_for(:google)
-  # end
-  
-
-  # def callback_for(provider)
-  #   @omniauth = request.env['omniauth.auth']
-  #   info = User.find_oauth(@omniauth)
-  #   @user = info[:user]
-  #   if @user.persisted? 
-  #     sign_in_and_redirect @user, event: :authentication
-  #     set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
-  #   else 
-  #     @sns = info[:sns]
-  #     session[:provider] = @sns[:provider]
-  #     session[:uid] = @sns[:uid]
-  #     render template: "signup/registration" 
-  #   end
-  # end
-
-  # def failure
-  #   redirect_to root_path and return
-  # end
   def facebook
     authorization
   end
@@ -44,14 +17,18 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def authorization
-    @user = User.from_omniauth(request.env["omniauth.auth"])
+    sns_info = User.from_omniauth(request.env["omniauth.auth"])
+    @user = sns_info[:user]
 
-    if @user.persisted? #ユーザー情報が登録済みなので、新規登録ではなくログイン処理を行う
-      sign_in_and_redirect @user, event: :authentication
-    else #ユーザー情報が未登録なので、新規登録画面へ遷移する
-      render '/signup/index'
+    if @user.persisted?
+      sign_in_and_redirect @user, event: :authentication #this will throw if @user is not activated
+    else
+      @sns_id = sns_info[:sns].id
+      # render template: 'devise/registrations/new'
+      render template: 'signup/registration.html.haml'
     end
   end
+  
   # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 
