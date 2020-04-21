@@ -1,14 +1,12 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :confirm, :edit]
-
+  before_action :set_item, only: [:show, :confirm, :destroy]
+  before_action :set_category, only: [:index, :show, :destroy]
 
   def index
     @items = Item.page(params[:page]).per(12)
-    @parents = Category.all.where(ancestry: nil)
   end
   
   def show
-    @parents = Category.all.where(ancestry: nil)
   end
 
   def new
@@ -18,12 +16,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-  end
-
-  def update
+    @parents = Category.all.where(ancestry: nil)
   end
 
   def destroy
+    unless current_user.id == @item.user_id && @item.destroy
+      render :show,　notice: '削除できませんでした'
+    end
   end
 
   private
@@ -32,6 +31,10 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_category
+    @parents = Category.all.where(ancestry: nil)
   end
 
 end
