@@ -90,3 +90,6 @@ gem 'kaminari'
 
 # Payjpの導入
 gem 'payjp'
+
+# ENVの導入
+gem 'dotenv-rails'
