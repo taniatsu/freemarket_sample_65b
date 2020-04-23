@@ -4,7 +4,7 @@
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsEdit__logo'
 
   .itemsEdit__body
-    = form_for @item, html: {class: "sell-form zone", id: "item-dropzone"} do |f|
+    = form_for @item do |f|
       .itemsEdit__container
         .itemsEdit__top
           商品の情報を入力
@@ -43,7 +43,7 @@
               出品の説明
             .itemsEdit__tag
               必須
-          %textarea{type: "text", rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsNew__textareaBox"}
+          %textarea{type: "text", rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsEdit__textareaBox"}
           .itemsEdit__alert.displayNone
             入力してください
 
@@ -56,10 +56,8 @@
               カテゴリー
             .itemsEdit__tag
               必須
-          %select.itemsEdit__selectBox.L
-            -# - @parents.each do |parent|
-            -#   %option= parent.name
-            = f.collection_select :category_id, @parent, :id, :name,{include_blank: "---"}, {id:'select-parent-category'}
+          .itemsEdit__selectBoxL
+            = f.collection_select :category_id, @item.category.parent.parent.siblings, :id , :name, {include_blank: "---", selected: @item.category.parent.parent.id}, {id:'select-parent-category',class: "itemsEdit__selectBox"}
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -107,7 +105,7 @@
               ブランド
             .items__tEditag--gray
               任意
-          %input{type: "text", placeholder: "選択してください" ,class: "itemsNew__inputBox"}
+          %input{type: "text", placeholder: "選択してください" ,class: "itemsEdit__inputBox"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -275,4 +273,4 @@
         = image_tag 'logo-white.png', alt: 'FURIMA', class: 'itemsNew__logo'
 
       .itemsEdit__footerBottom
-        @FURIMA, Inc.
+        @FURIMA

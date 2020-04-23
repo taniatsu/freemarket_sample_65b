@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :confirm, :destroy]
-  before_action :set_category, only: [:index, :show, :destroy]
+  before_action :set_item, only: [:show, :confirm, :destroy,:edit]
+  before_action :set_category, only: [:index, :show, :destroy, :edit]
 
   def index
     @items = Item.page(params[:page]).per(12)
@@ -16,7 +16,9 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @parents = Category.all.where(ancestry: nil)
+    @grandchild_category = Category.find(@item.category_id)
+    
+    
   end
 
   def destroy
