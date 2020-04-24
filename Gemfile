@@ -46,6 +46,7 @@ group :development, :test do
   gem 'factory_bot_rails'
   gem 'database_cleaner'
   gem "rspec-rails"
+  gem 'dotenv-rails'
 end
 
 group :development do
@@ -93,4 +94,3 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-gem 'dotenv-rails'

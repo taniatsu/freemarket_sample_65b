@@ -1,4 +1,7 @@
 class SignupController < ApplicationController
+  before_action :validates_step1, only: :sms_confirmation
+  before_action :validates_step2, only: :address
+  before_action :validates_step3, only: :create
   
   def index
   end
@@ -8,6 +11,23 @@ class SignupController < ApplicationController
   end
 
   def sms_confirmation
+    @user = User.new
+    session["devise.facebook_data"] = nil
+    session["devise.google_data"] = nil
+
+    if verify_recaptcha 
+      render action: 'sms_confirmation' # trueなら次のページ
+    else
+      render registration_signup_index_path    # falseなら再度入力
+    end
+  end
+
+  def address
+    @user = User.new
+  end
+
+
+  def validates_step1
     session[:nickname] = user_params[:nickname]
     session[:email] = user_params[:email]
     session[:password] = user_params[:password]
@@ -30,41 +50,39 @@ class SignupController < ApplicationController
       first_jp_name: session[:first_jp_name],
       year_id: session[:year_id],
       month_id: session[:month_id],
-      day_id: session[:day_id],
-      tel: '09012345678',
-      zip_code: '1234567',
-      prefecture_id: '1',
-      city: '札幌',
-      address: '中央区',
-      building: 'ビル',
-      telephone: '08098765432'
+      day_id: session[:day_id]
     )
-    render '/signup/registration' unless @user.valid?
+    @user.errors.full_messages
+    render registration_signup_index_path unless @user.valid?(:validates_step1)
   end
 
-  def address
+  def validates_step2
     session[:tel] = user_params[:tel]
+    @user = User.new(tel: session[:tel])
+    render sms_confirmation_signup_index_path unless @user.valid?(:validates_step2)
+  end
+
+  def validates_step3
+    session[:zip_code] = user_params[:zip_code]
+    session[:prefecture_id] = user_params[:prefecture_id]
+    session[:city] = user_params[:city]
+    session[:address] = user_params[:address]
+    session[:building] = user_params[:building]
+    session[:telephone] = user_params[:telephone]
+
     @user = User.new(
-      nickname: session[:nickname],
-      email: session[:email],
-      password: session[:password],
-      password_confirmation: session[:password_confirmation],
-      last_name: session[:last_name],
-      first_name: session[:first_name],
-      last_jp_name: session[:last_jp_name],
-      first_jp_name: session[:first_jp_name],
-      year_id: session[:year_id],
-      month_id: session[:month_id],
-      day_id: session[:day_id],
-      tel: '09012345678',
-      zip_code: '1234567',
-      prefecture_id: '1',
-      city: '札幌',
-      address: '中央区',
-      building: 'ビル',
-      telephone: '08098765432'
+      zip_code: session[:zip_code],
+      prefecture_id: session[:prefecture_id],
+      city: session[:city],
+      address: session[:address],
+      building: session[:building],
+      telephone: session[:telephone]
     )
-    render '/signup/sms_confirmation' unless @user.valid?
+    render address_signup_index_path unless @user.valid?(:validates_step3)
+  end
+
+  def done
+    sign_in User.find(session[:id]) unless user_signed_in?
   end
 
   def create
@@ -100,10 +118,6 @@ class SignupController < ApplicationController
     else
       render '/signup/registration'
     end
-  end
-
-  def done
-    sign_in User.find(session[:id]) unless user_signed_in?
   end
 
   private
