@@ -28,7 +28,14 @@
         %li.headInner__Foot__left__brand
           ブランド
       %ul.headInner__Foot__right
-        %li.headInner__Foot__right__login
-          = link_to 'ログイン', new_user_session_path
-        %li.headInner__Foot__right__signUp
-          = link_to '新規会員登録', signup_index_path
+        - if user_signed_in?
+          %li.headInner__Foot__right__login
+            = link_to 'マイページ', users_path
+          %li.headInner__Foot__right__signUp
+            = link_to destroy_user_session_path, method: 'delete' do
+              ログアウト
+        - else
+          %li.headInner__Foot__right__login
+            = link_to 'ログイン', new_user_session_path
+          %li.headInner__Foot__right__signUp
+            = link_to '新規会員登録', signup_index_path

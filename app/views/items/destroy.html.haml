@@ -1,0 +1,13 @@
+= render "shared/header", parents: @parents
+%deletemain
+  .deleteMain
+    .deleteMain__box
+      .deleteMain__box__text
+        削除しました
+      .deleteMain__box__btn
+        =link_to root_path do
+          トップページに戻る
+    .deleteMain__footerLogo
+      = image_tag 'logo-blue.png', alt: 'FURIMA', class: 'deleteMain__logo'
+    .deleteMain__footerLogo__text
+      ©︎FURIMA
