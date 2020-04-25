@@ -15,8 +15,8 @@ class ItemsController < ApplicationController
   end
 
   def create
-    # Item.create(item_params)
-    @item = Item.new(item_parameter)
+    Item.create(item_params)
+    # @item = Item.new(item_parameter)
     respond_to do |format|
       if @item.save
           params[:images][:image].each do |image|
@@ -43,7 +43,8 @@ class ItemsController < ApplicationController
   end
 
   private
-  def testset
+  def item_params
+    params.require(:item).permit(:name, :brand, :size, :price, seller_id: current_user.id).merge(user_id: current_user.id)
   end
 
   def set_item
