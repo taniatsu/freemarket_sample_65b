@@ -91,10 +91,10 @@ describe User do
       expect(user.errors[:city]).to include("を入力してください")
     end
 
-    it "addresssがない場合は登録できないこと" do
-      user = build(:user, addresss: nil)
+    it "addressがない場合は登録できないこと" do
+      user = build(:user, address: nil)
       user.valid?
-      expect(user.errors[:addresss]).to include("を入力してください")
+      expect(user.errors[:address]).to include("を入力してください")
     end
 
     it " nicknameが13文字以上であれば登録できないこと" do
