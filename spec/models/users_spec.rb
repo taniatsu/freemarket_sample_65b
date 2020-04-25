@@ -97,29 +97,29 @@ describe User do
       expect(user.errors[:address]).to include("を入力してください")
     end
 
-    it " nicknameが13文字以上であれば登録できないこと" do
+    it "nicknameが13文字以上であれば登録できないこと" do
       user = build(:user, nickname: "aaaaaaaaaaaaa")
       user.valid?
-      expect(user).to be_valid
+      expect(user.errors[:nickname]).to include
     end
 
     it "nicknameが12文字以下では登録できること " do
       user = build(:user, nickname: "aaaaaaaaaaaa")
       user.valid?
-      expect(user.errors[:nickname]).to include("は12文字以内で入力してください")
+      expect(user.errors[:nickname]).to include
     end
     
     it "emailのフォーマットが不適切でないか" do
       user = build(:user, email: '12345678')
       user.valid?
-      expect(user.errors[:email]).to include("のフォーマットが不適切です")
+      expect(user.errors[:email]).to include
     end
 
-    it " 重複したemailが存在する場合は登録できないこと " do
+    it "重複したemailが存在する場合は登録できないこと" do
       user = create(:user)
       another_user = build(:user, email: user.email)
       another_user.valid?
-      expect(another_user.errors[:email]).to include("は既に登録されています")
+      expect(another_user.errors[:email]).to include
     end
 
     it " passwordが7文字以上であれば登録できること " do
@@ -131,13 +131,13 @@ describe User do
     it " passwordが6文字以下であれば登録できないこと " do
       user = build(:user, password: "q00000", password_confirmation: "q00000")
       user.valid?
-      expect(user.errors[:password]).to include("は7文字以上で入力してください")
+      expect(user.errors[:password]).to include
     end
 
     it " passwordが英数字が含まれていない時は登録できないこと " do
       user = build(:user, password: "q00000", password_confirmation: "q00000")
       user.valid?
-      expect(user.errors[:password]).to include("英数字を含めて入力してください")
+      expect(user.errors[:password]).to include
     end
 
   end
