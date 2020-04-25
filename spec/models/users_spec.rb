@@ -119,7 +119,7 @@ describe User do
       user = create(:user)
       another_user = build(:user, email: user.email)
       another_user.valid?
-      expect(another_user.errors[:email]).to include
+      expect(another_user.errors[:email]).to include('は不適切です')
     end
 
     it " passwordが7文字以上であれば登録できること " do
