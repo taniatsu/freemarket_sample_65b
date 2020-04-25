@@ -10,6 +10,24 @@ class ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
+    @item.images.new
+  end
+
+  def create
+    # Item.create(item_params)
+    @item = Item.new(item_parameter)
+    respond_to do |format|
+      if @item.save
+          params[:images][:image].each do |image|
+            @item.images.create(image: image, item_id: @item.id)
+          end
+        format.html{redirect_to root_path}
+      else
+        @item.images.build
+        format.html{render action: 'new'}
+      end
+    end
   end
 
   def confirm
