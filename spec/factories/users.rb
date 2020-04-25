@@ -1,5 +1,4 @@
 FactoryBot.define do
-
   factory :user do
     nickname              {"abe"}
     email                 {"kkk@gmail.com"}
@@ -16,7 +15,7 @@ FactoryBot.define do
     zip_code              {"000-0000"}
     prefecture_id         {1}
     city                  {"札幌"}
-    addresss              {"北区"}
+    address              {"北区"}
   end
 
 end
