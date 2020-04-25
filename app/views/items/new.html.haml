@@ -1,5 +1,6 @@
 .itemsNew
 
+  -# モーダルの記述
   .modal.js-modal
     .modal__bg.js-modal-close
     .modal__content
@@ -23,24 +24,56 @@
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsNew__logo'
 
   .itemsNew__body
-    .itemsNew__container
-      .itemsNew__title
-        .itemsNew__subTitle
-          出品画像
-        .itemsNew__tag
-          必須
-      .itemsNew__photoExplanation 
-        最大10枚までアップロードできます
+    = form_for @item do |f|
+      .itemsNew__container
+        .itemsNew__title
+          .itemsNew__subTitle
+            出品画像
+          .itemsNew__tag
+            必須
+        .itemsNew__photoExplanation 
+          最大10枚までアップロードできます
 
-      .itemsNew__photoUp
-        .itemsNew__photoUp--icon
-          = icon("fa", "camera", class: "fa-lg fa-fw")
-        .itemsNew__photoUp--text
-          ドラッグアンドドロップ
-          %br
-            またはクリックしてファイルをアップロード
-      .itemsNew__alert.displayNone
-        画像がありません
+        -# = f.fields_for :images do |image|
+        -#   .js-file_group{"data-index" => "#{image.index}"}
+        -#     = image.file_field :url, class: 'js-file'
+        -#     %br/
+        -#     %span.js-remove 削除
+
+        = form_for @item, html: {class: "sell-form dropzone", id: "item-dropzone"} do |f|
+          %h2.sell-form__header
+            商品情報を入力
+          .sell-form-container
+            %label.sell-form-container__label
+              出品画像
+            %span.sell-form-container__require
+              必須
+            = f.fields_for :product_images do |image|
+              .dropzone-container
+                #preview
+                .dropzone-area
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p.upload-btn
+                      %i.fa.fa-camera
+                      ここをクリックしてください
+                #preview2
+                .dropzone-area2
+                  = image.label :image, class: "dropzone-box", for: "upload-image" do
+                    .input_area
+                      = image.file_field :image, multiple: true, name: 'product_images[image][]', id: "upload-image", class: "upload-image", 'data-image': 0
+                    %p.upload-btn
+                      %i.fa.fa-camera
+                      ここをクリックしてください
+          -# .itemsNew__photoUp
+          -#   .itemsNew__photoUp--icon
+          -#     = icon("fa", "camera", class: "fa-lg fa-fw")
+          -#   .itemsNew__photoUp--text
+          -#     クリックしてファイルをアップロード
+          -#   =image.file_field :url 
+          -# .itemsNew__alert.displayNone
+          -#   画像がありません
 
     .itemsNew__container
       .itemsNew__innerContainer
@@ -49,7 +82,11 @@
             出品名
           .itemsNew__tag
             必須
-        %input{type: "text", placeholder: "40字まで" ,class: "itemsNew__inputBox"}
+        = form_for @item do |f|
+          = f.text_field :name, placeholder: "40字まで", class: "itemsNew__inputBox"
+          = f.submit "出品", class:"button"
+        -# %input{type: "text", placeholder: "40字まで" ,class: "itemsNew__inputBox"}
+        -# = f.text_field :name, id: "input-default",  placeholder: "商品名（必須 40文字まで)"
         .itemsNew__alert.displayNone
           入力してください
 
@@ -168,16 +205,16 @@
         .itemsNew__alert.displayNone
           選択してください
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            配送の方法
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox
-          %option{value: "0"} 選択してください
-          %option{value: "1"} らくらくフリマ便
-        .itemsNew__alert.displayNone
+      -# .itemsNew__innerContainer
+      -#   .itemsNew__title
+      -#     .itemsNew__subTitle
+      -#       配送の方法
+      -#     .itemsNew__tag
+      -#       必須
+      -#   %select.itemsNew__selectBox
+      -#     %option{value: "0"} 選択してください
+        -#   %option{value: "1"} らくらくフリマ便
+        -# .itemsNew__alert.displayNone
           選択してください
 
       .itemsNew__innerContainer
@@ -322,7 +359,7 @@
           = link_to('特定商品に関する表記', {}, class: 'itemsNew__footerList--link')
 
     .itemsNew__footerLogo
-      = image_tag 'logo-white.png', alt: 'FURIMA', class: 'itemsNew__logo'
+      = image_tag 'logo-blue.png', alt: 'FURIMA', class: 'itemsNew__logo'
 
     .itemsNew__footerBottom
       @FURIMA, Inc.
