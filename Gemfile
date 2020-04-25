@@ -87,3 +87,5 @@ gem 'carrierwave'
 
 # mini_magickの導入
 gem 'mini_magick'
+
+gem "therubyracer"
