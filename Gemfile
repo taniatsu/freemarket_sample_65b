@@ -87,3 +87,12 @@ gem 'rails-i18n'
 
 # ページネーション導入
 gem 'kaminari'
+
+# Payjpの導入
+gem 'payjp'
+
+# ENVの導入
+gem 'dotenv-rails'
+
+# binding.pry
+gem 'pry-rails'

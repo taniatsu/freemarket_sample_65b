@@ -44,8 +44,9 @@
               =icon("fa","plus-square")
               登録してください
         .buyForm__Btn
-          %button{type: "submit",class:"buyBtn"}
-            購入する
+          =link_to "購入する", item_purchases_path(@item)
+          -# %button{type: "submit",class:"buyBtn"}
+          -#   購入する
 %footer.confirm
   .footerInner
     %ul.footerInner__navi
