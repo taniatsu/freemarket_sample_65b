@@ -4,7 +4,7 @@
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsEdit__logo'
 
   .itemsEdit__body
-    = form_for @item do |f|
+    = form_for (@item) do |f|
       .itemsEdit__container
         .itemsEdit__top
           商品の情報を入力
@@ -33,7 +33,7 @@
               出品名
             .itemsEdit__tag
               必須
-          %input{type: "text", placeholder: "40字まで" ,class: "itemsEdit__inputBox"}
+          =f.text_field :name, placeholder: "40文字以内" ,class: "itemsEdit__inputBox"
           .itemsEdit__alert.displayNone
             入力してください
 
@@ -43,7 +43,7 @@
               出品の説明
             .itemsEdit__tag
               必須
-          %textarea{type: "text", rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsEdit__textareaBox"}
+          =f.text_area :explanation, rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsEdit__textareaBox"
           .itemsEdit__alert.displayNone
             入力してください
 
@@ -56,27 +56,32 @@
               カテゴリー
             .itemsEdit__tag
               必須
+          -# カテゴリープルダウンメニュー
           .itemsEdit__selectBoxL
             = f.collection_select :category_id, @item.category.parent.parent.siblings, :id , :name, {include_blank: "---", selected: @item.category.parent.parent.id}, {id:'select-parent-category',class: "itemsEdit__selectBox"}
-          .itemsEdit__alert.displayNone
-            選択してください
+          .itemsEdit__selectBoxM
+            = f.collection_select :category_id, @item.category.parent.siblings, :id , :name, {include_blank: "---", selected:  @item.category.parent.id}, {id:'select-children-category',class: "itemsEdit__selectBox"}
+          .itemsEdit__selectBoxS
+            = f.collection_select :category_id, @grandchild_category.siblings, :id , :name, {include_blank: "---", selected: @item.category_id}, {id:'select-grandchildren-category',class: "itemsEdit__selectBox"}
+          
+          -# .itemsEdit__alert.displayNone
+          -#   選択してください
+          -# %select.itemsEdit__selectBox.M.displayNone
+          -#   %option{value: "0"} 選択してください
+          -#   %option{value: "1"} トップス
+          -#   %option{value: "2"} ジャケット/アウター
+          -#   %option{value: "3"} パンツ
+          -# .itemsEdit__alert.displayNone
+          -#   選択してください
 
-          %select.itemsEdit__selectBox.M.displayNone
-            %option{value: "0"} 選択してください
-            %option{value: "1"} トップス
-            %option{value: "2"} ジャケット/アウター
-            %option{value: "3"} パンツ
-          .itemsEdit__alert.displayNone
-            選択してください
-
-          %select.itemsEdit__selectBox.S.displayNone
-            %option{value: "0"} 選択してください
-            %option{value: "1"} Tシャツ/カットソー（半袖/袖なし）
-            %option{value: "2"} Tシャツ/カットソー（七分/長袖）
-            %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
-            %option{value: "4"} シャツ/ブラウス（七分/長袖）
-          .itemsEdit__alert.displayNone
-            選択してください
+          -# %select.itemsEdit__selectBox.S.displayNone
+          -#   %option{value: "0"} 選択してください
+          -#   %option{value: "1"} Tシャツ/カットソー（半袖/袖なし）
+          -#   %option{value: "2"} Tシャツ/カットソー（七分/長袖）
+          -#   %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
+          -#   %option{value: "4"} シャツ/ブラウス（七分/長袖）
+          -# .itemsEdit__alert.displayNone
+          -#   選択してください
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -105,7 +110,7 @@
               ブランド
             .items__tEditag--gray
               任意
-          %input{type: "text", placeholder: "選択してください" ,class: "itemsEdit__inputBox"}
+          =f.text_field :brand, placeholder: "入力してください" ,class: "itemsEdit__inputBox"
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -235,7 +240,7 @@
               必須
           .itemsEdit__sellPriceBox
             ¥
-            %input{type: "number", placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsNew__inputBox--sellPrice"}
+            = f.number_field :price, placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsEdit__inputBox--sellPrice"
         .itemsEdit__alertInputBox
           .itemsEdit__alertInputBox2.displayNone
             300以上9999999以下で入力してください
@@ -254,23 +259,21 @@
 
         .itemsEdit__btnContainer
           .itemsEdit__modalOpen
-            %button{type: "submit", class: "itemsNew__sellBtn"}
-              変更する
-          %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
-            キャンセル
+            = f.submit :" 変更する", class: "itemsEdit__sellBtn",method: "patch"
+          =link_to "キャンセル", item_path(@item),class: "itemsEdit__sellBtn itemsEdit__backBtn"
 
-    .itemsEdit__footer
-      .itemsEdit__footerTop
-        %ul.itemsEdit__footerUl
-          %li.itemsEdit__footerList
-            = link_to('プライバシーポリシー', {}, class: 'itemsNew__footerList--link')
-          %li.itemsEdit__footerList
-            = link_to('フリマ利用規約', {}, class: 'itemsNew__footerList--link')
-          %li.itemsEdit__footerList
-            = link_to('特定商品に関する表記', {}, class: 'itemsNew__footerList--link')
+  .itemsEdit__footer
+    .itemsEdit__footerTop
+      %ul.itemsEdit__footerUl
+        %li.itemsEdit__footerList
+          = link_to('プライバシーポリシー', {}, class: 'itemsEdit__footerList--link')
+        %li.itemsEdit__footerList
+          = link_to('フリマ利用規約', {}, class: 'itemsEdit__footerList--link')
+        %li.itemsEdit__footerList
+          = link_to('特定商品に関する表記', {}, class: 'itemsEdit__footerList--link')
 
-      .itemsEdit__footerLogo
-        = image_tag 'logo-white.png', alt: 'FURIMA', class: 'itemsNew__logo'
+    .itemsEdit__footerLogo
+      = image_tag 'logo-white.png', alt: 'FURIMA', class: 'itemsEdit__logo'
 
-      .itemsEdit__footerBottom
-        @FURIMA
+    .itemsEdit__footerBottom
+      @FURIMA
