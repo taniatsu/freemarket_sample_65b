@@ -97,7 +97,6 @@ class ItemsController < ApplicationController
       :condition, 
       :size, 
       :fee_which, 
-      :status, 
       :from_where, 
       :delivery_date, 
       :price, 

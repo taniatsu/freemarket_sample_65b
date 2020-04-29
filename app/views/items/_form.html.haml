@@ -29,7 +29,7 @@
                     = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
 
               = f.fields_for :images do |image|
-                .js-file_group{data:{index:"image.index"}}
+                .js-file_group{data:{index: image.index}}
                   -# =image.label :url, class: "imgUpload" do
                   = image.file_field :url, class: "js-file img-add"
 
@@ -69,40 +69,8 @@
               .itemsNew__tag
                 必須
             = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select itemsNew__selectBox', id: 'parent_category'}
-          -# %select.itemsNew__selectBox.L
-          -#   %option{value: "0"} 選択してください
-          -#   %option{value: "1"} レディース
-          -#   %option{value: "2"} メンズ
-          -#   %option{value: "3"} ベビー・キッズ
-          -#   %option{value: "4"} インテリア・住まい・小物
-          -#   %option{value: "5"} 本・音楽・ゲーム
-          -#   %option{value: "6"} おもちゃ・ホビー・グッズ
-          -#   %option{value: "7"} コスメ・香水・美容
-          -#   %option{value: "8"} 家電・スマホ・カメラ
-          -#   %option{value: "9"} スポーツ・レジャー
-          -#   %option{value: "10"} ハンドメイド
-          -#   %option{value: "11"} チケット
-          -#   %option{value: "12"} 自動車・オートバイ
-          -#   %option{value: "13"} その他
-          -# .itemsNew__alert.displayNone
-          -#   選択してください
-
-          -# %select.itemsNew__selectBox.M.displayNone
-          -#   %option{value: "0"} 選択してください
-          -#   %option{value: "1"} トップス
-          -#   %option{value: "2"} ジャケット/アウター
-          -#   %option{value: "3"} パンツ
-          -# .itemsNew__alert.displayNone
-          -#   選択してください
-
-          -# %select.itemsNew__selectBox.S.displayNone
-          -#   %option{value: "0"} 選択してください
-          -#   %option{value: "1"} Tシャツ/カットソー（半袖/袖なし）
-          -#   %option{value: "2"} Tシャツ/カットソー（七分/長袖）
-          -#   %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
-          -#   %option{value: "4"} シャツ/ブラウス（七分/長袖）
-          .itemsNew__alert.displayNone
-            選択してください
+            .itemsNew__alert.displayNone
+              選択してください
         
         .itemsNew__innerContainer
           .itemsNew__title
@@ -176,7 +144,8 @@
               必須
           .itemsNew__sellPriceBox
             ¥
-            %input{type: "number", placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsNew__inputBox--sellPrice"}
+            = f.number_field :price, placeholder: "0", class: "itemsNew__inputBox--sellPrice", min: "300", max: "9999999", style: "text-align: right;"
+            -# %input{type: "number", placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsNew__inputBox--sellPrice"}
         .itemsNew__alertInputBox
           .itemsNew__alertInputBox2.displayNone
             300以上9999999以下で入力してください
