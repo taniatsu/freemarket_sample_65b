@@ -62,26 +62,7 @@
           .itemsEdit__selectBoxM
             = f.collection_select :category_id, @item.category.parent.siblings, :id , :name, {include_blank: "---", selected:  @item.category.parent.id}, {id:'select-children-category',class: "itemsEdit__selectBox"}
           .itemsEdit__selectBoxS
-            = f.collection_select :category_id, @grandchild_category.siblings, :id , :name, {include_blank: "---", selected: @item.category_id}, {id:'select-grandchildren-category',class: "itemsEdit__selectBox"}
-          
-          -# .itemsEdit__alert.displayNone
-          -#   選択してください
-          -# %select.itemsEdit__selectBox.M.displayNone
-          -#   %option{value: "0"} 選択してください
-          -#   %option{value: "1"} トップス
-          -#   %option{value: "2"} ジャケット/アウター
-          -#   %option{value: "3"} パンツ
-          -# .itemsEdit__alert.displayNone
-          -#   選択してください
-
-          -# %select.itemsEdit__selectBox.S.displayNone
-          -#   %option{value: "0"} 選択してください
-          -#   %option{value: "1"} Tシャツ/カットソー（半袖/袖なし）
-          -#   %option{value: "2"} Tシャツ/カットソー（七分/長袖）
-          -#   %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
-          -#   %option{value: "4"} シャツ/ブラウス（七分/長袖）
-          -# .itemsEdit__alert.displayNone
-          -#   選択してください
+            = f.collection_select :category_id, @item.category.siblings, :id , :name, {include_blank: "---", selected: @item.category_id}, {id:'select-grandchildren-category',class: "itemsEdit__selectBox"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -89,20 +70,8 @@
               サイズ
             .itemsEdit__tag
               必須
-          .itemsEdit__selectBox
-            =f.select :size, Item.sizes,placeholder:"選択してください",include_blank: "---"
-            -# =f.collection_select :size,placeholder: "入力してください"
-            -# %option{value: "0"} 選択してください
-            -# %option{value: "1"} XXS以下
-            -# %option{value: "2"} XS（SS）
-            -# %option{value: "3"} S
-            -# %option{value: "4"} M
-            -# %option{value: "5"} L
-            -# %option{value: "6"} XL(LL)
-            -# %option{value: "7"} 2XL(3L)
-            -# %option{value: "8"} 3XL(4L)
-            -# %option{value: "9"} 4XK(5L)以上
-            -# %option{value: "10"} FREE SIZE
+          .itemsEdit__selectBoxSize
+            =f.select :size, Item.sizes.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.size.to_i
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -120,14 +89,8 @@
               商品の状態
             .itemsEdit__tag
               必須
-          .itemsEdit__selectBox
-            =f.select :condition, Item.conditions,placeholder:"選択してください",include_blank: "---"
-            -# %option{value: "0"} 選択してください
-            -# %option{value: "1"} 新品・未使用
-            -# %option{value: "2"} 目立った傷や汚れなし
-            -# %option{value: "3"} やや傷や汚れあり
-            -# %option{value: "4"} 傷や汚れあり
-            -# %option{value: "5"} 全体的に状態が悪い
+          .itemsEdit__selectBoxCondition
+            =f.select :condition, Item.conditions.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.condition.to_i
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -140,11 +103,8 @@
               配送料の負担
             .itemsEdit__tag
               必須
-          .itemsEdit__selectBox
-            =f.select :fee_which, Item.fee_whiches,placeholder:"選択してください",include_blank: "---"
-            -# %option{value: "0"} 選択してください
-            -# %option{value: "1"} 送料込み（出品者負担）
-            -# %option{value: "2"} 着払い（購入者負担）
+          .itemsEdit__selectBoxFee
+            =f.select :fee_which, Item.fee_whiches.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.fee_which.to_i
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -154,10 +114,8 @@
               配送の方法
             .itemsEdit__tag
               必須
-          .itemsEdit__selectBox
-            =f.select :status, Item.statuses,placeholder:"選択してください",include_blank: "---"
-            -# %option{value: "0"} 選択してください
-            -# %option{value: "1"} らくらくフリマ便
+          .itemsEdit__selectBoxStatus
+            =f.select :status, Item.statuses.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.status.to_i
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -167,57 +125,8 @@
               発送元の地域
             .itemsEdit__tag
               必須
-          .itemsEdit__selectBox
-            = f.collection_select :from_where, Prefecture.all, :id, :name,include_blank: "---"
-            -# %option{value: "0"} 選択してください
-            -# %option{value: "1"} 北海道
-            -# %option{value: "2"} 青森県
-            -# %option{value: "3"} 岩手県
-            -# %option{value: "4"} 宮城県
-            -# %option{value: "5"} 秋田県
-            -# %option{value: "6"} 山形県
-            -# %option{value: "7"} 福島県
-            -# %option{value: "8"} 茨城県
-            -# %option{value: "9"} 栃木県
-            -# %option{value: "10"} 群馬園
-            -# %option{value: "12"} 埼玉県
-            -# %option{value: "13"} 千葉県
-            -# %option{value: "14"} 東京都
-            -# %option{value: "15"} 神奈川県
-            -# %option{value: "16"} 新潟県
-            -# %option{value: "17"} 富山県
-            -# %option{value: "18"} 石川県
-            -# %option{value: "19"} 福井県
-            -# %option{value: "20"} 山梨県
-            -# %option{value: "21"} 長野県
-            -# %option{value: "22"} 岐阜県
-            -# %option{value: "23"} 静岡県
-            -# %option{value: "24"} 愛知県
-            -# %option{value: "25"} 三重県
-            -# %option{value: "26"} 滋賀県
-            -# %option{value: "27"} 京都府
-            -# %option{value: "28"} 大阪府
-            -# %option{value: "29"} 兵庫県
-            -# %option{value: "30"} 奈良県
-            -# %option{value: "31"} 和歌山県
-            -# %option{value: "32"} 鳥取県
-            -# %option{value: "33"} 島根県
-            -# %option{value: "34"} 岡山県
-            -# %option{value: "35"} 広島県
-            -# %option{value: "36"} 山口県
-            -# %option{value: "37"} 徳島県
-            -# %option{value: "38"} 香川県
-            -# %option{value: "39"} 愛媛県
-            -# %option{value: "40"} 高知県
-            -# %option{value: "41"} 福岡県
-            -# %option{value: "42"} 佐賀県
-            -# %option{value: "43"} 長崎県
-            -# %option{value: "44"} 熊本県
-            -# %option{value: "45"} 大分県
-            -# %option{value: "46"} 宮崎県
-            -# %option{value: "47"} 鹿児島県
-            -# %option{value: "48"} 沖縄県
-            -# %option{value: "49"} その他
+          .itemsEdit__selectBoxFrom
+            = f.collection_select :from_where, Prefecture.all, :id, :name,include_blank: "---",selected: @item.from_where.to_i
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -227,12 +136,8 @@
               発送までの日数
             .itemsEdit__tag
               必須
-          .itemsNew__selectBox
-            =f.select :delivery_date, Item.delivery_dates,placeholder:"選択してください",include_blank: "---"
-            -# %option{value: "0"} 選択してください
-            -# %option{value: "1"} 1~2日で発送
-            -# %option{value: "2"} 2~3日で発送
-            -# %option{value: "3"} 4~7日で発送
+          .itemsNew__selectBoxDelivery
+            =f.select :delivery_date, Item.delivery_dates.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.delivery_date.to_i
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -266,8 +171,8 @@
 
         .itemsEdit__btnContainer
           .itemsEdit__modalOpen
-            = f.submit :" 変更する", class: "itemsEdit__sellBtn",method: "patch"
-          =link_to "キャンセル", item_path(@item),class: "itemsEdit__sellBtn itemsEdit__backBtn"
+            = f.submit :" 変更する", class: "itemsEdit__sellBtn"
+          =link_to "キャンセル", item_path(@item),method: "patch",class: "itemsEdit__sellBtn itemsEdit__backBtn"
 
   .itemsEdit__footer
     .itemsEdit__footerTop
