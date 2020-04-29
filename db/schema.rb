@@ -37,7 +37,7 @@ ActiveRecord::Schema.define(version: 20200429084025) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",                     null: false
+    t.integer  "user_id"
     t.integer  "category_id",                 null: false
     t.string   "name",                        null: false
     t.string   "brand"
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 20200429084025) do
     t.integer  "fee_which",                   null: false
     t.string   "from_where",                  null: false
     t.integer  "delivery_date",               null: false
-    t.integer  "status",                      null: false
+    t.integer  "status"
     t.integer  "buyer_id"
     t.integer  "seller_id",                   null: false
     t.datetime "created_at",                  null: false
