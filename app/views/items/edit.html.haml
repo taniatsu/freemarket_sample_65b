@@ -111,17 +111,6 @@
         .itemsEdit__innerContainer
           .itemsEdit__title
             .itemsEdit__subTitle
-              配送の方法
-            .itemsEdit__tag
-              必須
-          .itemsEdit__selectBoxStatus
-            =f.select :status, Item.statuses.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.status
-          .itemsEdit__alert.displayNone
-            選択してください
-
-        .itemsEdit__innerContainer
-          .itemsEdit__title
-            .itemsEdit__subTitle
               発送元の地域
             .itemsEdit__tag
               必須

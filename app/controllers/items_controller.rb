@@ -16,11 +16,11 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    # @grandchild_category = Category.find(@item.category_id)
+    
   end
 
   def update
-    if @item.update!(item_params)
+    if @item.update(item_params)
       redirect_to item_path(@item),notice: '変更を保存しました'
     else
       render :show, notice: '削除できませんでした'
@@ -35,7 +35,7 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    params.require(:item).permit(:category_id, :name, :brand, :explanation, :condition, :price, :size, :fee_which, :from_where, :delivery_date, :status, :thumbnail).merge(seller_id: current_user.id,buyer_id: current_user.id)
+    params.require(:item).permit(:category_id, :name, :brand, :explanation, :condition, :price, :size, :fee_which, :from_where, :delivery_date, :thumbnail).merge(seller_id: current_user.id)
   end
 
   def set_item
