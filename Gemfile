@@ -88,11 +88,19 @@ gem 'rails-i18n'
 # ページネーション導入
 gem 'kaminari'
 
+# デバックツールの導入
+gem 'pry-rails'
+
+# CarrierWaveの導入
+gem 'carrierwave'
+
+# mini_magickの導入
+gem 'mini_magick'
+
+gem "therubyracer"
+
 # Payjpの導入
 gem 'payjp'
 
 # ENVの導入
 gem 'dotenv-rails'
-
-# binding.pry
-gem 'pry-rails'

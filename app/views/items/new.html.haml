@@ -1,5 +1,6 @@
 .itemsNew
 
+  -# モーダルの記述
   .modal.js-modal
     .modal__bg.js-modal-close
     .modal__content
@@ -23,293 +24,240 @@
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsNew__logo'
 
   .itemsNew__body
-    .itemsNew__container
-      .itemsNew__title
-        .itemsNew__subTitle
-          出品画像
-        .itemsNew__tag
-          必須
-      .itemsNew__photoExplanation 
-        最大10枚までアップロードできます
-
-      .itemsNew__photoUp
-        .itemsNew__photoUp--icon
-          = icon("fa", "camera", class: "fa-lg fa-fw")
-        .itemsNew__photoUp--text
-          ドラッグアンドドロップ
-          %br
-            またはクリックしてファイルをアップロード
-      .itemsNew__alert.displayNone
-        画像がありません
-
-    .itemsNew__container
-      .itemsNew__innerContainer
+    = form_for @item do |f|
+      .itemsNew__container
         .itemsNew__title
           .itemsNew__subTitle
-            出品名
+            出品画像
           .itemsNew__tag
             必須
-        %input{type: "text", placeholder: "40字まで" ,class: "itemsNew__inputBox"}
-        .itemsNew__alert.displayNone
-          入力してください
+        .itemsNew__photoExplanation 
+          最大10枚までアップロードできます
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            出品の説明
-          .itemsNew__tag
-            必須
-        %textarea{type: "text", rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsNew__textareaBox"}
-        .itemsNew__alert.displayNone
-          入力してください
+        = f.fields_for :images do |i|
+          .js-file_group{"data-index" => "#{image.index}"}
+            = image.file_field :url, class: 'js-file'
+            %br/
+            %span.js-remove 削除
 
-    .itemsNew__container
-      .itemsNew__mainTitle
-        商品の詳細
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            カテゴリー
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox.L
-          %option{value: "0"} 選択してください
-          %option{value: "1"} レディース
-          %option{value: "2"} メンズ
-          %option{value: "3"} ベビー・キッズ
-          %option{value: "4"} インテリア・住まい・小物
-          %option{value: "5"} 本・音楽・ゲーム
-          %option{value: "6"} おもちゃ・ホビー・グッズ
-          %option{value: "7"} コスメ・香水・美容
-          %option{value: "8"} 家電・スマホ・カメラ
-          %option{value: "9"} スポーツ・レジャー
-          %option{value: "10"} ハンドメイド
-          %option{value: "11"} チケット
-          %option{value: "12"} 自動車・オートバイ
-          %option{value: "13"} その他
-        .itemsNew__alert.displayNone
+          .itemsNew__photoUp
+            .itemsNew__photoUp--icon
+              = icon("fa", "camera", class: "fa-lg fa-fw")
+            .itemsNew__photoUp--text
+              クリックしてファイルをアップロード
+            =image.file_field :url 
+          .itemsNew__alert.displayNone
+            画像がありません
+
+      .itemsNew__container
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              出品名
+            .itemsNew__tag
+              必須
+          = f.text_field :name, placeholder: "40字まで", class: "itemsNew__inputBox"
+          -# .itemsNew__alert.displayNone
+          -#   入力してください
+
+      .itemsNew__container
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              出品の説明
+            .itemsNew__tag
+              必須
+          = f.text_area :explanation, class: "itemsNew__textareaBox", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "7"
+          -# %textarea{type: "text", rows: 7, placeholder: "", class: ""}
+          -# .itemsNew__alert.displayNone
+          -#   入力してください
+
+      .itemsNew__container
+        .itemsNew__mainTitle
+          商品の詳細
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              カテゴリー
+            .itemsNew__tag
+              必須
+          = f.collection_select :category, @parents, :id, :name,{prompt: "選択してください"}, class: "itemsNew__selectBox", id: "parent-form"
+
+        -# %select.itemsNew__selectBox.L
+        -#   %option{value: "0"} 選択してください
+        -#   %option{value: "1"} レディース
+        -#   %option{value: "2"} メンズ
+        -#   %option{value: "3"} ベビー・キッズ
+        -#   %option{value: "4"} インテリア・住まい・小物
+        -#   %option{value: "5"} 本・音楽・ゲーム
+        -#   %option{value: "6"} おもちゃ・ホビー・グッズ
+        -#   %option{value: "7"} コスメ・香水・美容
+        -#   %option{value: "8"} 家電・スマホ・カメラ
+        -#   %option{value: "9"} スポーツ・レジャー
+        -#   %option{value: "10"} ハンドメイド
+        -#   %option{value: "11"} チケット
+        -#   %option{value: "12"} 自動車・オートバイ
+        -#   %option{value: "13"} その他
+        -# -# .itemsNew__alert.displayNone
+        -# -#   選択してください
+
+        -# %select.itemsNew__selectBox.M
+        -#   %option{value: "0"} 選択してください
+        -#   %option{value: "1"} トップス
+        -#   %option{value: "2"} ジャケット/アウター
+        -#   %option{value: "3"} パンツ
+        -# -# .itemsNew__alert.displayNone
+        -# -#   選択してください
+
+        -# %select.itemsNew__selectBox.S
+        -#   %option{value: "0"} 選択してください
+        -#   %option{value: "1"} Tシャツ/カットソー（半袖/袖なし）
+        -#   %option{value: "2"} Tシャツ/カットソー（七分/長袖）
+        -#   %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
+        -#   %option{value: "4"} シャツ/ブラウス（七分/長袖）
+        -# -# .itemsNew__alert.displayNone
           選択してください
 
-        %select.itemsNew__selectBox.M.displayNone
-          %option{value: "0"} 選択してください
-          %option{value: "1"} トップス
-          %option{value: "2"} ジャケット/アウター
-          %option{value: "3"} パンツ
-        .itemsNew__alert.displayNone
+        -# .itemsNew__innerContainer
+        -#   .itemsNew__title
+        -#     .itemsNew__subTitle
+        -#       サイズ
+        -#     .itemsNew__tag
+        -#       必須
+        -#   %select.itemsNew__selectBox
+        -#     %option{value: "0"} 選択してください
+        -#     %option{value: "1"} XXS以下
+        -#     %option{value: "2"} XS（SS）
+        -#     %option{value: "3"} S
+        -#     %option{value: "4"} M
+        -#     %option{value: "5"} L
+        -#     %option{value: "6"} XL(LL)
+        -#     %option{value: "7"} 2XL(3L)
+        -#     %option{value: "8"} 3XL(4L)
+        -#     %option{value: "9"} 4XK(5L)以上
+        -#     %option{value: "10"} FREE SIZE
+        -#   .itemsNew__alert.displayNone
+        -#     選択してください
+
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              ブランド
+            .itemsNew__tag--gray
+              任意
+          = f.text_field :brand, placeholder: "選択してください", class: "itemsNew__inputBox"
+          -# %input{type: "text", placeholder: "選択してください" ,class: "itemsNew__inputBox"}
+
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              商品の状態
+            .itemsNew__tag
+              必須
+          = f.select :condition, Item.conditions.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
+          -# .itemsNew__alert.displayNone
+          -#   選択してください
+
+      .itemsNew__container
+        .itemsNew__mainTitle
+          配送について
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              配送料の負担
+            .itemsNew__tag
+              必須
+          = f.select :fee_which, Item.fee_whiches.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
+
+        -# .itemsNew__alert.displayNone
+        -#   選択してください
+
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              配送の方法
+            .itemsNew__tag
+              必須
+          = f.select :status, Item.statuses.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
+
+        -# .itemsNew__alert.displayNone
           選択してください
 
-        %select.itemsNew__selectBox.S.displayNone
-          %option{value: "0"} 選択してください
-          %option{value: "1"} Tシャツ/カットソー（半袖/袖なし）
-          %option{value: "2"} Tシャツ/カットソー（七分/長袖）
-          %option{value: "3"} シャツ/ブラウス（半袖/袖なし）
-          %option{value: "4"} シャツ/ブラウス（七分/長袖）
-        .itemsNew__alert.displayNone
-          選択してください
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              発送元の地域
+            .itemsNew__tag
+              必須
+          = f.select :from_where, Item.from_wheres.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            サイズ
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox
-          %option{value: "0"} 選択してください
-          %option{value: "1"} XXS以下
-          %option{value: "2"} XS（SS）
-          %option{value: "3"} S
-          %option{value: "4"} M
-          %option{value: "5"} L
-          %option{value: "6"} XL(LL)
-          %option{value: "7"} 2XL(3L)
-          %option{value: "8"} 3XL(4L)
-          %option{value: "9"} 4XK(5L)以上
-          %option{value: "10"} FREE SIZE
-        .itemsNew__alert.displayNone
-          選択してください
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTile
+              発送までの日数
+            .itemsNew__tag
+              必須
+          = f.select :delivery_date, Item.delivery_dates.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            ブランド
-          .itemsNew__tag--gray
-            任意
-        %input{type: "text", placeholder: "選択してください" ,class: "itemsNew__inputBox"}
+          .itemsNew__alert.displayNone
+            選択してください
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            商品の状態
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox
-          %option{value: "0"} 選択してください
-          %option{value: "1"} 新品・未使用
-          %option{value: "2"} 目立った傷や汚れなし
-          %option{value: "3"} やや傷や汚れあり
-          %option{value: "4"} 傷や汚れあり
-          %option{value: "5"} 全体的に状態が悪い
-        .itemsNew__alert.displayNone
-          選択してください
+      .itemsNew__container
+        .itemsNew__mainTitle
+          価格（¥300〜9,999,999）
+        .itemsNew__sellContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              販売価格
+            .itemsNew__tag
+              必須
+          .itemsNew__sellPriceBox
+            ¥
+            = f.number_field :price, min: "300", max: "9999999", class: "itemsNew__inputBox--sellPrice", placeholder: "0", style: "text-align: right;"
+        .itemsNew__alertInputBox
+          .itemsNew__alertInputBox2.displayNone
+            300以上9999999以下で入力してください
 
-    .itemsNew__container
-      .itemsNew__mainTitle
-        配送について
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            配送料の負担
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox
-          %option{value: "0"} 選択してください
-          %option{value: "1"} 送料込み（出品者負担）
-          %option{value: "2"} 着払い（購入者負担）
-        .itemsNew__alert.displayNone
-          選択してください
+        .itemsNew__sellPrice
+          .itemsNew__sellPrice--left
+            販売手数料（10%）
+          .itemsNew__sellPrice--right
+            ー
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            配送の方法
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox
-          %option{value: "0"} 選択してください
-          %option{value: "1"} らくらくフリマ便
-        .itemsNew__alert.displayNone
-          選択してください
+        .itemsNew__priceProfit
+          .itemsNew__sellPrice--left
+            販売利益
+          .itemsNew__priceProfit--right
+            ー
 
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            発送元の地域
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox
-          %option{value: "0"} 選択してください
-          %option{value: "1"} 北海道
-          %option{value: "2"} 青森県
-          %option{value: "3"} 岩手県
-          %option{value: "4"} 宮城県
-          %option{value: "5"} 秋田県
-          %option{value: "6"} 山形県
-          %option{value: "7"} 福島県
-          %option{value: "8"} 茨城県
-          %option{value: "9"} 栃木県
-          %option{value: "10"} 群馬園
-          %option{value: "12"} 埼玉県
-          %option{value: "13"} 千葉県
-          %option{value: "14"} 東京都
-          %option{value: "15"} 神奈川県
-          %option{value: "16"} 新潟県
-          %option{value: "17"} 富山県
-          %option{value: "18"} 石川県
-          %option{value: "19"} 福井県
-          %option{value: "20"} 山梨県
-          %option{value: "21"} 長野県
-          %option{value: "22"} 岐阜県
-          %option{value: "23"} 静岡県
-          %option{value: "24"} 愛知県
-          %option{value: "25"} 三重県
-          %option{value: "26"} 滋賀県
-          %option{value: "27"} 京都府
-          %option{value: "28"} 大阪府
-          %option{value: "29"} 兵庫県
-          %option{value: "30"} 奈良県
-          %option{value: "31"} 和歌山県
-          %option{value: "32"} 鳥取県
-          %option{value: "33"} 島根県
-          %option{value: "34"} 岡山県
-          %option{value: "35"} 広島県
-          %option{value: "36"} 山口県
-          %option{value: "37"} 徳島県
-          %option{value: "38"} 香川県
-          %option{value: "39"} 愛媛県
-          %option{value: "40"} 高知県
-          %option{value: "41"} 福岡県
-          %option{value: "42"} 佐賀県
-          %option{value: "43"} 長崎県
-          %option{value: "44"} 熊本県
-          %option{value: "45"} 大分県
-          %option{value: "46"} 宮崎県
-          %option{value: "47"} 鹿児島県
-          %option{value: "48"} 沖縄県
-          %option{value: "49"} その他
-        .itemsNew__alert.displayNone
-          選択してください
-
-      .itemsNew__innerContainer
-        .itemsNew__title
-          .itemsNew__subTile
-            発送までの日数
-          .itemsNew__tag
-            必須
-        %select.itemsNew__selectBox
-          %option{value: "0"} 選択してください
-          %option{value: "1"} 1~2日で発送
-          %option{value: "2"} 2~3日で発送
-          %option{value: "3"} 4~7日で発送
-        .itemsNew__alert.displayNone
-          選択してください
-
-    .itemsNew__container
-      .itemsNew__mainTitle
-        価格（¥300〜9,999,999）
-      .itemsNew__sellContainer
-        .itemsNew__title
-          .itemsNew__subTitle
-            販売価格
-          .itemsNew__tag
-            必須
-        .itemsNew__sellPriceBox
-          ¥
-          %input{type: "number", placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsNew__inputBox--sellPrice"}
-      .itemsNew__alertInputBox
-        .itemsNew__alertInputBox2.displayNone
-          300以上9999999以下で入力してください
-
-      .itemsNew__sellPrice
-        .itemsNew__sellPrice--left
-          販売手数料（10%）
-        .itemsNew__sellPrice--right
-          ー
-
-      .itemsNew__priceProfit
-        .itemsNew__sellPrice--left
-          販売利益
-        .itemsNew__priceProfit--right
-          ー
-
-      .itemsNew__btnContainer
-        .itemsNew__modalOpen
-          %button{type: "submit", class: "itemsNew__sellBtn"}
-            出品する
-        %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
-          もどる
+        .itemsNew__btnContainer
+          -# .itemsNew__modalOpen
+          = f.submit "出品する", class: "itemsNew__sellBtn"
+          %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
+            もどる
       
-      .itemsNew__note
-        禁止されている
-        %span>
-        = link_to('行為', {}, class: 'itemsNew__noteLink')
-        %span>
-        および
-        %span>
-        = link_to('出品物', {}, class: 'itemsNew__noteLink')
-        %span>
-        を必ずご確認ください。
-        %span>
-        = link_to('偽ブランド品', {}, class: 'itemsNew__noteLink')
-        %span>
-        や
-        %span>
-        = link_to('盗品物', {}, class: 'itemsNew__noteLink')
-        %span>
-        などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
-        %span>
-        = link_to('加盟店規約', {}, class: 'itemsNew__noteLink')
-        %span>
-        に同意したことになります。
+        .itemsNew__note
+          禁止されている
+          %span>
+          = link_to('行為', {}, class: 'itemsNew__noteLink')
+          %span>
+          および
+          %span>
+          = link_to('出品物', {}, class: 'itemsNew__noteLink')
+          %span>
+          を必ずご確認ください。
+          %span>
+          = link_to('偽ブランド品', {}, class: 'itemsNew__noteLink')
+          %span>
+          や
+          %span>
+          = link_to('盗品物', {}, class: 'itemsNew__noteLink')
+          %span>
+          などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+          %span>
+          = link_to('加盟店規約', {}, class: 'itemsNew__noteLink')
+          %span>
+          に同意したことになります。
 
   .itemsNew__footer
     .itemsNew__footerTop
