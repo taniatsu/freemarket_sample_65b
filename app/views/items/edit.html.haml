@@ -71,7 +71,7 @@
             .itemsEdit__tag
               必須
           .itemsEdit__selectBoxSize
-            =f.select :size, Item.sizes.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.size.to_i
+            =f.select :size, Item.sizes.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.size
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -90,7 +90,7 @@
             .itemsEdit__tag
               必須
           .itemsEdit__selectBoxCondition
-            =f.select :condition, Item.conditions.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.condition.to_i
+            =f.select :condition, Item.conditions.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.condition
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -104,7 +104,7 @@
             .itemsEdit__tag
               必須
           .itemsEdit__selectBoxFee
-            =f.select :fee_which, Item.fee_whiches.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.fee_which.to_i
+            =f.select :fee_which, Item.fee_whiches.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.fee_which
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -115,7 +115,7 @@
             .itemsEdit__tag
               必須
           .itemsEdit__selectBoxStatus
-            =f.select :status, Item.statuses.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.status.to_i
+            =f.select :status, Item.statuses.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.status
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -126,7 +126,7 @@
             .itemsEdit__tag
               必須
           .itemsEdit__selectBoxFrom
-            = f.collection_select :from_where, Prefecture.all, :id, :name,include_blank: "---",selected: @item.from_where.to_i
+            = f.collection_select :from_where, Prefecture.all, :name, :name,include_blank: "---",selected: @item.from_where
           .itemsEdit__alert.displayNone
             選択してください
 
@@ -137,7 +137,7 @@
             .itemsEdit__tag
               必須
           .itemsNew__selectBoxDelivery
-            =f.select :delivery_date, Item.delivery_dates.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.delivery_date.to_i
+            =f.select :delivery_date, Item.delivery_dates.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.delivery_date
           .itemsEdit__alert.displayNone
             選択してください
 

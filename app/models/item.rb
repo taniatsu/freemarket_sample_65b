@@ -14,10 +14,17 @@ class Item < ApplicationRecord
   enum status: {"らくらくフリマ便": 0}
   enum delivery_date: {"1~2日で発送": 1, "2~3日で発送": 2, "4~7日で発送":3 }
 
-  # validates :size, presence: true
-  # validates :condition,inclusion: {in: Item.conditions.keys}
-  # validates :fee_which,inclusion: {in: Item.fee_whiches.keys}
-  # validates :delivery_date,inclusion: {in: Item.delivery_dates.keys}
-
-  validates :category_id, :name, :explanation, :price,  :from_where, :thumbnail, :size, :condition, :fee_which, :delivery_date,  presence: true
+  validates :category_id, presence: true
+  validates :name, presence: true, length: { maximum: 40 }
+  validates :explanation, presence: true, length: { maximum: 1000 }
+  validates :price, presence: true
+  validates :from_where, presence: true
+  # 画像投稿実装できていないのでとりあえずthumbnailはコメントアウト
+  # validates :thumbnail, presence: true
+  validates :size, presence: true
+  validates :status, presence: true
+  validates :condition, presence: true
+  validates :fee_which, presence: true
+  validates :delivery_date, presence: true
+  
 end
