@@ -15,10 +15,10 @@ $(function(){
   });
 
 // モーダル
-  $('.itemsNew__modalOpen').on('click',function(){
-    $('.js-modal').fadeIn();
-    return false;
-  });
+  // $('.itemsNew__modalOpen').on('click',function(){
+  //   $('.js-modal').fadeIn();
+  //   return false;
+  // });
   // $('.js-modal-close').on('click',function(){
   //     $('.js-modal').fadeOut();
   //     return false;

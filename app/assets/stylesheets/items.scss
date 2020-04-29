@@ -221,6 +221,64 @@ main.showItem {
 .input_area{
   display: none;
 }
+#previews{
+  display: flex;
+  margin-bottom: 20px;
+  img{
+    width: 124px;
+    height: 124px;
+    object-fit: cover;
+  }
+}
+.img-container{
+  text-align: center;
+  color: #3CCACE;
+}
+.img-container-inner{
+  text-align: center;
+  // padding: 20px;
+  width: 100%;
+  span{
+    margin-top: 10px;
+    color: #3CCACE;
+  }
+}
+.js-file_group{
+  width: 100%;
+  background-color: #dadada;
+  // padding: 20px;
+  margin-bottom: 10px;
+  text-align: center;
+  .imgUpload{
+    width: 100%;
+    display: block;
+    padding: 20px;
+    cursor: pointer;
+    input{
+      // display: none;
+    }
+  }
+  // input{
+  //   display: none;
+  // }
+}
+.img-add{
+  padding: 20px;
+}
+.js-file_group-add{
+  width: 100%;
+  background-color: #dadada;
+  display: block;
+  padding: 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: center;
+  
+  input{
+    // opacity: 0;
+  }
+}
+
 .dropzone-container{
   
   .dropzone-area,.dropzone-area2{
