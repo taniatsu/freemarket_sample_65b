@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200429083357) do
+ActiveRecord::Schema.define(version: 20200430125245) do
+
+  create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer  "user_id",     null: false
+    t.string   "customer_id", null: false
+    t.string   "card_id",     null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name",       null: false
@@ -29,7 +37,6 @@ ActiveRecord::Schema.define(version: 20200429083357) do
   end
 
   create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.integer  "user_id",                     null: false
     t.integer  "category_id",                 null: false
     t.string   "name",                        null: false
     t.string   "brand"
@@ -40,7 +47,6 @@ ActiveRecord::Schema.define(version: 20200429083357) do
     t.integer  "fee_which",                   null: false
     t.string   "from_where",                  null: false
     t.integer  "delivery_date",               null: false
-    t.integer  "status",                      null: false
     t.integer  "buyer_id"
     t.integer  "seller_id",                   null: false
     t.datetime "created_at",                  null: false
