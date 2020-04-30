@@ -40,6 +40,7 @@
                 .js-file_group{data:{index:"@item.images.count"}}
                   = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]", class: 'js-file'
                   .js-remove 削除
+              = render partial: 'error-messages', locals: { user: @item, column: "image"}
 
       .itemsNew__container
         .itemsNew__innerContainer
@@ -49,7 +50,8 @@
             .itemsNew__tag
               必須
           = f.text_field :name, placeholder: "40字まで", class: "itemsNew__inputBox"
-            
+          = render partial: 'error-messages', locals: { user: @item, column: "image"}
+          
         .itemsNew__innerContainer
           .itemsNew__title
             .itemsNew__subTitle
