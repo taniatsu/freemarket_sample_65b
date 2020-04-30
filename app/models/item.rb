@@ -8,6 +8,20 @@ class Item < ApplicationRecord
   belongs_to :buyer, optional: true, class_name: "User"
   belongs_to :seller, class_name: "User"
 
+  validates_associated :images
+  validates :url, presence: true
+  validates :name, presence: true
+  validates :explanation, presence: true
+  validates :category_id, presence: true
+  validates :size, presence: true
+  validates :brand, presence: true
+  validates :condition, presence: true
+  validates :fee_which, presence: true
+  validates :from_where, presence: true
+  validates :fee_payer, presence: true
+  validates :delivery_date, presence: true
+  validates :price, presence: true
+
   enum condition: { "新品、未使用": 1, "未使用に近い": 2, "目立った傷や汚れなし": 3, "やや傷や汚れあり": 4, "傷や汚れあり": 5, "全体的に状態が悪い": 6}, _prefix: true
   enum size: { "XXS以下": 1, "XS（SS）": 2, "S": 3, "M": 4, "L": 5, "XXL": 6}, _prefix: true
   enum fee_payer: { "送料込み(出品者負担)": 1, "着払い(購入者負担)": 2}, _prefix: true
