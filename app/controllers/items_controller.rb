@@ -21,9 +21,9 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to item_path(@item),notice: '変更を保存しました'
+      redirect_to items_path,notice: '変更を保存しました'
     else
-      render :show, notice: '削除できませんでした'
+      render :edit, notice: '変更できませんでした'
     end
   end
 

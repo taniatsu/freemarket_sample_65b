@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       user: ユーザー
+      item: 商品
     attributes:
       user:
         nickname: ニックネーム
@@ -20,3 +21,17 @@ ja:
         city: 市
         address: 番地
         telephone: 電話番号
+      
+      item:
+        name: 出品名
+        category_id: カテゴリー
+        size: サイズ
+        explanation: 説明
+        condition: 商品の状態
+        price: 価格
+        fee_which: 配送料の負担
+        from_where: 地域
+        delivery_date: 日数
+        thumbnai: 画像
+
+

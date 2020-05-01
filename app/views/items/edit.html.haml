@@ -34,8 +34,8 @@
             .itemsEdit__tag
               必須
           =f.text_field :name, placeholder: "40文字以内" ,class: "itemsEdit__inputBox"
-          .itemsEdit__alert.displayNone
-            入力してください
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "name"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -44,8 +44,8 @@
             .itemsEdit__tag
               必須
           =f.text_area :explanation, rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsEdit__textareaBox"
-          .itemsEdit__alert.displayNone
-            入力してください
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "explanation"}
 
       .itemsEdit__container
         .itemsEdit__mainTitle
@@ -63,6 +63,8 @@
             = f.collection_select :category_id, @item.category.parent.siblings, :id , :name, {include_blank: "---", selected:  @item.category.parent.id}, {id:'select-children-category',class: "itemsEdit__selectBox"}
           .itemsEdit__selectBoxS
             = f.collection_select :category_id, @item.category.siblings, :id , :name, {include_blank: "---", selected: @item.category_id}, {id:'select-grandchildren-category',class: "itemsEdit__selectBox"}
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "category_id"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -72,8 +74,8 @@
               必須
           .itemsEdit__selectBoxSize
             =f.select :size, Item.sizes.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.size
-          .itemsEdit__alert.displayNone
-            選択してください
+            .itemsEdit__alert
+              = render partial: 'error_messages', locals: { item: @item, column: "size"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -91,8 +93,8 @@
               必須
           .itemsEdit__selectBoxCondition
             =f.select :condition, Item.conditions.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.condition
-          .itemsEdit__alert.displayNone
-            選択してください
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "condition"}
 
       .itemsEdit__container
         .itemsEdit__mainTitle
@@ -105,8 +107,8 @@
               必須
           .itemsEdit__selectBoxFee
             =f.select :fee_which, Item.fee_whiches.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.fee_which
-          .itemsEdit__alert.displayNone
-            選択してください
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "fee_which"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -116,8 +118,8 @@
               必須
           .itemsEdit__selectBoxFrom
             = f.collection_select :from_where, Prefecture.all, :name, :name,include_blank: "---",selected: @item.from_where
-          .itemsEdit__alert.displayNone
-            選択してください
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "from_where"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -127,8 +129,8 @@
               必須
           .itemsNew__selectBoxDelivery
             =f.select :delivery_date, Item.delivery_dates.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.delivery_date
-          .itemsEdit__alert.displayNone
-            選択してください
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "delivery_date"}
 
       .itemsEdit__container
         .itemsEdit__mainTitle
@@ -143,9 +145,8 @@
             ¥
             = f.number_field :price, placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsEdit__inputBox--sellPrice"
         .itemsEdit__alertInputBox
-          .itemsEdit__alertInputBox2.displayNone
-            300以上9999999以下で入力してください
-
+          .itemsEdit__alert
+            = render partial: 'error_messages', locals: { item: @item, column: "price"}
         .itemsEdit__sellPrice
           .itemsEdit__sellPrice--left
             販売手数料（10%）
@@ -160,7 +161,7 @@
 
         .itemsEdit__btnContainer
           .itemsEdit__modalOpen
-            = f.submit :" 変更する", class: "itemsEdit__sellBtn"
+            = f.submit :" 変更する", class: "itemsEdit__sellBtn",data: { disable_with: "更新中..." }
           =link_to "キャンセル", item_path(@item),method: "patch",class: "itemsEdit__sellBtn itemsEdit__backBtn"
 
   .itemsEdit__footer

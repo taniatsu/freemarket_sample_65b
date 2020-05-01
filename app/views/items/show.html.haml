@@ -24,7 +24,7 @@
       =@item.explanation
     .mainBox__btn
       -if user_signed_in?
-        -if  current_user.id == @item.user_id
+        -if  current_user.id == @item.seller_id
           =link_to edit_item_path(@item) do
             .mainBox__editBtn
               商品の編集
@@ -60,17 +60,17 @@
         %th
           出品者
         %td
-          = @item.user.nickname
+          = @item.seller.nickname
       %tr
         %th
           カテゴリー
         %td
           = link_to "#" do
-            %p ベビー・キッズ
+            %p= @item.category.parent.parent.name
           = link_to "#" do
-            %p ベビー服(男女兼用)〜95cm
+            %p= @item.category.parent.name    
           = link_to "#" do
-            %p アウター
+            %p= @item.category.name
       %tr
         %th
           ブランド

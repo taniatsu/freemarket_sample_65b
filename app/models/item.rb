@@ -2,10 +2,10 @@ class Item < ApplicationRecord
   has_many :images
   has_many :comments
   has_many :likes
-  belongs_to :user
+  belongs_to :use, optional: true
   belongs_to :category
-  belongs_to :buyer,class_name: "User" 
-  belongs_to :seller,class_name: "User" 
+  belongs_to :buyer,class_name: "User", optional: true
+  belongs_to :seller,class_name: "User"
 
   enum size: {"XXS以下": 0, "XS(SS)": 1, S: 2, M: 3, L: 4, "XL(LL)": 5, "2XL(3L)": 6, "3XL(4L)": 7, "4XK(5L)以上": 8, "FREE SIZE": 9}
   enum condition: {"新品・未使用": 0, "目立った傷や汚れなし": 1, "やや傷や汚れあり": 2, "傷や汚れあり": 3, "全体的に状態が悪い": 4}
