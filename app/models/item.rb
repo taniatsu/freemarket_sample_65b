@@ -9,16 +9,14 @@ class Item < ApplicationRecord
   belongs_to :seller, class_name: "User"
 
   validates_associated :images
-  validates :url, presence: true
+  validates :images, presence: true
   validates :name, presence: true
   validates :explanation, presence: true
   validates :category_id, presence: true
   validates :size, presence: true
-  validates :brand, presence: true
   validates :condition, presence: true
   validates :fee_which, presence: true
   validates :from_where, presence: true
-  validates :fee_payer, presence: true
   validates :delivery_date, presence: true
   validates :price, presence: true
 

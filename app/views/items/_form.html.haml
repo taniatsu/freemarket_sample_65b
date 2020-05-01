@@ -30,7 +30,6 @@
 
               = f.fields_for :images do |image|
                 .js-file_group{data:{index: image.index}}
-                  -# =image.label :url, class: "imgUpload" do
                   = image.file_field :url, class: "js-file img-add"
 
                 - if @item.persisted?
@@ -40,7 +39,8 @@
                 .js-file_group{data:{index:"@item.images.count"}}
                   = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]", class: 'js-file'
                   .js-remove 削除
-              = render partial: 'error-messages', locals: { user: @item, column: "image"}
+            = render partial: 'error-messages', locals: { item: @item, column: "images"}
+              
 
       .itemsNew__container
         .itemsNew__innerContainer
@@ -50,7 +50,7 @@
             .itemsNew__tag
               必須
           = f.text_field :name, placeholder: "40字まで", class: "itemsNew__inputBox"
-          = render partial: 'error-messages', locals: { user: @item, column: "image"}
+          = render partial: 'error-messages', locals: { item: @item, column: "name"}
           
         .itemsNew__innerContainer
           .itemsNew__title
@@ -59,7 +59,8 @@
             .itemsNew__tag
               必須
           = f.text_area :explanation, class: "itemsNew__textareaBox", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "7"
-          
+          = render partial: 'error-messages', locals: { item: @item, column: "explanation"}
+
       .itemsNew__container
         .itemsNew__mainTitle
           商品の詳細
@@ -73,6 +74,7 @@
             = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select itemsNew__selectBox', id: 'parent_category'}
             .itemsNew__alert.displayNone
               選択してください
+            = render partial: 'error-messages', locals: { item: @item, column: "category_id"}
         
         .itemsNew__innerContainer
           .itemsNew__title
@@ -83,6 +85,7 @@
           = f.select :size, Item.sizes.keys,{prompt: '選択してください'},class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "size"}
         
         .itemsNew__innerContainer
           .itemsNew__title
@@ -101,6 +104,7 @@
           = f.select :condition, Item.conditions.keys,{prompt: '選択してください'},class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "condition"}
 
       .itemsNew__container
         .itemsNew__mainTitle
@@ -114,6 +118,7 @@
           = f.select :fee_which, Item.fee_payers.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "fee_which"}
 
         .itemsNew__innerContainer
           .itemsNew__title
@@ -124,6 +129,7 @@
           = f.select :from_where, Item.from_wheres.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "from_where"}
 
         .itemsNew__innerContainer
           .itemsNew__title
@@ -134,6 +140,7 @@
           = f.select :delivery_date, Item.delivery_dates.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "delivery_date"}
 
       .itemsNew__container
         .itemsNew__mainTitle
@@ -162,6 +169,7 @@
             販売利益
           .itemsNew__priceProfit--right
             ー
+        = render partial: 'error-messages', locals: { item: @item, column: "price"}
 
         .itemsNew__btnContainer
           .itemsNew__modalOpen

@@ -12,8 +12,6 @@ class ItemsController < ApplicationController
   def new
     @item = Item.new
     @item.images.new
-    # @item.images.new
-    # @item.images.new
     @parents = Category.all.order("id ASC").limit(13)
 
     #セレクトボックスの初期値設定
@@ -39,23 +37,17 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
-    # Item.create(item_params)
-    if @item.save!
+    if @item.save
       redirect_to root_path
     else
+      #セレクトボックスの初期値設定
+      @category_parent_array = ["---"]
+      # データベースから、親カテゴリーのみ抽出し、配列化
+      Category.where(ancestry: nil).each do |parent|
+      @category_parent_array << parent.name
+    end
       render :new
     end
-    # respond_to do |format|
-    #   if @item.save
-    #       params[:images][:image].each do |image|
-    #         @item.images.create(image: image, item_id: @item.id)
-    #       end
-    #     format.html{redirect_to root_path}
-    #   else
-    #     @item.images.build
-    #     format.html{render action: 'new'}
-    #   end
-    # end
   end
 
   def confirm
@@ -89,7 +81,6 @@ class ItemsController < ApplicationController
 
   private
   def item_params
-    # params.require(:item).permit(:name)
     params.require(:item).permit(
       :name,
       :explanation, 
