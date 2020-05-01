@@ -236,7 +236,6 @@ main.showItem {
 }
 .img-container-inner{
   text-align: center;
-  // padding: 20px;
   width: 100%;
   span{
     margin-top: 10px;
@@ -246,7 +245,6 @@ main.showItem {
 .js-file_group{
   width: 100%;
   background-color: #dadada;
-  // padding: 20px;
   margin-bottom: 10px;
   text-align: center;
   .imgUpload{
@@ -254,13 +252,9 @@ main.showItem {
     display: block;
     padding: 20px;
     cursor: pointer;
-    input{
-      // display: none;
-    }
+    
   }
-  // input{
-  //   display: none;
-  // }
+
 }
 .img-add{
   padding: 20px;
@@ -273,17 +267,12 @@ main.showItem {
   cursor: pointer;
   margin-bottom: 10px;
   text-align: center;
-  
-  input{
-    // opacity: 0;
-  }
 }
 
 .dropzone-container{
   
   .dropzone-area,.dropzone-area2{
     height: 100%;
-    // background: #DDDDDD;
   }
   .dropzone-1colum{
     display:flex;

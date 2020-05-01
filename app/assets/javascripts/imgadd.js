@@ -28,32 +28,20 @@ $(document).on('turbolinks:load', ()=> {
     return html;
   }
 
-  // const buildImgSec = (index, url)=> {
-  //   const html = `
-  //                   <div class="img-container-inner">
-  //                     <img data-index="${index}" src="${url}" width="100px" height="100px" class="img-count">
-  //                     <br>
-  //                     <span class="js-remove">削除</span>
-  //                     <input class="test" type="file" name="item[images_attributes][${index}][url]" id="item_images_attributes_${index}_[url]">
-  //                   </div>
-  //                 `;
-  //   return html;
-  // }
+
 
   $('#image-box').on('change', '.js-file', function(e) {
     const targetIndex = $(this).parent().data('index');
     // ファイルのブラウザ上でのURLを取得する
     const file = e.target.files[0];
     const blobUrl = window.URL.createObjectURL(file);
-    // $(this).parent().remove();
+    
     // 該当indexを持つimgタグがあれば取得して変数imgに入れる(画像変更の処理)
     if (img = $(`img[data-index="${targetIndex}"]`)[0]) {
       img.setAttribute('src', blobUrl);
     } else {  // 新規画像追加の処理
       $('#previews').append(buildImg(targetIndex, blobUrl));
       
-      // const last = fileIndex.slice(-1)[0];
-      // console.log(last)
       const imgCount= $('.img-count');
       if(imgCount.length < 5){
         $('#image-box').append(buildFileField(fileIndex[0]));
