@@ -51,9 +51,7 @@
             .itemIndex__productList__items__sold
               SOLD
           = link_to "items/#{item.id}" do
-            = image_tag "free_img1.jpg"
-            -# carrierwave導入したら下記に画像変更
-            -# =item.thumbnail
+            = image_tag item.thumbnail
             .itemIndex__productList__items__text
               %h8.itemIndex__productList__items__text__name
                 = item.name

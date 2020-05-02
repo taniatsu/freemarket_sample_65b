@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:index,:show, :confirm, :destroy,:edit,:update]
+  before_action :set_item, only: [:show, :confirm, :destroy,:edit,:update]
   before_action :set_category, only: [:index, :show, :destroy, :edit, :update]
   
   def index
@@ -67,7 +67,7 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to items_path
     else
       render :edit
     end
