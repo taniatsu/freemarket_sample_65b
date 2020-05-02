@@ -7,9 +7,7 @@
     .mainBox__itemName
       = @item.name
     .mainBox__mainImage
-      = image_tag "free_img1.jpg"
-      -# carrierwave導入したら下記に画像変更
-      -# = @item.thumbnail
+      = image_tag @item.thumbnail
     %ul.mainBox__imageBox
       -@item.images.each do |i|
         - if i.url.present?

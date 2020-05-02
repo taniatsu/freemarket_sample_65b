@@ -108,12 +108,12 @@
     .productList__items
       -@lastItem.each do |item|
         .productList__items__item
-          -if item.buyer_id
+          -if item.buyer_id > 0
             .productList__items__item__sold
               SOLD
           = link_to "items/#{item.id}" do
-            = image_tag "free_img1.jpg"
-            -# = item.thumbnail
+            -# = image_tag "free_img1.jpg"
+            = image_tag item.thumbnail
             .productList__items__item__text
               %h8.name
                 = item.name

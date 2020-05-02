@@ -3,7 +3,6 @@ class Item < ApplicationRecord
   accepts_nested_attributes_for :images, allow_destroy: true
   has_many :comments
   has_many :likes
-  belongs_to :brand, optional: true
   belongs_to :category
   belongs_to :buyer,class_name: "User", optional: true
   belongs_to :seller,class_name: "User"
