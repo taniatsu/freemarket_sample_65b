@@ -7,7 +7,7 @@
     .mainBox__itemName
       = @item.name
     .mainBox__mainImage
-      = image_tag "free_img1.jpg"
+      -# = image_tag "free_img1.jpg"
       -# carrierwave導入したら下記に画像変更
       -# = @item.thumbnail
     %ul.mainBox__imageBox
@@ -24,7 +24,7 @@
       =@item.explanation
     .mainBox__btn
       -if user_signed_in?
-        -if  current_user.id == @item.user_id
+        -if  current_user.id == @item.seller_id
           =link_to edit_item_path(@item) do
             .mainBox__editBtn
               商品の編集
@@ -60,7 +60,7 @@
         %th
           出品者
         %td
-          = @item.user.nickname
+          = @item.seller.nickname
       %tr
         %th
           カテゴリー
