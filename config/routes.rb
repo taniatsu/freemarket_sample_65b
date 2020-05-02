@@ -26,6 +26,10 @@ Rails.application.routes.draw do
     resources :likes
     resources :comments
     resources :images
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     member do
       get 'confirm'
     end
