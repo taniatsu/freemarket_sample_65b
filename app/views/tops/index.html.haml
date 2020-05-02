@@ -108,7 +108,7 @@
     .productList__items
       -@lastItem.each do |item|
         .productList__items__item
-          -if item.buyer_id > 0
+          -if item.buyer_id
             .productList__items__item__sold
               SOLD
           = link_to "items/#{item.id}" do
@@ -136,7 +136,7 @@
     .productList__items
       -@lastItem.each do |item|
         .productList__items__item
-          -if item.buyer_id > 0
+          -if item.buyer_id
             .productList__items__item__sold
               SOLD
           = link_to "items/#{item.id}" do

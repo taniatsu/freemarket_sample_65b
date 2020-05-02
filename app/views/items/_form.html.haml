@@ -1,0 +1,214 @@
+.itemsNew
+
+  .itemsNew__header
+    = link_to root_path do
+      = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsNew__logo'
+
+  .itemsNew__body
+    = form_for @item do |f|
+      .itemsNew__container
+        .itemsNew__title
+          .itemsNew__subTitle
+            出品画像
+          .itemsNew__tag
+            必須
+        .itemsNew__photoExplanation 
+          最大10枚までアップロードできます
+        .sell-form.dropzone#item-dropzone
+          %h2.sell-form__header
+            商品情報を入力
+          .sell-form-container
+            %label.sell-form-container__label
+              出品画像
+            %span.sell-form-container__require
+              必須
+            #image-box
+              #previews
+                - if @item.persisted?
+                  = @item.images.each_with_index do |image, i|
+                    = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
+
+              = f.fields_for :images do |image|
+                .js-file_group{data:{index: image.index}}
+                  = image.file_field :url, class: "js-file img-add"
+
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+                  
+              - if @item.persisted?
+                .js-file_group{data:{index:"@item.images.count"}}
+                  = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]", class: 'js-file'
+                  .js-remove 削除
+            = render partial: 'error-messages', locals: { item: @item, column: "images"}
+              
+
+      .itemsNew__container
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              出品名
+            .itemsNew__tag
+              必須
+          = f.text_field :name, placeholder: "40字まで", class: "itemsNew__inputBox"
+          = render partial: 'error-messages', locals: { item: @item, column: "name"}
+          
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              出品の説明
+            .itemsNew__tag
+              必須
+          = f.text_area :explanation, class: "itemsNew__textareaBox", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "7"
+          = render partial: 'error-messages', locals: { item: @item, column: "explanation"}
+
+      .itemsNew__container
+        .itemsNew__mainTitle
+          商品の詳細
+        .itemsNew__innerContainer
+          .listing-product-detail__category
+            .itemsNew__title
+              .itemsNew__subTitle
+                カテゴリー
+              .itemsNew__tag
+                必須
+            = f.select :category, @category_parent_array, {}, {class: 'listing-select-wrapper__box--select itemsNew__selectBox', id: 'parent_category'}
+            .itemsNew__alert.displayNone
+              選択してください
+            = render partial: 'error-messages', locals: { item: @item, column: "category_id"}
+        
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              サイズ
+            .itemsNew__tag
+              必須
+          = f.select :size, Item.sizes.keys,{prompt: '選択してください'},class: "itemsNew__selectBox"
+          .itemsNew__alert.displayNone
+            選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "size"}
+        
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              ブランド
+            .itemsNew__tag--gray
+              任意
+          %input{type: "text", placeholder: "選択してください" ,class: "itemsNew__inputBox"}
+
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              商品の状態
+            .itemsNew__tag
+              必須
+          = f.select :condition, Item.conditions.keys,{prompt: '選択してください'},class: "itemsNew__selectBox"
+          .itemsNew__alert.displayNone
+            選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "condition"}
+
+      .itemsNew__container
+        .itemsNew__mainTitle
+          配送について
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              配送料の負担
+            .itemsNew__tag
+              必須
+          = f.select :fee_which, Item.fee_payers.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
+          .itemsNew__alert.displayNone
+            選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "fee_which"}
+
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              発送元の地域
+            .itemsNew__tag
+              必須
+          = f.select :from_where, Item.from_wheres.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
+          .itemsNew__alert.displayNone
+            選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "from_where"}
+
+        .itemsNew__innerContainer
+          .itemsNew__title
+            .itemsNew__subTile
+              発送までの日数
+            .itemsNew__tag
+              必須
+          = f.select :delivery_date, Item.delivery_dates.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
+          .itemsNew__alert.displayNone
+            選択してください
+          = render partial: 'error-messages', locals: { item: @item, column: "delivery_date"}
+
+      .itemsNew__container
+        .itemsNew__mainTitle
+          価格（¥300〜9,999,999）
+        .itemsNew__sellContainer
+          .itemsNew__title
+            .itemsNew__subTitle
+              販売価格
+            .itemsNew__tag
+              必須
+          .itemsNew__sellPriceBox
+            ¥
+            = f.number_field :price, placeholder: "0", class: "itemsNew__inputBox--sellPrice", min: "300", max: "9999999", style: "text-align: right;"
+        .itemsNew__alertInputBox
+          .itemsNew__alertInputBox2.displayNone
+            300以上9999999以下で入力してください
+
+        .itemsNew__sellPrice
+          .itemsNew__sellPrice--left
+            販売手数料（10%）
+          .itemsNew__sellPrice--right
+            ー
+
+        .itemsNew__priceProfit
+          .itemsNew__sellPrice--left
+            販売利益
+          .itemsNew__priceProfit--right
+            ー
+        = render partial: 'error-messages', locals: { item: @item, column: "price"}
+
+        .itemsNew__btnContainer
+          .itemsNew__modalOpen
+            = f.submit "出品", class:"itemsNew__sellBtn"
+            %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
+              もどる
+
+        .itemsNew__note
+          禁止されている
+          %span>
+          = link_to('行為', {}, class: 'itemsNew__noteLink')
+          %span>
+          および
+          %span>
+          = link_to('出品物', {}, class: 'itemsNew__noteLink')
+          %span>
+          を必ずご確認ください。
+          %span>
+          = link_to('偽ブランド品', {}, class: 'itemsNew__noteLink')
+          %span>
+          や
+          %span>
+          = link_to('盗品物', {}, class: 'itemsNew__noteLink')
+          %span>
+          などの販売は犯罪であり、法律により処罰される可能性があります。 また、出品をもちまして
+          %span>
+          = link_to('加盟店規約', {}, class: 'itemsNew__noteLink')
+          %span>
+          に同意したことになります。
+
+  .itemsNew__footer
+    .itemsNew__footerTop
+      %ul.itemsNew__footerUl
+        %li.itemsNew__footerList
+          = link_to('プライバシーポリシー', {}, class: 'itemsNew__footerList--link')
+        %li.itemsNew__footerList
+          = link_to('フリマ利用規約', {}, class: 'itemsNew__footerList--link')
+        %li.itemsNew__footerList
+          = link_to('特定商品に関する表記', {}, class: 'itemsNew__footerList--link')
+
+    .itemsNew__footerLogo
+      = image_tag 'logo-blue.png', alt: 'FURIMA', class: 'itemsNew__logo'
