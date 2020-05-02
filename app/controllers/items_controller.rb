@@ -65,11 +65,12 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    unless current_user.id == @item.user_id && @item.destroy
+    if current_user.id == @item.user_id
+      @item.destroy
+      redirect_to root_path
+    else
       render :show,　notice: '削除できませんでした'
     end
-    @item.destroy
-    redirect_to root_path
   end
 
   def search
