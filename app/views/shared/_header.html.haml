@@ -30,7 +30,7 @@
       %ul.headInner__Foot__right
         - if user_signed_in?
           %li.headInner__Foot__right__login
-            = link_to 'マイページ', users_path
+            = link_to 'マイページ', user_path(current_user.id)
           %li.headInner__Foot__right__signUp
             = link_to destroy_user_session_path, method: 'delete' do
               ログアウト
