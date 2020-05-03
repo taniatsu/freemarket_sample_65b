@@ -15,7 +15,8 @@
       -@item.images.each do |i|
         - if i.url.present?
           %li.mainBox__imageBox__leftImage
-            = image_tag i.images[0].url
+            -# = image_tag "free_img1.jpg"
+            = image_tag i.url
     .mainBox__priceBox
       %h.mainBox__priceBox__itemPrice
         ="#{@item.price}円"
@@ -39,15 +40,25 @@
                   本当に削除しますか？
                 %button#modal-close-btn キャンセル
                 %button#delete-comformation-btn 削除する
-                
+
         -else
-          -if @item.buyer_id > 0
-            .mainBox__soldBtn
-              SOLD OUT
-          -else 
+          -if @item.buyer_id == nil
             = link_to confirm_item_path(@item) do
               .mainBox__buyBtn
                 購入画面に進む
+          -else 
+            .mainBox__soldBtn
+              SOLD OUT
+
+        -# -else
+        -#   -if @item.buyer_id > 0
+        -#     .mainBox__soldBtn
+        -#       SOLD OUT
+        -#   -else 
+        -#     = link_to confirm_item_path(@item) do
+        -#       .mainBox__buyBtn
+        -#         購入画面に進む
+
       -else
         -if @item.buyer_id > 0
           .mainBox__soldBtn
@@ -56,6 +67,7 @@
           = link_to confirm_item_path(@item) do
             .mainBox__buyBtn
               購入画面に進む
+
     %table.mainTable
       %tr
         %th
