@@ -112,7 +112,9 @@
             .productList__items__item__sold
               SOLD
           = link_to "items/#{item.id}" do
-            = image_tag "free_img1.jpg"
+            = image_tag item.images[0].url
+            -# = image_tag item.url
+            -# = image_tag "free_img1.jpg"
             -# = item.thumbnail
             .productList__items__item__text
               %h8.name
@@ -127,34 +129,32 @@
               %p.tax
                 (税込）
 
-    .productList__info
-      %h8.productList__info__category
-        ピックアップカテゴリー
-      %p.productList__info__title
-        人気のブランド
+    -# .productList__info
+    -#   %h8.productList__info__category
+    -#     ピックアップカテゴリー
+    -#   %p.productList__info__title
+    -#     人気のブランド
 
-    .productList__items
-      -@lastItem.each do |item|
-        .productList__items__item
-          -if item.buyer_id
-            .productList__items__item__sold
-              SOLD
-          = link_to "items/#{item.id}" do
-            = image_tag "free_img1.jpg"
-            -# carrierwave導入したら下記に画像変更
-            -# = item.thumbnail
-            .productList__items__item__text
-              %h8.name
-                = item.name
-              %ul
-                %li.price
-                  = "#{item.price}円"
-                %li.likes
-                  = icon('fa','star',class:"productList__icon")
-                  .volume
-                    20
-              %p.tax
-                (税込)
+    -# .productList__items
+    -#   -@lastItem.each do |item|
+    -#     .productList__items__item
+    -#       -if item.buyer_id
+    -#         .productList__items__item__sold
+    -#           SOLD
+    -#       = link_to "items/#{item.id}" do
+    -#         = image_tag item.images[0].url
+    -#         .productList__items__item__text
+    -#           %h8.name
+    -#             = item.name
+    -#           %ul
+    -#             %li.price
+    -#               = "#{item.price}円"
+    -#             %li.likes
+    -#               = icon('fa','star',class:"productList__icon")
+    -#               .volume
+    -#                 20
+    -#           %p.tax
+    -#             (税込)
 
 = render "shared/banner"
 
