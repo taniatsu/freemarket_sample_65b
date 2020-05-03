@@ -112,7 +112,9 @@
             .productList__items__item__sold
               SOLD
           = link_to "items/#{item.id}" do
-            = image_tag "free_img1.jpg"
+            = image_tag item.images[0].url
+            -# = image_tag item.url
+            -# = image_tag "free_img1.jpg"
             -# = item.thumbnail
             .productList__items__item__text
               %h8.name
