@@ -12,9 +12,10 @@ class Item < ApplicationRecord
   enum fee_which: { "送料込み(出品者負担)": 1, "着払い(購入者負担)": 2}, _prefix: true
   enum delivery_date: { "1~2日で発送": 1, "2~3日で発送": 2, "4~7日で発送": 3},_prefix: true
   enum delivery: { "未定": 1, "らくらくメルカリ便": 2, "ゆうメール": 3, "レターパック": 4, "普通郵便(定形、定形外)": 5, "クロネコヤマト": 6, "ゆうパック": 7, "クリックポスト": 8, "ゆうパケット": 9}, _prefix: true
+  enum fee_payer: { "送料込み(出品者負担)": 1, "着払い(購入者負担)": 2}, _prefix: true
 
-  # validates_associated :images
-  # validates :images, presence: true
+  validates_associated :images
+  validates :images, presence: true
   validates :category_id, presence: true
   validates :name, presence: true, length: { maximum: 40 }
   validates :explanation, presence: true, length: { maximum: 1000 }

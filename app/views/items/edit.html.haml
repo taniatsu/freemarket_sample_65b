@@ -1,10 +1,11 @@
 .itemsEdit
+
   .itemsEdit__header
     = link_to root_path do
       = image_tag 'logo.png', alt: 'FURIMA', class: 'itemsEdit__logo'
 
   .itemsEdit__body
-    = form_for (@item) do |f|
+    = form_for @item do |f|
       .itemsEdit__container
         .itemsEdit__top
           商品の情報を入力
@@ -15,16 +16,33 @@
             必須
         .itemsEdit__photoExplanation 
           最大10枚までアップロードできます
+        .sell-form.dropzone#item-dropzone
+          %h2.sell-form__header
+            商品情報を入力
+          .sell-form-container
+            %label.sell-form-container__label
+              出品画像
+            %span.sell-form-container__require
+              必須
+            #image-box
+              #previews
+                - if @item.persisted?
+                  = @item.images.each_with_index do |image, i|
+                    = image_tag image.url, data: { index: i }, width: "100", height: '100'
+                    -# = image_tag image.src.url, data: { index: i }, width: "100", height: '100'
 
-        .itemsEdit__photoUp
-          .itemsEdit__photoUp--icon
-            = icon("fa", "camera", class: "fa-lg fa-fw")
-          .itemsEdit__photoUp--text
-            ドラッグアンドドロップ
-            %br
-              またはクリックしてファイルをアップロード
-        .itemsEdit__alert.displayNone
-          画像がありません
+              = f.fields_for :images do |image|
+                .js-file_group{data:{index: image.index}}
+                  = image.file_field :url, class: "js-file img-add"
+
+                - if @item.persisted?
+                  = image.check_box :_destroy, data:{ index: image.index }, class: 'hidden-destroy'
+
+              - if @item.persisted?
+                .js-file_group{data:{index:"@item.images.count"}}
+                  = file_field_tag :url, name: "item[images_attributes][#{@item.images.count}][url]", class: 'js-file'
+                  .js-remove 削除
+            = render partial: 'error-messages', locals: { item: @item, column: "images"}
 
       .itemsEdit__container
         .itemsEdit__innerContainer
@@ -35,7 +53,7 @@
               必須
           =f.text_field :name, placeholder: "40文字以内" ,class: "itemsEdit__inputBox"
           .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "name"}
+            = render partial: 'error-messages', locals: { item: @item, column: "name"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -45,26 +63,30 @@
               必須
           =f.text_area :explanation, rows: 7, placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）（例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", class: "itemsEdit__textareaBox"
           .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "explanation"}
+            = render partial: 'error-messages', locals: { item: @item, column: "explanation"}
 
       .itemsEdit__container
         .itemsEdit__mainTitle
           商品の詳細
         .itemsEdit__innerContainer
-          .itemsEdit__title
-            .itemsEdit__subTitle
-              カテゴリー
-            .itemsEdit__tag
-              必須
-          -# カテゴリープルダウンメニュー
-          .itemsEdit__selectBoxL
-            = f.collection_select :category_id, @item.category.parent.parent.siblings, :id , :name, {include_blank: "---", selected: @item.category.parent.parent.id}, {id:'select-parent-category',class: "itemsEdit__selectBox"}
-          .itemsEdit__selectBoxM
-            = f.collection_select :category_id, @item.category.parent.siblings, :id , :name, {include_blank: "---", selected:  @item.category.parent.id}, {id:'select-children-category',class: "itemsEdit__selectBox"}
-          .itemsEdit__selectBoxS
-            = f.collection_select :category_id, @item.category.siblings, :id , :name, {include_blank: "---", selected: @item.category_id}, {id:'select-grandchildren-category',class: "itemsEdit__selectBox"}
-          .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "category_id"}
+          .listing-product-detail__category
+            .itemsEdit__title
+              .itemsEdit__subTitle
+                カテゴリー
+              .itemsEdit__tag
+                必須
+            = f.collection_select :category_id, @item.category.parent.parent.siblings, :id , :name, {include_blank: "---", selected: @item.category.parent.parent.id}, {id:'parent_category',class: "itemsEdit__selectBox"}
+            -# = f.select :category, @category_parent_array, {include_blank: "---",selected: @item.category.parent.parent.id}, {class: 'listing-select-wrapper__box--select itemsNew__selectBox', id: 'parent_category'}
+            .itemsNew__alert.displayNone
+              選択してください
+            -# .itemsEdit__selectBoxL
+            -# = f.collection_select :category_id, @item.category.parent.parent.siblings, :id , :name, {include_blank: "---", selected: @item.category.parent.parent.id}, {id:'parent_category',class: "itemsEdit__selectBox"}
+            -# .itemsEdit__selectBoxM
+            -#   = f.collection_select :category_id, @item.category.parent.siblings, :id , :name, {include_blank: "---", selected:  @item.category.parent.id}, {id:'select-children-category',class: "itemsEdit__selectBox"}
+            -# .itemsEdit__selectBoxS
+            -#   = f.collection_select :category_id, @item.category.siblings, :id , :name, {include_blank: "---", selected: @item.category_id}, {id:'select-grandchildren-category',class: "itemsEdit__selectBox"}
+            -# .itemsEdit__alert
+              = render partial: 'error-messages', locals: { item: @item, column: "category_id"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -75,7 +97,7 @@
           .itemsEdit__selectBoxSize
             =f.select :size, Item.sizes.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.size
             .itemsEdit__alert
-              = render partial: 'error_messages', locals: { item: @item, column: "size"}
+              = render partial: 'error-messages', locals: { item: @item, column: "size"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -94,7 +116,7 @@
           .itemsEdit__selectBoxCondition
             =f.select :condition, Item.conditions.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.condition
           .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "condition"}
+            = render partial: 'error-messages', locals: { item: @item, column: "condition"}
 
       .itemsEdit__container
         .itemsEdit__mainTitle
@@ -108,7 +130,7 @@
           .itemsEdit__selectBoxFee
             =f.select :fee_which, Item.fee_whiches.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.fee_which
           .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "fee_which"}
+            = render partial: 'error-messages', locals: { item: @item, column: "fee_which"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -119,7 +141,7 @@
           .itemsEdit__selectBoxFrom
             = f.collection_select :from_where, Prefecture.all, :name, :name,include_blank: "---",selected: @item.from_where
           .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "from_where"}
+            = render partial: 'error-messages', locals: { item: @item, column: "from_where"}
 
         .itemsEdit__innerContainer
           .itemsEdit__title
@@ -130,7 +152,7 @@
           .itemsNew__selectBoxDelivery
             =f.select :delivery_date, Item.delivery_dates.invert.map{|k, v| [t("items.condition.#{v}"), v]},placeholder:"選択してください",include_blank: "---",selected: @item.delivery_date
           .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "delivery_date"}
+            = render partial: 'error-messages', locals: { item: @item, column: "delivery_date"}
 
       .itemsEdit__container
         .itemsEdit__mainTitle
@@ -146,7 +168,7 @@
             = f.number_field :price, placeholder: "0", min: "300", max: "9999999", style: "text-align: right;", class: "itemsEdit__inputBox--sellPrice"
         .itemsEdit__alertInputBox
           .itemsEdit__alert
-            = render partial: 'error_messages', locals: { item: @item, column: "price"}
+            = render partial: 'error-messages', locals: { item: @item, column: "price"}
         .itemsEdit__sellPrice
           .itemsEdit__sellPrice--left
             販売手数料（10%）
