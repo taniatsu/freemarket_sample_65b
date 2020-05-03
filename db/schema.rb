@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200430125245) do
+ActiveRecord::Schema.define(version: 20200503102658) do
 
   create_table "cards", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "user_id",     null: false
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20200430125245) do
     t.integer  "price",                       null: false
     t.integer  "size",                        null: false
     t.integer  "fee_which",                   null: false
-    t.string   "from_where",                  null: false
+    t.integer  "from_where",                  null: false
     t.integer  "delivery_date",               null: false
     t.integer  "buyer_id"
     t.integer  "seller_id",                   null: false

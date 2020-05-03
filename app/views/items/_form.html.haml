@@ -115,7 +115,7 @@
               配送料の負担
             .itemsNew__tag
               必須
-          = f.select :fee_which, Item.fee_payers.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
+          = f.select :fee_which, Item.fee_whiches.keys,{prompt: '選択してください'}, class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
           = render partial: 'error-messages', locals: { item: @item, column: "fee_which"}
