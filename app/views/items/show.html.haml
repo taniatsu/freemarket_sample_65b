@@ -8,14 +8,10 @@
       = @item.name
     .mainBox__mainImage
       = image_tag @item.images[0].url
-      -# = image_tag "free_img1.jpg"
-      -# carrierwave導入したら下記に画像変更
-      -# = @item.thumbnail
     %ul.mainBox__imageBox
       -@item.images.each do |i|
         - if i.url.present?
           %li.mainBox__imageBox__leftImage
-            -# = image_tag "free_img1.jpg"
             = image_tag i.url
     .mainBox__priceBox
       %h.mainBox__priceBox__itemPrice
@@ -50,23 +46,14 @@
             .mainBox__soldBtn
               SOLD OUT
 
-        -# -else
-        -#   -if @item.buyer_id > 0
-        -#     .mainBox__soldBtn
-        -#       SOLD OUT
-        -#   -else 
-        -#     = link_to confirm_item_path(@item) do
-        -#       .mainBox__buyBtn
-        -#         購入画面に進む
-
       -else
-        -if @item.buyer_id > 0
+        -if @item.buyer_id == nil
+          -# = link_to confirm_item_path(@item) do
+          -#   -# .mainBox__buyBtn
+          -#   -#   購入画面に進む
+        -else 
           .mainBox__soldBtn
             SOLD OUT
-        -else
-          = link_to confirm_item_path(@item) do
-            .mainBox__buyBtn
-              購入画面に進む
 
     %table.mainTable
       %tr
@@ -79,11 +66,11 @@
           カテゴリー
         %td
           = link_to "#" do
-            %p ベビー・キッズ
+            %p= @item.category.parent.parent.name
           = link_to "#" do
-            %p ベビー服(男女兼用)〜95cm
+            %p= @item.category.parent.name    
           = link_to "#" do
-            %p アウター
+            %p= @item.category.name
       %tr
         %th
           ブランド
