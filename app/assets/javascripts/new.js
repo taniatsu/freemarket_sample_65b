@@ -1,5 +1,7 @@
 $(function(){
-//価格表示
+  $(document).on('turbolinks:load', function() {
+
+    //価格表示
   $('.itemsNew__inputBox--sellPrice').on('input', function(){
     var price = $(this).val();
     var furima_fee = Math.floor(price * 0.1)
@@ -23,5 +25,7 @@ $(function(){
   //     $('.js-modal').fadeOut();
   //     return false;
   // });
+  });
+
 });
 

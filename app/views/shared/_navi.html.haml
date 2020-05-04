@@ -3,18 +3,18 @@
     %li.navi__name
       = link_to root_path do
         FURIMA
-      = icon("fa","chevron-right",class:"navi__icon")
+    = icon("fa","chevron-right",class:"navi__icon")
     %li.navi__categoryL
       = link_to "#" do
-        ベビー・キッズ
-      = icon("fa","chevron-right",class:"navi__icon")
+        %p= @item.category.parent.parent.name
+    = icon("fa","chevron-right",class:"navi__icon")
     %li.navi__categoryM
       = link_to "#" do
-        ベビー服(男女兼用)〜95cm
-      = icon("fa","chevron-right",class:"navi__icon")
+        %p= @item.category.parent.name
+    = icon("fa","chevron-right",class:"navi__icon")
     %li.navi__categoryS
       = link_to "#" do
-        アウター
-      = icon("fa","chevron-right",class:"navi__icon")
+        %p= @item.category.name
+    = icon("fa","chevron-right",class:"navi__icon")
     %li.navi__itemName
-      商品名
+      %p= @item.name
