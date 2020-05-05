@@ -94,3 +94,17 @@ gem 'omniauth-rails_csrf_protection'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
+# Payjpの導入
+gem 'payjp'
+
+# ENVの導入
+gem 'dotenv-rails'
+
+# binding.pry
+gem 'pry-rails'
+
+# CarrierWaveの導入
+gem 'carrierwave'
+
+# mini_magickの導入
+gem 'mini_magick'

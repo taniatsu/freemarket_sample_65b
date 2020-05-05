@@ -1,6 +1,8 @@
 require 'rails_helper'
 describe User do
+  
   describe '#create' do
+
     it "nicknameがない場合は登録できないこと" do
       user = build(:user, nickname: nil)
       user.valid?
@@ -20,7 +22,7 @@ describe User do
     end
 
     it "password_confirmationがない場合は登録できないこと" do
-      user = build(:user, password_confirmation: nil)
+      user = build(:user, password_confirmation: "")
       user.valid?
       expect(user.errors[:password_confirmation]).to include("を入力してください")
     end
@@ -70,13 +72,13 @@ describe User do
     it "telがない場合は登録できないこと" do
       user = build(:user, tel: nil)
       user.valid?
-      expect(user.errors[:tel]).to include("を入力してください")
+      expect(user.errors[:tel]).to include("は数字で入力してください")
     end
     
     it "zip_codeがない場合は登録できないこと" do
       user = build(:user, zip_code: nil)
       user.valid?
-      expect(user.errors[:zip_code]).to include("を入力してください")
+      expect(user.errors[:zip_code]).to include()
     end
 
     it "prefecture_idがない場合は登録できないこと" do
@@ -100,26 +102,25 @@ describe User do
     it "nicknameが13文字以上であれば登録できないこと" do
       user = build(:user, nickname: "aaaaaaaaaaaaa")
       user.valid?
-      expect(user.errors[:nickname]).to include
+      expect(user.errors[:nickname]).to include("は12文字以内で入力してください")
     end
 
     it "nicknameが12文字以下では登録できること " do
       user = build(:user, nickname: "aaaaaaaaaaaa")
-      user.valid?
-      expect(user.errors[:nickname]).to include
+      expect(user).to be_valid
     end
     
     it "emailのフォーマットが不適切でないか" do
       user = build(:user, email: '12345678')
       user.valid?
-      expect(user.errors[:email]).to include
+      expect(user.errors[:email]).to include("は不適切です")
     end
 
     it "重複したemailが存在する場合は登録できないこと" do
       user = create(:user)
       another_user = build(:user, email: user.email)
       another_user.valid?
-      expect(another_user.errors[:email]).to include('は不適切です')
+      expect(another_user.errors[:email]).to include("はすでに存在します")
     end
 
     it " passwordが7文字以上であれば登録できること " do
@@ -135,9 +136,9 @@ describe User do
     end
 
     it " passwordが英数字が含まれていない時は登録できないこと " do
-      user = build(:user, password: "q00000", password_confirmation: "q00000")
+      user = build(:user, password: "0000000", password_confirmation: "0000000")
       user.valid?
-      expect(user.errors[:password]).to include
+      expect(user.errors[:password]).to include("は半角英数字で入力してください")
     end
 
   end

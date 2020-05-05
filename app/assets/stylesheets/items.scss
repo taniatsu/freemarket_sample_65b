@@ -57,7 +57,7 @@ main.showItem {
       justify-content: center;
       
       img {
-        width: 100%;
+        width: 150px;
         padding: 0 5px;
       }
     }
@@ -74,7 +74,6 @@ main.showItem {
     &__text {
       text-align: left;
       padding: 30px 0;
-      word-wrap: normal;
     }
     &__btn{
       font-size: 25px;
@@ -87,6 +86,58 @@ main.showItem {
         background-color: var(--main-color);
         margin: 7px 0;
         padding: 3px 0;
+      }
+      #overlay{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top:0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.8);
+        display: none;
+        z-index: 1;
+      
+      #modalWindow{
+        width: 35%;
+        height: 250px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        z-index: 9;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+        .modal-message-box {
+          width: 100%;
+          height: calc(100% - 60px);
+          text-align: center;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          color:#111111;
+          font-size: 20px;
+          p{
+            font-weight: bold;
+          }
+        }
+      
+      #modal-close-btn {
+        width: 100%;
+        height: 60px;
+        cursor: pointer;
+      }
+      #delete-comformation-btn {
+        width: 100%;
+        height: 60px;
+        color:red;
+        cursor: pointer;
+      }
+      button{
+        font-size: 20px;
+      }
       }
       .mainBox__soldBtn{
         background-color: hotpink;
@@ -104,7 +155,7 @@ main.showItem {
       height: 400px;
       border-collapse: collapse;
       font-size: 13px;
-      margin-top: 30px;
+      margin: auto;
 
       tr {
         border: solid 1px gray;
@@ -157,9 +208,6 @@ main.showItem {
 
     li.text {
       padding-left: 3px;
-      a{
-        color: black;
-      }
     }
   }
 
@@ -224,8 +272,103 @@ main.showItem {
       text-decoration: none;
       color: var(--main-color);
     }
+  }
+}
 
+#preview,#preview2{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-bottom: 50px;
+  .img_view{
+    width: calc(620px / 5);
+    height: 120px;
+  }
+  .btn_wrapper{
+    display: flex;
+    justify-content: space-around;
+  }
+}
+.dropzone-area2{
+  display: none;
+}
+.input_area{
+  display: none;
+}
+#previews{
+  display: flex;
+  margin-bottom: 20px;
+  img{
+    width: 124px;
+    height: 124px;
+    object-fit: cover;
+  }
+}
+.img-container{
+  text-align: center;
+  color: #3CCACE;
+}
+.img-container-inner{
+  text-align: center;
+  width: 100%;
+  span{
+    margin-top: 10px;
+    color: #3CCACE;
+  }
+}
+.js-file_group{
+  width: 100%;
+  background-color: #dadada;
+  margin-bottom: 10px;
+  text-align: center;
+  .imgUpload{
+    width: 100%;
+    display: block;
+    padding: 20px;
+    cursor: pointer;
+    
   }
 
+}
+.img-add{
+  padding: 20px;
+}
+.js-file_group-add{
+  width: 100%;
+  background-color: #dadada;
+  display: block;
+  padding: 20px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  text-align: center;
+}
 
+.dropzone-container{
+  
+  .dropzone-area,.dropzone-area2{
+    height: 100%;
+  }
+  .dropzone-1colum{
+    display:flex;
+  }
+  .dropzone-2colum{
+    display:flex;
+  }
+  .upload-btn{
+    width: 50%;
+    margin: 19px auto 0;
+    text-align: center;
+    background: #ddd;
+    padding: 20px;
+  }
+  .img_view{
+    img{
+      object-fit: cover;
+      height: 100%;
+    }
+  }
+  .delete{
+    color: var(--main-color);
+    margin: 5px 0;
+  }
 }

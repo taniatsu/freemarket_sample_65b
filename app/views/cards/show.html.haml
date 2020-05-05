@@ -8,12 +8,14 @@
       .mainBlock__content
         .mainBlock__content-inner
           %h3.mainBlock__subTtl クレジットカード一覧
-          .card__payment__list
-          %form.card__payment__content
-          .card__list
-            .card__list__picture  
-          .card__number 
-            = "**** **** **** "
-          .expire__date 
+          .card__info 
+            -if @card.present?
+              .card__number 
+                = "**** **** **** " + @default_card_information.last4
+              .card__delete-btn 
+                = link_to '削除する', delete_cards_path, method: :post
+            -else
+              %p.card__add-btn 
+                = link_to 'カードを追加する', edit_card_path, method: :get
         .payQuestion
-          = link_to "支払い方法について", edit_card_path(1)
+          = link_to "支払い方法について", edit_card_path(1);

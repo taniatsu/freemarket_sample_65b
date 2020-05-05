@@ -1,7 +1,7 @@
 .subBlock
   .firstSec
     %ul.subBlock__lists
-      = link_to "＃" do
+      = link_to user_path(current_user) do
         %li.subBlock__list
           マイページ
           %span
@@ -16,7 +16,7 @@
           いいね！一覧
           %span
             %i.fas.fa-chevron-right
-      = link_to "＃" do
+      = link_to new_item_path do
         %li.subBlock__list
           出品する
           %span
@@ -94,9 +94,9 @@
           発送元・お届け先住所変更
           %span
             %i.fas.fa-chevron-right
-      = link_to "＃" do
+      = link_to edit_card_path(current_user) do
         %li.subBlock__list
-          支払い方法
+          カード登録
           %span
             %i.fas.fa-chevron-right
       = link_to "＃" do
@@ -114,7 +114,7 @@
           電話番号の確認
           %span
             %i.fas.fa-chevron-right
-      = link_to "＃" do
+      = link_to destroy_user_session_path, method: 'delete' do
         %li.subBlock__list
           ログアウト
           %span

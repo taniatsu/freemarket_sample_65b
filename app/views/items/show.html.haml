@@ -7,9 +7,7 @@
     .mainBox__itemName
       = @item.name
     .mainBox__mainImage
-      = image_tag "free_img1.jpg"
-      -# carrierwave導入したら下記に画像変更
-      -# = @item.thumbnail
+      = image_tag @item.images[0].url
     %ul.mainBox__imageBox
       -@item.images.each do |i|
         - if i.url.present?
@@ -24,45 +22,55 @@
       =@item.explanation
     .mainBox__btn
       -if user_signed_in?
-        -if  current_user.id == @item.user_id
+        -if  current_user.id == @item.seller_id
           =link_to edit_item_path(@item) do
             .mainBox__editBtn
               商品の編集
-          =link_to item_path(@item.id),method: :delete do
-            .mainBox__destroyBtn
+          =link_to item_path(@item),method: :delete ,id: 'item-delete-btn'do
+            .mainBox__destroyBtn#modal-open-btn
               商品の削除
+            #overlay
+              #modalWindow
+                .modal-message-box
+                  %p 確認 
+                  本当に削除しますか？
+                %button#modal-close-btn キャンセル
+                %button#delete-comformation-btn 削除する
+
         -else
-          -if @item.buyer_id > 0
-            .mainBox__soldBtn
-              SOLD OUT
-          -else 
+          -if @item.buyer_id == nil
             = link_to confirm_item_path(@item) do
               .mainBox__buyBtn
                 購入画面に進む
+          -else 
+            .mainBox__soldBtn
+              SOLD OUT
+
       -else
-        -if @item.buyer_id > 0
+        -if @item.buyer_id == nil
+          -# = link_to confirm_item_path(@item) do
+          -#   -# .mainBox__buyBtn
+          -#   -#   購入画面に進む
+        -else 
           .mainBox__soldBtn
             SOLD OUT
-        -else
-          = link_to confirm_item_path(@item) do
-            .mainBox__buyBtn
-              購入画面に進む
+
     %table.mainTable
       %tr
         %th
           出品者
         %td
-          = @item.user.nickname
+          = @item.seller.nickname
       %tr
         %th
           カテゴリー
         %td
           = link_to "#" do
-            %p ベビー・キッズ
+            %p= @item.category.parent.parent.name
           = link_to "#" do
-            %p ベビー服(男女兼用)〜95cm
+            %p= @item.category.parent.name    
           = link_to "#" do
-            %p アウター
+            %p= @item.category.name
       %tr
         %th
           ブランド

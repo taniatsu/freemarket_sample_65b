@@ -28,13 +28,33 @@ Rails.application.routes.draw do
     resources :likes
     resources :comments
     resources :images
+    collection do
+      get 'get_category_children', defaults: { format: 'json' }
+      get 'get_category_grandchildren', defaults: { format: 'json' }
+    end
     member do
       get 'confirm'
+    end
+    # 購入
+    resources :purchases, only: [:index] do
+      collection do
+        post 'pay', to: 'purchases#pay'
+        get 'done', to: 'purchases#done'
+      end
     end
   end
 
   # カード登録ページのルーティング
-  resources :cards
+  resources :cards, only: [:create, :show, :edit] do
+    collection do
+      post 'delete', to: 'cards/current_user.id/delete'
+      post 'show'
+    end
+    member do
+      get 'confirmation'
+    end
+  end 
+  
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -2,8 +2,8 @@ FactoryBot.define do
   factory :user do
     nickname              {"abe"}
     email                 {"kkk@gmail.com"}
-    password              {"a0000000"}
-    password_confirmation {"a0000000"}
+    password              {"a000000"}
+    password_confirmation {"a000000"}
     last_name             {"大田"}
     first_name            {"太郎"}
     last_jp_name          {"オオタ"}
@@ -17,5 +17,4 @@ FactoryBot.define do
     city                  {"札幌"}
     address              {"北区"}
   end
-
 end
