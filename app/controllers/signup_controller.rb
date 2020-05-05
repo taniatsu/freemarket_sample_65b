@@ -98,7 +98,16 @@ class SignupController < ApplicationController
       session[:id] = @user.id
       redirect_to done_signup_index_path
     else
-      render '/signup/registration'
+      render '/signup/address'
+    end
+
+    def create
+      if params[:sns_auth] == 'true'
+        pass = Devise.friendly_token
+        params[:user][:password] = pass
+        params[:user][:password_confirmation] = pass
+      end
+      super
     end
   end
 
