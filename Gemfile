@@ -102,3 +102,7 @@ gem 'carrierwave'
 
 # mini_magickの導入
 gem 'mini_magick'
+
+gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
+gem "omniauth-rails_csrf_protection"
