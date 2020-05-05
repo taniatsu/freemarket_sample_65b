@@ -30,27 +30,30 @@
               %span.signupMain__formRequire 必須
               = f.text_field :nickname, { class: 'signupMain__inputDefault', placeholder: '例) メルカリ太郎' }
               %ul.signupMain__errorText
-                = render partial: 'error-messages', locals: { user: @user, column: "nickname"}
+                -# = render partial: 'error-messages', locals: { user: @user, column: "nickname"}
             .signupMain__formGroup
               = f.label 'メールアドレス'
               %span.signupMain__formRequire 必須
               = f.email_field :email, { class: 'signupMain__inputDefault', placeholder: 'PC・携帯どちらでも可'}
               %ul.signupMain__errorText
-                = render partial: 'error-messages', locals: { user: @user, column: "email"}
-            .signupMain__formGroup
-              = f.label 'パスワード'
-              %span.signupMain__formRequire 必須
-              = f.password_field :password, {class: 'signupMain__inputDefault', placeholder: '7文字以上の半角英数字'}
-              %ul.signupMain__errorText
-                = render partial: 'error-messages', locals: { user: @user, column: "password"}
-              %p.signupMain__text1
-                ※ 英字と数字の両方を含めて設定してください
-            .signupMain__formGroup
-              = f.label 'パスワード (確認)'
-              %span.signupMain__formRequire 必須
-              = f.password_field :password_confirmation, { class: 'signupMain__inputDefault', placeholder: '7文字以上の半角英数字' }
-              %ul.signupMain__errorText
-                = render partial: 'error-messages', locals: { user: @user, column: "password_confirmation"}
+                -# = render partial: 'error-messages', locals: { user: @user, column: "email"}
+            - if @sns_id.present?
+              = hidden_field_tag :sns_auth, true
+            - else
+              .signupMain__formGroup
+                = f.label 'パスワード'
+                %span.signupMain__formRequire 必須
+                = f.password_field :password, {class: 'signupMain__inputDefault', placeholder: '7文字以上の半角英数字'}
+                %ul.signupMain__errorText
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "password"}
+                %p.signupMain__text1
+                  ※ 英字と数字の両方を含めて設定してください
+              .signupMain__formGroup
+                = f.label 'パスワード (確認)'
+                %span.signupMain__formRequire 必須
+                = f.password_field :password_confirmation, { class: 'signupMain__inputDefault', placeholder: '7文字以上の半角英数字' }
+                %ul.signupMain__errorText
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "password_confirmation"}
             .signupMain__formGroup
               %h3.signupMain__subHead
                 本人確認
@@ -64,8 +67,8 @@
                 = f.text_field :last_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) 山田'}
                 = f.text_field :first_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) 彩'}
                 %ul.signupMain__errorText
-                  = render partial: 'error-messages', locals: { user: @user, column: "last_name"}
-                  = render partial: 'error-messages', locals: { user: @user, column: "first_name"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "last_name"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "first_name"}
             .signupMain__formGroup.signupMain__formGroup--half
               %div
                 = f.label 'お名前カナ(全角)'
@@ -74,8 +77,8 @@
                 = f.text_field :last_jp_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) ヤマダ'}
                 = f.text_field :first_jp_name, {class: 'signupMain__inputDefault signupMain__inputDefault--half', placeholder: '例) アヤ'}
                 %ul.signupMain__errorText
-                  = render partial: 'error-messages', locals: { user: @user, column: "last_jp_name"}
-                  = render partial: 'error-messages', locals: { user: @user, column: "first_jp_name"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "last_jp_name"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "first_jp_name"}
             .signupMain__formGroup
               = f.label '生年月日'
               %span.signupMain__formRequire 必須
@@ -91,9 +94,9 @@
                   = f.collection_select :day_id, Day.all, :id, :day, name: 'day', prompt: '--', class: 'signupMain__selectDefault'
                 %span 日
                 %ul.signupMain__errorText
-                  = render partial: 'error-messages', locals: { user: @user, column: "year_id"}
-                  = render partial: 'error-messages', locals: { user: @user, column: "month_id"}
-                  = render partial: 'error-messages', locals: { user: @user, column: "day_id"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "year_id"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "month_id"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "day_id"}
             .signupMain__formGroup
               %p.signupMain__text1
                 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。
