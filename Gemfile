@@ -102,3 +102,6 @@ gem 'carrierwave'
 
 # mini_magickの導入
 gem 'mini_magick'
+
+# fog-awsの導入
+gem 'fog-aws'
