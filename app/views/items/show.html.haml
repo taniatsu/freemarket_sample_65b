@@ -38,7 +38,7 @@
                 %button#delete-comformation-btn 削除する
 
         -else
-          -if @item.buyer_id > 0
+          -if @item.buyer_id
             .mainBox__soldBtn
               SOLD OUT
           -else 
@@ -47,7 +47,7 @@
                 購入画面に進む
 
       -else
-        -if @item.buyer_id > 0
+        -if @item.buyer_id
           .mainBox__soldBtn
             SOLD OUT
         -else 
