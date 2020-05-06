@@ -351,6 +351,10 @@ $mainBackgroundColor: rgb(245, 245, 245);
           text-decoration: underline;
           opacity: 0.5;
         }
+        .itemsEdit__alert{
+          color: red;
+          margin-top: 3px;
+        }
         
   // フッターSP
   &__footer {
