@@ -50,7 +50,8 @@
             .itemsNew__tag
               必須
           = f.text_field :name, placeholder: "40字まで", class: "itemsNew__inputBox"
-          = render partial: 'error-messages', locals: { item: @item, column: "name"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "name"}
           
         .itemsNew__innerContainer
           .itemsNew__title
@@ -59,7 +60,8 @@
             .itemsNew__tag
               必須
           = f.text_area :explanation, class: "itemsNew__textareaBox", placeholder: "商品の説明（必須 1,000文字以内）（色、素材、重さ、定価、注意点など）例）2010年頃に1万円で購入したジャケットです。ライトグレーで傷はありません。あわせやすいのでおすすめです。", rows: "7"
-          = render partial: 'error-messages', locals: { item: @item, column: "explanation"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "explanation"}
 
       .itemsNew__container
         .itemsNew__mainTitle
@@ -74,7 +76,8 @@
             = f.select :category, @category_parent_array, {selected: @item.category.parent.parent.name,prompt: '選択してください'}, {class: 'listing-select-wrapper__box--select itemsNew__selectBox', id: 'parent_category'}
             .itemsNew__alert.displayNone
               選択してください
-            = render partial: 'error-messages', locals: { item: @item, column: "category_id"}
+            .itemsEdit__alert
+              = render partial: 'error-messages', locals: { item: @item, column: "category_id"}
         
         .itemsNew__innerContainer
           .itemsNew__title
@@ -85,7 +88,8 @@
           = f.select :size, Item.sizes.keys,{include_blank: "---",prompt: '選択してください'},class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
-          = render partial: 'error-messages', locals: { item: @item, column: "size"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "size"}
         
         .itemsNew__innerContainer
           .itemsNew__title
@@ -104,7 +108,8 @@
           = f.select :condition, Item.conditions.keys,{include_blank: "---",prompt: '選択してください'},class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             入力してください
-          = render partial: 'error-messages', locals: { item: @item, column: "condition"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "condition"}
 
       .itemsNew__container
         .itemsNew__mainTitle
@@ -118,7 +123,8 @@
           = f.select :fee_which, Item.fee_whiches.keys,{include_blank: "---",prompt: '選択してください'}, class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
-          = render partial: 'error-messages', locals: { item: @item, column: "fee_which"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "fee_which"}
 
         .itemsNew__innerContainer
           .itemsNew__title
@@ -129,7 +135,8 @@
           = f.select :from_where, Item.from_wheres.keys,{include_blank: "---",prompt: '選択してください'}, class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
-          = render partial: 'error-messages', locals: { item: @item, column: "from_where"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "from_where"}
 
         .itemsNew__innerContainer
           .itemsNew__title
@@ -140,7 +147,8 @@
           = f.select :delivery_date, Item.delivery_dates.keys,{include_blank: "---",prompt: '選択してください'}, class: "itemsNew__selectBox"
           .itemsNew__alert.displayNone
             選択してください
-          = render partial: 'error-messages', locals: { item: @item, column: "delivery_date"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "delivery_date"}
 
       .itemsNew__container
         .itemsNew__mainTitle
@@ -157,7 +165,8 @@
         .itemsNew__alertInputBox
           .itemsNew__alertInputBox2.displayNone
             300以上9999999以下で入力してください
-        = render partial: 'error-messages', locals: { item: @item, column: "price"}
+          .itemsEdit__alert
+            = render partial: 'error-messages', locals: { item: @item, column: "price"}
 
         .itemsNew__sellPrice
           .itemsNew__sellPrice--left
@@ -172,8 +181,6 @@
             ー
         .itemsNew__btnContainer
           .itemsNew__modalOpen
-            -# buyer_idに初期状態である0（未売却）を入れる
-            = f.hidden_field :buyer_id, value: "0"
             = f.submit "変更する", class:"itemsNew__sellBtn",data: { disable_with: "更新中..." }
             %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
               もどる
