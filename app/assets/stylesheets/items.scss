@@ -109,6 +109,9 @@ main.showItem {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        .deleteBtn{
+          width: 100%;
+        }
       }
         .modal-message-box {
           width: 100%;
