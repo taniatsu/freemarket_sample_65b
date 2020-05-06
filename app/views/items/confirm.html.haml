@@ -11,7 +11,7 @@
       .buyItem__inner
         %ul.buyItem__inner__box
           %li.buyItem__inner__box__img
-            = image_tag item.images[0].url
+            = image_tag @item.images[0].url
             -# carrierwave導入したら下記に画像変更
             -# = @item.thumbnail
           %li.buyItem__inner__box__text
