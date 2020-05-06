@@ -1,4 +1,5 @@
 $(function() {
+  $(document).on('turbolinks:load', function() {
   // カテゴリ色変更
   $("#categoryBtn").on("mouseover", function() {
     $(this).css({
@@ -38,5 +39,5 @@ $(function() {
     }, function(){
     $(">ul",this).slideUp();
   });
-  
+});
 });

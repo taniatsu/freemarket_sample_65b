@@ -93,7 +93,7 @@
               ブランド
             .itemsNew__tag--gray
               任意
-          %input{type: "text", placeholder: "選択してください" ,class: "itemsNew__inputBox"}
+          =f.text_field :brand, placeholder: "入力してください", class: "itemsNew__inputBox"
 
         .itemsNew__innerContainer
           .itemsNew__title
@@ -173,6 +173,8 @@
 
         .itemsNew__btnContainer
           .itemsNew__modalOpen
+            -# buyer_idに初期状態である0（未売却）を入れる
+            = f.hidden_field :buyer_id, value: "0"
             = f.submit "出品", class:"itemsNew__sellBtn"
             %button{type: "submit", class: "itemsNew__sellBtn itemsNew__backBtn"}
               もどる

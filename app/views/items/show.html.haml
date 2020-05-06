@@ -38,22 +38,22 @@
                 %button#delete-comformation-btn 削除する
 
         -else
-          -if @item.buyer_id == nil
+          -if @item.buyer_id > 0
+            .mainBox__soldBtn
+              SOLD OUT
+          -else 
             = link_to confirm_item_path(@item) do
               .mainBox__buyBtn
                 購入画面に進む
-          -else 
-            .mainBox__soldBtn
-              SOLD OUT
 
       -else
-        -if @item.buyer_id == nil
-          -# = link_to confirm_item_path(@item) do
-          -#   -# .mainBox__buyBtn
-          -#   -#   購入画面に進む
-        -else 
+        -if @item.buyer_id > 0
           .mainBox__soldBtn
             SOLD OUT
+        -else 
+          = link_to confirm_item_path(@item) do
+            .mainBox__buyBtn
+              購入画面に進む
 
     %table.mainTable
       %tr

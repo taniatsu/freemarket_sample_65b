@@ -55,22 +55,19 @@ class ItemsController < ApplicationController
 
   def edit
     @parents = Category.all.order("id ASC").limit(13)
-
     #セレクトボックスの初期値設定
-    @category_parent_array = ["---"]
+    @category_parent_array = []
       # データベースから、親カテゴリーのみ抽出し、配列化
     Category.where(ancestry: nil).each do |parent|
         @category_parent_array << parent.name
     end
   end
-
   # 以下全て、formatはjsonのみ
   # 親カテゴリーが選択された後に動くアクション
   def get_category_children
     #選択された親カテゴリーに紐付く子カテゴリーの配列を取得
     @category_children = Category.find_by(name: "#{params[:parent_name]}", ancestry: nil).children
   end
-
   # 子カテゴリーが選択された後に動くアクション
   def get_category_grandchildren
     #選択された子カテゴリーに紐付く孫カテゴリーの配列を取得
@@ -79,18 +76,25 @@ class ItemsController < ApplicationController
 
   def update
     if @item.update(item_params)
-      redirect_to root_path
+      redirect_to item_path
     else
+      @parents = Category.all.order("id ASC").limit(13)
+      #セレクトボックスの初期値設定
+      @category_parent_array = []
+        # データベースから、親カテゴリーのみ抽出し、配列化
+      Category.where(ancestry: nil).each do |parent|
+          @category_parent_array << parent.name
+      end
       render :edit
     end
   end
 
   def destroy
-    if current_user.id == @item.user_id
+    if current_user.id == @item.seller_id
       @item.destroy
       redirect_to root_path
     else
-      render :show,　notice: '削除できませんでした'
+      render :show, notice: '削除できませんでした'
     end
   end
 
