@@ -94,9 +94,9 @@
                   = f.collection_select :day_id, Day.all, :id, :day, name: 'day', prompt: '--', class: 'signupMain__selectDefault'
                 %span 日
                 %ul.signupMain__errorText
-                  = render partial: 'error-messages', locals: { user: @user, column: "year_id"}
-                  = render partial: 'error-messages', locals: { user: @user, column: "month_id"}
-                  = render partial: 'error-messages', locals: { user: @user, column: "day_id"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "year_id"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "month_id"}
+                  -# = render partial: 'error-messages', locals: { user: @user, column: "day_id"}
             .signupMain__formGroup
               %p.signupMain__text1
                 ※ 本人情報は正しく入力してください。会員登録後、修正するにはお時間を頂く場合があります。

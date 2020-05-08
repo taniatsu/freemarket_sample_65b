@@ -13,10 +13,10 @@
           = link_to registration_signup_index_path, class: 'signupMain__btnDefault signupMain__btnMail' do
             = icon 'far', 'envelope'
             メールアドレスで登録する
-          = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'signupMain__btnDefault signupMain__btnSns signupMain__btnSns--facebook'
+          = link_to user_facebook_omniauth_authorize_path, method: :post, class: 'signupMain__btnDefault signupMain__btnSns signupMain__btnSns--facebook' do
             = icon 'fab', 'facebook-square'
             Facebookで登録する
-          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'signupMain__btnDefault signupMain__btnSns signupMain__btnSns--google'
+          = link_to user_google_oauth2_omniauth_authorize_path, method: :post, class: 'signupMain__btnDefault signupMain__btnSns signupMain__btnSns--google' do
             = icon 'fab', 'google'
             Googleで登録する
 
